@@ -6,8 +6,11 @@ venv/
 *.egg-info/
 .DS_Store
 
-# Game records are experiment output, not source.
+# Working experiment output, not evidence. Rehearsals, interrupted runs and
+# junk live here and must never reach a published result. Publish a closed
+# record with tools/publish_game.py, which writes to the tracked results/ path.
 games/
+rehearsals/
 
 # Secrets. The benchmark reads the API key from the environment only; nothing
 # below should ever exist in the repository, and if it does it stays untracked.
@@ -19,4 +22,3 @@ secrets.json
 *.pem
 .openai
 .credentials
-rehearsals/
