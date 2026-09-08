@@ -103,6 +103,11 @@ def publish(
     record = GameRecord.load(source)
     check_publishable(record)
 
+    # Captured before anything is written: the artifacts this call is about to
+    # create would otherwise show up as a dirty tree and make the flag useless.
+    head_at_publish = git("rev-parse", "HEAD")
+    tree_clean_at_publish = git("status", "--porcelain") == ""
+
     root = (results_root or (REPO / "results")) / pilot / slot
     if root.exists() and any(root.iterdir()) and not force:
         raise NotPublishable(
@@ -145,8 +150,8 @@ def publish(
             __import__("datetime").timezone.utc
         ).isoformat(timespec="seconds"),
         "benchmark_commit_recorded_in_game": record.environment.get("bzbench_commit"),
-        "benchmark_commit_at_publish": git("rev-parse", "HEAD"),
-        "working_tree_clean_at_publish": git("status", "--porcelain") == "",
+        "benchmark_commit_at_publish": head_at_publish,
+        "working_tree_clean_at_publish": tree_clean_at_publish,
         "experiment": {
             "model": config.model_name,
             "api_model": config.api_model,

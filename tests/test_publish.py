@@ -56,6 +56,12 @@ def test_manifest_carries_the_identifiers_needed_to_defend_the_result(tmp_path):
     assert manifest["opponent"]["engine_name"]
     assert "benchmark_commit_recorded_in_game" in manifest
     assert "benchmark_commit_at_publish" in manifest
+    # The flag describes the tree before publishing, not the files just written.
+    assert manifest["working_tree_clean_at_publish"] is (
+        __import__("subprocess").run(
+            ["git", "status", "--porcelain"], cwd=REPO, capture_output=True, text=True
+        ).stdout.strip() == ""
+    )
 
 
 def test_published_evidence_is_immutable(tmp_path):
