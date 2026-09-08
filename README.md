@@ -154,7 +154,7 @@ python3 -m bzbench.cli preflight --adapter openai --elo 1320 --nodes 200000
 python3 -m bzbench.cli play \
   --model "gpt-6-astra" --adapter openai --api-model gpt-6-astra \
   --reasoning-effort high --protocol raw --color white \
-  --elo 1320 --nodes 200000 --max-cost-usd 15 \
+  --elo 1320 --nodes 200000 --max-output-tokens 12000 --max-cost-usd 25 \
   --game-id API-PILOT-v0.1-g1 --analyze
 ```
 
@@ -178,9 +178,12 @@ timeout, network error, provider 5xx or spend guard ends the game with no
 result (`*`), never as a loss. Retries exist only for transient failures that
 happen before a model response exists; a completed response is never retried.
 
-Spend is bounded. `--max-cost-usd` (default $15 per game) and
-`--max-total-tokens` are checked before every request, and reaching either ends
-the game as `cost_limit_abort` or `token_limit_abort` with no chess result.
+Spend is bounded, with one honest caveat. `--max-cost-usd` (default $15 per
+game), `--max-total-tokens` and the per response `--max-output-tokens` ceiling
+all end a game with no chess result rather than a loss. The cost guard is
+checked before each request, so it is a metered usage guard with a bounded
+single call overshoot, not a billing ceiling, and cache write tokens are not
+observable in the API usage object at all.
 Prices come from `pricing/gpt-6-astra.json`, which records the rates, the moment
 they were verified and the official source; reasoning tokens are billed inside
 output tokens and are never counted twice.

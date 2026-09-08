@@ -40,6 +40,7 @@ from .base import (
     AuthenticationFailure,
     BudgetStop,
     NetworkFailure,
+    OutputLimitReached,
     PlayerInfrastructureError,
     ProviderError,
     RateLimited,
@@ -199,9 +200,20 @@ class OpenAIResponsesAdapter(AIPlayer):
             # The model never finished a response. That is an operator set cap
             # or a provider stop, not a chess decision, so it must not be
             # scored as a loss.
-            raise PlayerInfrastructureError(
-                f"response {response_id} came back incomplete: "
-                f"{record['incomplete_details']}",
+            details = record["incomplete_details"] or {}
+            reason = details.get("reason") if isinstance(details, dict) else None
+            failure = (
+                OutputLimitReached
+                if reason == "max_output_tokens"
+                else PlayerInfrastructureError
+            )
+            raise failure(
+                f"response {response_id} came back incomplete: {details}"
+                + (
+                    f"; max_output_tokens={self.max_output_tokens}"
+                    if self.max_output_tokens is not None
+                    else ""
+                ),
                 detail=record,
             )
 
@@ -279,8 +291,54 @@ class OpenAIResponsesAdapter(AIPlayer):
             "pricing": self.pricing.to_dict(),
         }
 
+    def max_single_call_exposure_usd(
+        self, assumed_input_tokens: int | None = None
+    ) -> dict[str, Any]:
+        """Bounded metered exposure of one more request. See docs/api-adapter.md.
+
+        The output side is bounded by `max_output_tokens`. The input side is
+        bounded only by the model's context window, so the honest answer is a
+        range: the realistic bound uses the largest input seen so far in this
+        game, and the worst case bound uses the short context threshold.
+        """
+        pricing = self.pricing
+        ceiling = self.max_output_tokens
+        seen = [c["usage"]["input_tokens"] or 0 for c in self._calls]
+        observed_max_input = max(seen) if seen else 0
+        assumed = assumed_input_tokens or max(observed_max_input, 4000)
+        output_bound = (
+            None if ceiling is None else ceiling * pricing.output_per_mtok / 1e6
+        )
+        return {
+            "max_output_tokens": ceiling,
+            "output_cost_bound_usd": (
+                None if output_bound is None else round(output_bound, 6)
+            ),
+            "assumed_input_tokens": assumed,
+            "input_cost_at_assumed_usd": round(
+                assumed * pricing.input_per_mtok / 1e6, 6
+            ),
+            "single_call_bound_at_assumed_usd": (
+                None
+                if output_bound is None
+                else round(output_bound + assumed * pricing.input_per_mtok / 1e6, 6)
+            ),
+            "input_cost_at_short_context_threshold_usd": round(
+                pricing.long_context_threshold_tokens * pricing.input_per_mtok / 1e6, 6
+            ),
+            "observed_max_input_tokens": observed_max_input,
+            "note": (
+                "The guard is metered on usage the API reports. One in flight "
+                "request can still land after the cap is reached, so the cap is "
+                "not a billing ceiling. Cache write tokens are not exposed by the "
+                "API and are not included in any figure here."
+            ),
+        }
+
     def session_summary(self) -> dict[str, Any]:
         summary = self.ledger.summary()
+        summary["max_output_tokens"] = self.max_output_tokens
+        summary["max_single_call_exposure"] = self.max_single_call_exposure_usd()
         summary["response_ids"] = list(self._response_ids)
         summary["calls"] = len(self._calls)
         return summary

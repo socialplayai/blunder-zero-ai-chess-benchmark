@@ -64,6 +64,16 @@ class RequestRejected(PlayerInfrastructureError):
     kind = "api_request_rejected"
 
 
+class OutputLimitReached(PlayerInfrastructureError):
+    """The response stopped at the configured output ceiling.
+
+    The ceiling is an operator setting, so an answer cut short by it says
+    nothing about the model's chess and is never scored as a loss.
+    """
+
+    kind = "api_output_limit"
+
+
 class BudgetStop(PlayerInfrastructureError):
     """A configured spend or token guard stopped the game before a request."""
 

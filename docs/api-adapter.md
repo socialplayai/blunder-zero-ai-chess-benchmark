@@ -70,7 +70,8 @@ Nine outcomes, and only three of them are chess results.
 | Network or connection failure | `api_network` | none, `*` |
 | Provider 5xx | `api_server_error` | none, `*` |
 | Rejected request, 4xx that is our fault | `api_request_rejected` | none, `*` |
-| Incomplete response | `infrastructure_error` | none, `*` |
+| Response truncated at `max_output_tokens` | `api_output_limit` | none, `*` |
+| Incomplete response, any other reason | `infrastructure_error` | none, `*` |
 | Spend guard reached | `cost_limit_abort` | none, `*` |
 | Token guard reached | `token_limit_abort` | none, `*` |
 | Operator abort | `aborted` | none, `*` |
@@ -82,8 +83,24 @@ the machine readable version of that rule.
 
 An incomplete response is treated as infrastructure rather than as a bad move,
 because it is caused by a cap the operator set or by a provider stop, not by the
-model's chess. `--max-output-tokens` is unset by default so this cannot happen
-by accident.
+model's chess. When the provider reports `incomplete_details.reason ==
+"max_output_tokens"` the termination is the more specific `api_output_limit`, so
+a run that keeps hitting the ceiling is visible in the summary rather than
+hidden among generic failures.
+
+## The output ceiling
+
+`--max-output-tokens` sets the Responses API `max_output_tokens` parameter,
+which bounds the tokens one response may produce. Reasoning tokens count
+against it, because the API bills and counts reasoning as output.
+
+The ceiling is a preregistered constant. It is sent on every request of a game,
+it is recorded in the game configuration and in `record.api.max_output_tokens`,
+and nothing in the adapter lowers it in response to the position, the move
+number or the accumulated spend. A truncated response is never retried and never
+scored: the game ends as `api_output_limit` with no result.
+
+Unset by default. API-PILOT-v0.1 sets it to 12,000.
 
 ## Retry policy
 
@@ -137,8 +154,33 @@ stored per move so any figure can be recomputed later.
 `--max-cost-usd` (default $15 per game) and `--max-total-tokens` are checked
 *before* every request. When a guard is already met the game ends as
 `cost_limit_abort` or `token_limit_abort` with no chess result, and no further
-request is sent. The guards make runaway reasoning cost bounded by
-configuration rather than by hope.
+request is sent.
+
+### What the guard is, and what it is not
+
+It is a **metered usage guard on the usage the API reports**, not a billing
+ceiling. Three separate reasons, all of them stated here rather than discovered
+later:
+
+1. **Single call overshoot.** The check runs before a request, so the request
+   that crosses the cap still completes and is still billed. The overshoot is
+   bounded, not zero. With an output ceiling of 12,000 tokens at $50 per Mtok
+   the output side of one more call is at most **$0.60**. The input side is
+   bounded only by what is sent: at 20,000 input tokens it is $0.20, and at the
+   272,000 token short context threshold it is $2.72. So for the pilot
+   configuration a realistic single call bound is **under $1**, and a
+   pathological one is about **$3.32**. `record.api.max_single_call_exposure`
+   stores this calculation per game, using the largest input actually observed.
+2. **Cache writes are not observable.** The pricing page lists a separate cache
+   write rate, and the usage object exposes no cache write token count, so no
+   figure computed here can include it. Every computed total is a lower bound.
+3. **Nothing here reads the provider's billing.** The numbers come from the
+   usage objects of this run only.
+
+The honest summary: a $25 guard means this benchmark stops issuing requests once
+it has metered $25 of usage, with a bounded overshoot of roughly one more call.
+It does not mean the invoice cannot exceed $25. Use provider side budget alerts
+if a hard financial limit is required.
 
 ## Secrets
 

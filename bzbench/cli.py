@@ -341,6 +341,12 @@ def cmd_preflight(args: argparse.Namespace) -> int:
             request["input"] = "Reply with the single character: x"
             request["max_output_tokens"] = args.probe_max_output_tokens
             request.pop("previous_response_id", None)
+            # The probe must not create or touch a game conversation.
+            request["store"] = False
+            request["metadata"] = {
+                "benchmark": "blunder-zero-ai-chess-benchmark",
+                "purpose": "preflight-configuration-probe",
+            }
             response = client.responses.create(
                 timeout=config.api_request_timeout_seconds, **request
             )
@@ -349,11 +355,21 @@ def cmd_preflight(args: argparse.Namespace) -> int:
             checks.add(
                 "reasoning setting accepted by the API", True,
                 f"status {getattr(response, 'status', '?')}, "
-                f"{usage['total_tokens']} tokens"
+                f"input {usage['input_tokens']} (cached "
+                f"{usage['cached_input_tokens']}), output {usage['output_tokens']} "
+                f"(reasoning {usage['reasoning_tokens']}), total "
+                f"{usage['total_tokens']}"
                 + (f", ${cost.total_cost_usd:.6f}" if cost else ""),
             )
             checks.add("no tools in the request", request.get("tools") == [],
                        "tools=[] and no tool_choice")
+            checks.add(
+                "probe is isolated from the games",
+                request["store"] is False
+                and "previous_response_id" not in request
+                and "chess" not in request["input"].lower(),
+                "store=false, no response chain, no chess content",
+            )
         except Exception as exc:  # noqa: BLE001
             checks.add("reasoning setting accepted by the API", False, _scrub(str(exc)))
     elif client is not None and not args.probe:

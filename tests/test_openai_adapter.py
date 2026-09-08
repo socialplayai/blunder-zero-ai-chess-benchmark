@@ -247,11 +247,90 @@ def test_retries_resend_an_identical_request():
 
 def test_incomplete_response_is_infrastructure_not_a_loss():
     response = FakeResponse("", status="incomplete",
-                            incomplete_details={"reason": "max_output_tokens"})
+                            incomplete_details={"reason": "content_filter"})
     record, _, _ = play([response])
     assert record.result == "*"
     assert record.termination == "infrastructure_error"
     assert record.ai_outcome() == "unfinished"
+
+
+# ------------------------------------------------------- the output ceiling
+
+
+def test_the_output_ceiling_is_sent_on_every_request_and_never_moves():
+    record, client, _ = play(moves("e4", "Bc4", "Qh5", "Qxf7#"),
+                             max_output_tokens=12_000)
+    assert len(client.requests) == 4
+    assert {r["max_output_tokens"] for r in client.requests} == {12_000}
+    assert record.turns[0].api["request"]["max_output_tokens"] == 12_000
+
+
+def test_the_ceiling_does_not_shrink_as_cost_accumulates():
+    """No dynamic adaptation: the ceiling is a preregistered constant."""
+    heavy = dict(input_tokens=50_000, output_tokens=11_000, reasoning=None)
+    script = [
+        FakeResponse(san, usage=FakeUsage(50_000, 0, 11_000, 10_000))
+        for san in ("e4", "Bc4", "Qh5", "Qxf7#")
+    ]
+    _, client, _ = play(script, max_output_tokens=12_000, max_cost_usd=25.0)
+    assert [r["max_output_tokens"] for r in client.requests] == [12_000] * 4
+    assert heavy["input_tokens"] == 50_000  # the script really was heavy
+
+
+def test_hitting_the_output_ceiling_is_not_a_chess_loss():
+    response = FakeResponse(
+        "", status="incomplete", incomplete_details={"reason": "max_output_tokens"},
+        usage=FakeUsage(2000, 0, 12_000, 12_000),
+    )
+    record, client, _ = play([response], max_output_tokens=12_000)
+    assert record.termination == Termination.API_OUTPUT_LIMIT
+    assert record.termination in NON_CHESS_TERMINATIONS
+    assert record.result == "*"
+    assert record.ai_outcome() == "unfinished"
+    assert record.illegal_moves == []
+    assert client.calls == 1  # a truncated response is never retried
+    assert "max_output_tokens=12000" in record.infrastructure_failure["message"]
+    # The tokens that were burned are still accounted for.
+    assert record.api["total_tokens"] == 14_000
+    assert record.api["total_cost_usd"] == pytest.approx(
+        (2000 * 10 + 12_000 * 50) / 1e6
+    )
+
+
+def test_no_ceiling_is_sent_when_none_is_configured():
+    _, client, _ = play(moves("e4"), max_output_tokens=None)
+    assert "max_output_tokens" not in client.requests[0]
+
+
+def test_the_ceiling_is_reported_in_the_game_record():
+    record, _, _ = play(moves("e4", "Bc4", "Qh5", "Qxf7#"), max_output_tokens=12_000)
+    assert record.api["max_output_tokens"] == 12_000
+
+
+# --------------------------------------------- single call overshoot bound
+
+
+def test_single_call_exposure_is_bounded_by_the_output_ceiling():
+    adapter, _ = make_adapter([], max_output_tokens=12_000)
+    bound = adapter.max_single_call_exposure_usd(assumed_input_tokens=20_000)
+    assert bound["output_cost_bound_usd"] == pytest.approx(12_000 * 50 / 1e6)
+    assert bound["single_call_bound_at_assumed_usd"] == pytest.approx(
+        12_000 * 50 / 1e6 + 20_000 * 10 / 1e6
+    )
+    assert "not a billing ceiling" in bound["note"]
+    assert "cache write" in bound["note"].lower()
+
+
+def test_single_call_exposure_uses_the_largest_input_seen_so_far():
+    record, _, adapter = play(
+        [FakeResponse("e4", usage=FakeUsage(30_000, 0, 100, 50))]
+        + moves("Bc4", "Qh5", "Qxf7#"),
+        max_output_tokens=12_000,
+    )
+    bound = record.api["max_single_call_exposure"]
+    assert bound["observed_max_input_tokens"] == 30_000
+    assert bound["assumed_input_tokens"] == 30_000
+    assert adapter.max_single_call_exposure_usd()["max_output_tokens"] == 12_000
 
 
 def test_classify_exception_maps_every_documented_class():

@@ -45,6 +45,7 @@ class Termination(str):
     API_NETWORK = "api_network"
     API_SERVER_ERROR = "api_server_error"
     API_REQUEST_REJECTED = "api_request_rejected"
+    API_OUTPUT_LIMIT = "api_output_limit"
     INFRASTRUCTURE_ERROR = "infrastructure_error"
     COST_LIMIT_ABORT = "cost_limit_abort"
     TOKEN_LIMIT_ABORT = "token_limit_abort"
@@ -59,6 +60,7 @@ NON_CHESS_TERMINATIONS = frozenset({
     Termination.API_NETWORK,
     Termination.API_SERVER_ERROR,
     Termination.API_REQUEST_REJECTED,
+    Termination.API_OUTPUT_LIMIT,
     Termination.INFRASTRUCTURE_ERROR,
     Termination.COST_LIMIT_ABORT,
     Termination.TOKEN_LIMIT_ABORT,

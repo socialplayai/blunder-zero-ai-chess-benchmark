@@ -51,6 +51,11 @@ def test_preflight_probe_is_tiny_and_toolless(tmp_path, stockfish_path, fake_cli
     assert "previous_response_id" not in request
     assert request["reasoning"] == {"effort": "high"}
     assert len(request["input"]) < 200  # not a chess position
+    assert request["store"] is False    # cannot seed a game conversation
+    assert "previous_response_id" not in request
+    assert request["metadata"]["purpose"] == "preflight-configuration-probe"
+    for term in ("chess", "fen", "move", "white", "black"):
+        assert term not in request["input"].lower()
 
 
 @pytest.mark.slow
