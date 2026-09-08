@@ -212,3 +212,37 @@ None of it is built yet, on purpose.
 Design approved with a $40 guard. **Execution not started.** It will not start
 while a scored game is running, and the corpus is frozen only after the 1500 pair
 closes.
+
+## Amendment C1: the execution order
+
+Written after the 1700 pair closed and **before any study response existed**.
+The study has generated nothing; the four fresh and chain probe arms from the
+ply 45 diagnostic are a different, already published experiment.
+
+**The problem.** The frozen corpus defines the sample, not an execution order.
+`corpus.json` stores positions sorted by `(game_id, depth)` for readability, so
+a naive "first 20" would have been **20 FEN source positions drawn from four of
+the six games and 0 RAW**. Since Stage 1 consumes the first 20 positions, the
+futility stop would have depended on an alphabetical artefact rather than on the
+naturalistic sample.
+
+**The fix, and its limits.** `tools/stage1_order.py` defines, once and
+deterministically, which 20 of the already frozen 40 form Stage 1 and the order
+all 40 run in. It adds, removes and substitutes nothing, uses no engine
+information, and does not modify the corpus, which it pins by sha256
+`5f76aded8968c102c2a4b5f615611c8eebb859695948d907b36181c0181232e0`.
+
+**Targets, all met exactly** at seed 20260908:
+
+| | Target | Achieved |
+| --- | --- | --- |
+| Source protocol | 8 RAW, 12 FEN | 8 RAW, 12 FEN |
+| Per game | 4, 4, 3, 3, 3, 3 | 4, 4, 3, 3, 3, 3 |
+| Side to move | 10 White, 10 Black | 10 White, 10 Black |
+| Depth strata | 7 early, 6 middle, 7 late | 7 early, 6 middle, 7 late |
+
+Stage 2 is the complementary 20. The order within each stage is a seeded
+shuffle, so execution order is also defined rather than left to whatever a loop
+happens to do.
+
+Frozen in `results/diagnostics/reliability-study-v0.1/stage1-order.json`.
