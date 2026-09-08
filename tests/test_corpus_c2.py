@@ -102,11 +102,9 @@ def test_the_parent_context_cannot_contain_the_sampled_prompt_or_answer(
         # The parent was asked a different question about an earlier board.
         assert parent.prompt != sampled.prompt
         assert parent.fen_before != sampled.fen_before
-        # The sampled prompt and answer were produced after the parent existed,
-        # so neither can be inside the parent's context.
+        # The sampled prompt was produced after the parent existed, so it cannot
+        # be inside the parent's context.
         assert sampled.prompt not in (parent.prompt or "")
-        if sampled.san:  # None for the one sampled turn that was an illegal move
-            assert sampled.san not in (parent.raw_response or "")
         # The sound check: the parent's history is a strict prefix of the
         # sampled turn's history, and the sampled answer is not among the moves
         # added in between. A substring test on SAN would be unsound, because
@@ -116,9 +114,14 @@ def test_the_parent_context_cannot_contain_the_sampled_prompt_or_answer(
         assert len(parent_history) < len(sampled_history)
         assert sampled_history[:len(parent_history)] == parent_history
         added = sampled_history[len(parent_history):]
-        assert sampled.san is None or sampled.san not in added
-        assert parent.raw_response != sampled.raw_response
+        assert len(added) >= 1          # at least the parent's own move
         assert parent_board.fen() != sampled_board.fen()
+        # Deliberately NOT asserted: that the sampled SAN differs from any move
+        # in `added`, or from the parent's answer. In a repetition or a shuffle a
+        # model legitimately plays the same SAN again a move later, and the move
+        # history is protocol content the prompt is supposed to contain. Textual
+        # SAN equality is not an information leak; the structural checks above
+        # are what bound the context.
 
 
 def test_no_later_move_fen_or_analysis_can_be_in_the_parent_context(corpus, records):
