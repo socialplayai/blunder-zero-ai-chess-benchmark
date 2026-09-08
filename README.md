@@ -14,7 +14,7 @@ with its hashes.
 
 | | |
 | --- | --- |
-| Track 1, strength | **STRENGTH BRACKET COMPLETE**. Beat strength limited Stockfish 18 at Elo 1320 and 1500 in both colours, lost both games at 1700, on the FEN protocol. A ladder bracket, not an Elo rating. 329 of 329 legal responses. |
+| Track 1, strength | **LADDER COMPLETE**. On the FEN protocol, won both games at the Stockfish `UCI_LimitStrength` 1320 and 1500 settings, then lost both at 1700. 329 of 329 legal responses. These are limiter settings at a fixed 200,000 node budget, **not human Elo ratings and not a rating of the model**. |
 | Track 2, reliability | **RELIABILITY STUDY COMPLETE: FUTILITY STOP**. 159 of 160 preregistered responses legal and well formed; the frozen futility rule fired and Stage 2 was never run. No arm is claimed more or less reliable than another. |
 | Total programme spend | $52.72 |
 
@@ -22,6 +22,11 @@ Results: [`results/README.md`](results/README.md) ·
 Track 1 closure: [`docs/track1-closure.md`](docs/track1-closure.md) ·
 Track 2 results: [`results/diagnostics/reliability-study-v0.1/RESULTS.md`](results/diagnostics/reliability-study-v0.1/RESULTS.md) ·
 What has and has not been shown: [`docs/evidence-ledger.md`](docs/evidence-ledger.md)
+
+**Post publication clarifications.** The documentation on `main` has been
+corrected since the tag was cut, without touching any result: see
+[`docs/post-publication-clarifications.md`](docs/post-publication-clarifications.md).
+The tag `astra-chess-benchmark-v0.1` remains the immutable execution snapshot.
 
 **Artifact history note.** The reliability artifacts were frozen and hash
 verified on disk before execution, but an unanchored `.gitignore` rule
@@ -38,7 +43,17 @@ A small, deliberately strict benchmark for one question:
 > How well does a general purpose frontier AI model play chess when it has no
 > chess engine, no opening book, no tablebase and no chess specific tooling?
 
-The first model under test is GPT-6 Astra, relayed by hand through Codex. The
+**How the programme actually ran, since the sections below describe the full
+toolset rather than the published experiment:**
+
+| | |
+| --- | --- |
+| Initial pilot | manual Codex relay, one game per colour, RAW protocol |
+| Scored published programme | direct OpenAI API, zero tools |
+| Strength track | **FEN protocol**, six games, three limiter rungs |
+| RAW | a separate state tracking and reliability condition, not the strength protocol |
+
+The model under test is GPT-6 Astra. The
 first opponent is Stockfish at a configurable Elo. Experimental integrity is
 valued above convenience everywhere the two conflict.
 
@@ -84,8 +99,11 @@ in the JSON record.
 | `legal` | yes | yes | yes | yes |
 | `visual` | reserved for a future board image experiment, not implemented |
 
-`raw` is the headline condition: the model must maintain the position in its own
-head from the move list alone. `fen` isolates board reconstruction from chess
+`raw` asks the model to maintain the position in its own head from the move list
+alone. It was the protocol of the first pilot pair, and it remains the condition
+for state tracking and reliability questions. **The scored strength programme
+runs under `fen`**, so that a failure to hold the board is not silently scored as
+a failure of chess. `fen` isolates board reconstruction from chess
 understanding. `legal` isolates chess understanding from legal move generation.
 `visual` deliberately raises `NotImplementedError` everywhere rather than
 silently falling back to a text protocol.

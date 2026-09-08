@@ -1,14 +1,20 @@
-# Track 1 closed: STRENGTH BRACKET COMPLETE
+# Track 1 closed: LADDER COMPLETE
 
 Frozen at commit `c62f82f`. Six scored FEN games across three rungs. **No further
 games will be added to this bracket.**
 
 ## The result, in the only wording that is defensible
 
-> **With the current position supplied as FEN every turn, GPT-6 Astra beat
-> strength limited Stockfish 18 at Elo 1320 and 1500 in both colours, then lost
-> at 1700 in both colours. This brackets its playing strength between the 1500
-> and 1700 rungs of this test, on two games per rung.**
+> **With the current position supplied as FEN every turn, GPT-6 Astra won both
+> games at the Stockfish 18 `UCI_LimitStrength` 1320 and 1500 settings, then lost
+> both games at the 1700 setting. Six games, one per colour at each rung, 200,000
+> nodes per move.**
+
+Amended after publication. The earlier wording said this "brackets its playing
+strength between the 1500 and 1700 rungs". That claim is withdrawn: two games per
+rung cannot separate a strength boundary from the variance of two games, and a
+limiter setting is not a rated opponent, so there is no scale on which to place a
+bracket. The sentence above says only what happened.
 
 Every game was played with no chess engine, no opening book, no tablebase, no
 tools of any kind available to the model, against Stockfish 18 limited by
@@ -49,13 +55,18 @@ reads as a chess player being outplayed, not as a language model breaking down.
   against Stockfish 1700 without producing a single illegal move."
 * "329 consecutive legal responses across the FEN programme, no malformed
   output."
-* "Strength brackets between the 1500 and 1700 rungs of this test."
+* "Won both games at the 1320 and 1500 limiter settings, lost both at 1700."
+* Always say **limiter setting** or **rung**, never "1500 Elo opponent". Stockfish
+  at `UCI_LimitStrength` 1500 does not play like a 1500 rated human, and the
+  200,000 node budget makes the configuration specific to this benchmark.
 * Always name the **FEN protocol** prominently.
 
 **Do not say:**
 
 * "Astra has a 1600 Elo." Six games do not produce a rating, and these rungs are
   a strength limited engine, not a rating pool.
+* "Astra's strength is between 1500 and 1700." Withdrawn after publication. It
+  reads as a rating band, and two games per rung does not support one.
 * "Astra can remember a chessboard for 175 moves." **FEN supplied the board every
   turn.** These games test chess reasoning and move selection, not long horizon
   board reconstruction. Conflating the two would be the single most misleading
