@@ -1,0 +1,31 @@
+[Event "BlunderZero AI Chess Benchmark"]
+[Site "redacted-host"]
+[Date "2026.09.08"]
+[Round "-"]
+[White "Stockfish 18 (Elo 1500)"]
+[Black "gpt-6-astra"]
+[Result "0-1"]
+[GameId "API-PILOT-FEN-v0.2-g2-astra-black"]
+[Protocol "fen"]
+[AIColor "black"]
+[AIModel "gpt-6-astra"]
+[Adapter "openai"]
+[StockfishElo "1500"]
+[Termination "checkmate"]
+[TerminationDetail "checkmate"]
+
+1. c3 d5 2. g3 e5 3. a3 Nf6 4. d4 Nc6 5. dxe5 Nxe5 6. Nd2 Bd6 7. Bg2 O-O 8. a4
+Re8 9. Nb3 Nd3+ 10. Qxd3 c5 11. Qc2 d4 12. Nf3 d3 13. Qxd3 c4 14. Qxc4 Be6 15.
+Qd4 Bxb3 16. Bf4 Qe7 17. O-O Bxf4 18. Rfe1 Be5 19. Qh4 Rad8 20. a5 Bc7 21. Nd4
+Bd5 22. e4 Bxe4 23. Rad1 Bxa5 24. f3 Rxd4 25. cxd4 Bxe1 26. fxe4 Bb4 27. e5 Nd7
+28. Qxe7 Rxe7 29. Rc1 Nb6 30. Kf2 Rd7 31. Ke2 Rxd4 32. Rc7 Rd7 33. Rc1 Re7 34.
+Rd1 Rxe5+ 35. Kd3 Nd5 36. Kd4 Re2 37. Bxd5 Rxb2 38. Kc4 Be7 39. Ra1 a6 40. Kd3
+Kf8 41. Ke4 Bf6 42. Rd1 Ke7 43. Re1 Kd6 44. Bxf7 Rxh2 45. Rc1 b5 46. Kf3 a5 47.
+Kg4 b4 48. Bb3 Ra2 49. Bxa2 a4 50. Bg8 b3 51. Kf3 b2 52. Rd1+ Kc5 53. Ke3 Kb4
+54. Kd3 h5 55. Bf7 h4 56. Rg1 hxg3 57. Kc2 Be5 58. Re1 Bd4 59. Re4 Kc5 60. Bg6
+g2 61. Re1 g1=Q 62. Rxg1 Bxg1 63. Kxb2 Kb5 64. Kc3 Bc5 65. Bf7 a3 66. Bb3 Kc6
+67. Kc4 Bd6 68. Ba4+ Kc7 69. Bb3 Kd7 70. Ba4+ Ke7 71. Kb3 Kf6 72. Bc6 g5 73.
+Bd7 Ke5 74. Bb5 Kf4 75. Bd7 g4 76. Kc2 g3 77. Bc6 Ke3 78. Bd5 Kf2 79. Kc1 g2
+80. Bxg2 Kxg2 81. Kb1 Kf3 82. Ka1 Ke3 83. Kb1 Kd3 84. Ka2 Kc3 85. Kb1 Kb3 86.
+Ka1 Be5+ 87. Kb1 a2+ 88. Kc1 a1=Q+ 89. Kd2 Qc3+ 90. Ke2 Bg3 91. Kf1 Qc2 92. Kg1
+Qe2 93. Kh1 Qf1# 0-1

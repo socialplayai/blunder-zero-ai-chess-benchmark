@@ -58,7 +58,10 @@ re-run, and the difference is documented in
 | `api-pilot-fen-v0.1/game-001` | API-PILOT-FEN-v0.1 game 1 | White | Stockfish 18, Elo 1320, 200k nodes | 1-0 win, checkmate | 0 | 96.50% | $1.14 |
 | `api-pilot-fen-v0.1/game-002` | API-PILOT-FEN-v0.1 game 2 | Black | Stockfish 18, Elo 1320, 200k nodes | 0-1 win, checkmate | 0 | 98.12% | $1.07 |
 
-The FEN pair ran at the preregistered commit with no deviations, see
+| `api-pilot-fen-v0.2/game-001` | API-PILOT-FEN-v0.2 game 1 | White | Stockfish 18, Elo 1500, 200k nodes | 1-0 win, checkmate | 0 | 91.67% | $2.11 |
+| `api-pilot-fen-v0.2/game-002` | API-PILOT-FEN-v0.2 game 2 | Black | Stockfish 18, Elo 1500, 200k nodes | 0-1 win, checkmate | 0 | 93.84% | $11.50 |
+
+The 1320 FEN pair ran at the preregistered commit with no deviations, see
 [api-pilot-fen-v0.1/DEVIATIONS.md](api-pilot-fen-v0.1/DEVIATIONS.md). Causal
 attribution for the RAW game 2 failure is not settled by this pair, see
 [diagnostics/api-pilot-v0.1-g2-ply45/](diagnostics/api-pilot-v0.1-g2-ply45/).

@@ -99,3 +99,53 @@ python3 -m bzbench.cli play \
   --game-id API-PILOT-FEN-v0.2-g2-astra-black \
   --analyze --depth 18
 ```
+
+## Amendment A1: the draw branch
+
+Written **2026-09-08T07:47:22Z**, while game 2 of the pair was still playing and
+its result was unknown to everyone involved.
+
+Evidence that this amendment is blind to the result it governs, recorded at the
+moment it was written:
+
+* the game 2 process was alive and had not terminated;
+* `games/API-PILOT-FEN-v0.2-g2-astra-black/game.json` did not exist;
+* the game 2 log contained the launch banner only, 434 bytes, no result line;
+* nothing was committed to the repository during the pair.
+
+**Reason.** The frozen climbing rule covered a Black win and a Black loss by
+normal chess termination, and did not cover a draw. Game 1 of the pair ended in
+89 plies and game 2 was running long, which made a draw a live possibility. The
+gap is closed now rather than after seeing the result, because a rule written
+after a result is not a rule.
+
+**Amended first pair branches at 1500:**
+
+| First pair score | Action |
+| --- | --- |
+| 2-0 | freeze the 1700 rung |
+| 1.5-0.5 | two more games at 1500 before any climbing decision |
+| 1-1 | two more games at 1500 before any climbing decision |
+| 0.5-1.5 or 0-2 | stop the climb and review, do not automatically add games |
+
+Anything other than 2-0 means two more games at 1500 before a climbing decision,
+except the bottom two outcomes, where the answer is a review rather than more
+games.
+
+**The four game threshold is deliberately not defined.** After four scored games
+at 1500 the complete rung is brought back for a ruling. There is no automatic
+climb at any score out of four. This preserves the original intent of the split
+rule, which said "two more games before deciding", not "two more games and then
+climb at X out of 4".
+
+The illegal move rule and the infrastructure and guard rules are unchanged:
+
+* a game lost on an illegal move response is scored as a loss, reported as
+  incomplete for strength purposes, its position added to the Track 2 corpus,
+  and is not re-run;
+* an infrastructure, spend or output limit abort is re-run once at the same
+  configuration with both attempts recorded, since neither is a chess result.
+
+Scoring convention for the rung, stated so it cannot be chosen later: a win is
+1, a draw is 0.5, a loss is 0, and a loss on an illegal move response counts as
+a loss for the rung score while also being flagged incomplete for strength.
