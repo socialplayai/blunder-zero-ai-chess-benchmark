@@ -1,0 +1,65 @@
+{
+  "games": [
+    {
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "model": "gpt-6-astra",
+      "adapter": "openai",
+      "protocol": "raw",
+      "ai_color": "white",
+      "stockfish_elo": 1320,
+      "result": "1-0",
+      "ai_outcome": "win",
+      "win": 1,
+      "draw": 0,
+      "loss": 0,
+      "termination": "checkmate",
+      "termination_detail": "checkmate",
+      "plies": 61,
+      "ai_moves": 31,
+      "illegal_moves": 0,
+      "first_illegal_ply": null,
+      "median_ai_response_seconds": 13.49,
+      "started_at": "2026-09-08T05:42:12.407+00:00",
+      "finished_at": "2026-09-08T05:51:32.279+00:00",
+      "api_calls": 31,
+      "total_tokens": 287654,
+      "reasoning_tokens": 14465,
+      "total_cost_usd": 1.24949,
+      "infrastructure_failure": null,
+      "accuracy": 90.91,
+      "average_centipawn_loss": 27.9,
+      "inaccuracies": 4,
+      "mistakes": 2,
+      "blunders": 0,
+      "analysed": true
+    }
+  ],
+  "aggregate": {
+    "games": 1,
+    "finished_games": 1,
+    "wins": 1,
+    "draws": 0,
+    "losses": 0,
+    "score_rate": 1.0,
+    "games_with_illegal_move": 0,
+    "total_illegal_moves": 0,
+    "mean_plies": 61.0,
+    "mean_accuracy": 90.91,
+    "mean_average_centipawn_loss": 27.9,
+    "total_api_cost_usd": 1.24949,
+    "total_api_tokens": 287654,
+    "infrastructure_failures": 0,
+    "terminations": {
+      "checkmate": 1
+    },
+    "protocols": {
+      "raw": 1
+    },
+    "models": {
+      "gpt-6-astra": 1
+    },
+    "stockfish_elos": {
+      "1320": 1
+    }
+  }
+}
