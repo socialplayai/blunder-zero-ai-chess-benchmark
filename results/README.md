@@ -35,3 +35,10 @@ the raw responses are stored rather than only the moves.
 | Slot | Game | Astra | Opponent | Result | Illegal | Accuracy | Cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `api-pilot-v0.1/game-001` | API-PILOT-v0.1 game 1 | White | Stockfish 18, Elo 1320, 200k nodes | 1-0 win, checkmate | 0 | 90.91% | $1.25 |
+| `api-pilot-v0.1/game-002` | API-PILOT-v0.1 game 2 | Black | Stockfish 18, Elo 1320, 200k nodes | 1-0 loss, illegal move | 1 | 94.07% | $0.63 |
+
+Game 2 is the paired colour of game 1 and the more informative of the two: Astra
+was winning by more than a rook when it answered `Qh5+` with its queen on h1 and
+the h2 square occupied, which is not a legal move. The record contains the
+position, the legal move list at that moment and the raw response, so the
+judgement can be rechecked rather than believed.
