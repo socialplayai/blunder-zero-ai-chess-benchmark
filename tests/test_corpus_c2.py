@@ -229,10 +229,33 @@ def test_the_corpus_contains_the_known_failure_position_and_says_so():
     assert "known failure position" in disclosure
 
 
-def test_the_void_diagnostic_is_labelled_and_excluded():
-    void = list(STUDY.glob("VOID_DIAGNOSTIC_DO_NOT_SCORE-*.jsonl"))
-    assert len(void) == 1
+def test_the_void_diagnostic_is_labelled_and_never_scored():
+    """The void file must exist, be labelled, and share nothing with the scored set.
+
+    Before Stage 1 ran this asserted that no scored file existed at all. Stage 1
+    has since produced one legitimately, so the assertion moves to what actually
+    matters: no void response may appear in the scored denominator.
+    """
+    void_files = list(STUDY.glob("VOID_DIAGNOSTIC_DO_NOT_SCORE-*.jsonl"))
+    assert len(void_files) == 1
     assert (STUDY / "VOID_DIAGNOSTIC_DO_NOT_SCORE.sha256").exists()
-    assert not (STUDY / "responses-stage1.jsonl").exists(), (
-        "a scored response file must not exist under the new execution frame"
-    )
+
+    scored_path = STUDY / "responses-stage1.jsonl"
+    if not scored_path.exists():
+        return  # study not yet executed in this checkout
+
+    def cells(path):
+        return {
+            (r["position"], r["arm"], r["trial"], r.get("response_id"))
+            for r in (json.loads(l) for l in path.read_text().splitlines() if l.strip())
+        }
+
+    scored, void = cells(scored_path), cells(void_files[0])
+    assert len(scored) == 160
+    assert scored & void == set(), "a void response reached the scored denominator"
+    # The void arms are the pre-C2 names; none of them may appear as a scored arm.
+    scored_arms = {c[1] for c in scored}
+    assert scored_arms <= {
+        "fresh-raw", "fresh-fen", "native-chain-raw", "native-chain-fen",
+        "switched-current-turn-raw", "switched-current-turn-fen",
+    }

@@ -1,0 +1,123 @@
+{
+  "study": "RELIABILITY-STUDY-v0.1",
+  "amendment": "C1, execution order",
+  "kind": "execution_order",
+  "scored": false,
+  "created_at": "2026-09-08T08:34:26+00:00",
+  "seed": 20260908,
+  "corpus_sha256": "386416d2d94201099d8ecc40eed1e9e2e79b65bbc913ec5f4fed334f950432ab",
+  "note": "Defines which 20 of the frozen 40 form Stage 1 and the order all 40 run in. The corpus is unchanged: no position added, removed or substituted, and no engine information used.",
+  "stage1_targets": {
+    "per_game_quotas": {
+      "raw": 4,
+      "fen": 3
+    },
+    "depth": {
+      "early": 7,
+      "middle": 6,
+      "late": 7
+    },
+    "source_protocol": {
+      "raw": 8,
+      "fen": 12
+    },
+    "side_to_move": {
+      "white": 10,
+      "black": 10
+    }
+  },
+  "stage1_achieved": {
+    "n": 20,
+    "source_protocol": {
+      "raw": 8,
+      "fen": 12
+    },
+    "per_game": {
+      "API-PILOT-FEN-v0.1-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.1-g2-astra-black": 3,
+      "API-PILOT-FEN-v0.2-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.2-g2-astra-black": 3,
+      "API-PILOT-v0.1-g1-astra-white": 4,
+      "API-PILOT-v0.1-g2-astra-black": 4
+    },
+    "side_to_move": {
+      "white": 10,
+      "black": 10
+    },
+    "depth_bins": {
+      "early": 7,
+      "middle": 6,
+      "late": 7
+    }
+  },
+  "stage2_achieved": {
+    "n": 20,
+    "source_protocol": {
+      "raw": 8,
+      "fen": 12
+    },
+    "per_game": {
+      "API-PILOT-FEN-v0.1-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.1-g2-astra-black": 3,
+      "API-PILOT-FEN-v0.2-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.2-g2-astra-black": 3,
+      "API-PILOT-v0.1-g1-astra-white": 4,
+      "API-PILOT-v0.1-g2-astra-black": 4
+    },
+    "side_to_move": {
+      "white": 10,
+      "black": 10
+    },
+    "depth_bins": {
+      "early": 6,
+      "middle": 7,
+      "late": 7
+    }
+  },
+  "stage1": [
+    "API-PILOT-FEN-v0.2-g1-astra-white#26",
+    "API-PILOT-FEN-v0.2-g1-astra-white#30",
+    "API-PILOT-v0.1-g1-astra-white#12",
+    "API-PILOT-v0.1-g2-astra-black#5",
+    "API-PILOT-FEN-v0.2-g2-astra-black#13",
+    "API-PILOT-FEN-v0.1-g1-astra-white#9",
+    "API-PILOT-v0.1-g1-astra-white#22",
+    "API-PILOT-FEN-v0.2-g2-astra-black#47",
+    "API-PILOT-FEN-v0.2-g2-astra-black#19",
+    "API-PILOT-FEN-v0.1-g2-astra-black#6",
+    "API-PILOT-v0.1-g2-astra-black#22",
+    "API-PILOT-FEN-v0.1-g2-astra-black#23",
+    "API-PILOT-v0.1-g1-astra-white#18",
+    "API-PILOT-FEN-v0.1-g1-astra-white#6",
+    "API-PILOT-FEN-v0.1-g1-astra-white#13",
+    "API-PILOT-v0.1-g2-astra-black#8",
+    "API-PILOT-v0.1-g2-astra-black#17",
+    "API-PILOT-FEN-v0.1-g2-astra-black#9",
+    "API-PILOT-v0.1-g1-astra-white#9",
+    "API-PILOT-FEN-v0.2-g1-astra-white#36"
+  ],
+  "stage2": [
+    "API-PILOT-v0.1-g1-astra-white#15",
+    "API-PILOT-FEN-v0.1-g1-astra-white#26",
+    "API-PILOT-FEN-v0.2-g2-astra-black#16",
+    "API-PILOT-v0.1-g2-astra-black#12",
+    "API-PILOT-v0.1-g2-astra-black#15",
+    "API-PILOT-v0.1-g1-astra-white#25",
+    "API-PILOT-FEN-v0.1-g1-astra-white#29",
+    "API-PILOT-FEN-v0.2-g2-astra-black#6",
+    "API-PILOT-FEN-v0.2-g1-astra-white#9",
+    "API-PILOT-v0.1-g2-astra-black#10",
+    "API-PILOT-v0.1-g1-astra-white#6",
+    "API-PILOT-v0.1-g2-astra-black#20",
+    "API-PILOT-FEN-v0.2-g2-astra-black#9",
+    "API-PILOT-v0.1-g1-astra-white#30",
+    "API-PILOT-FEN-v0.1-g2-astra-black#17",
+    "API-PILOT-FEN-v0.2-g1-astra-white#5",
+    "API-PILOT-FEN-v0.1-g2-astra-black#28",
+    "API-PILOT-FEN-v0.2-g1-astra-white#23",
+    "API-PILOT-FEN-v0.1-g2-astra-black#13",
+    "API-PILOT-FEN-v0.1-g1-astra-white#22"
+  ],
+  "corpus_sha256_pre_c2": "5f76aded8968c102c2a4b5f615611c8eebb859695948d907b36181c0181232e0",
+  "amendment_note": "C2 added two fields to every position and changed no position, key, stratum or order. stage1 and stage2 key lists are byte identical to the pre C2 ordering, at the same seed."
+}

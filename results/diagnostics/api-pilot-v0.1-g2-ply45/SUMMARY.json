@@ -1,0 +1,99 @@
+{
+  "kind": "diagnostic_probe_set",
+  "scored": false,
+  "note": "Not games. Not Elo evidence. Single position trials replaying the exact state at ply 45 of API-PILOT-v0.1 game 2, judged by the frozen SAN validator.",
+  "created_at": "2026-09-08T06:43:50+00:00",
+  "position": "r3r1k1/pp3ppp/8/5N2/Pn6/1N2P3/4KP1P/R1B4q b - - 1 23",
+  "ply": 45,
+  "side_to_move": "black",
+  "legal_moves_available": 40,
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "max_output_tokens": 12000,
+  "prompt_version": 2,
+  "chain_from_response_id": "resp_048ede5d002e3695006a9fa48a809887d1b272252c8a60ee89",
+  "chain_from_ply": 43,
+  "design": {
+    "trials_per_arm": 5,
+    "arms": [
+      "fresh-raw",
+      "fresh-fen",
+      "chain-raw",
+      "chain-fen"
+    ],
+    "fresh": "independent conversation, store=false, no previous_response_id",
+    "chain": "branched independently from the ply 43 stored response, store=false"
+  },
+  "cells": {
+    "fresh-raw": {
+      "legal": 5,
+      "trials": 5,
+      "illegal_move_responses": 0,
+      "malformed": 0,
+      "answers": [
+        "Qd5",
+        "Qe4",
+        "Rad8"
+      ],
+      "output_tokens": 8804,
+      "reasoning_tokens": 8761,
+      "cost_usd": 0.45935
+    },
+    "fresh-fen": {
+      "legal": 5,
+      "trials": 5,
+      "illegal_move_responses": 0,
+      "malformed": 0,
+      "answers": [
+        "Qd5",
+        "Qe4"
+      ],
+      "output_tokens": 6677,
+      "reasoning_tokens": 6632,
+      "cost_usd": 0.3555
+    },
+    "chain-raw": {
+      "legal": 5,
+      "trials": 5,
+      "illegal_move_responses": 0,
+      "malformed": 0,
+      "answers": [
+        "Qd5",
+        "Qe4"
+      ],
+      "output_tokens": 3429,
+      "reasoning_tokens": 3384,
+      "cost_usd": 0.360502
+    },
+    "chain-fen": {
+      "legal": 4,
+      "trials": 5,
+      "illegal_move_responses": 1,
+      "malformed": 0,
+      "answers": [
+        "Qd5",
+        "Qe4",
+        "Qh5+"
+      ],
+      "output_tokens": 5196,
+      "reasoning_tokens": 5150,
+      "cost_usd": 0.449552
+    }
+  },
+  "totals": {
+    "trials": 20,
+    "legal": 19,
+    "cost_usd": 1.624904
+  },
+  "interpretation_is_deferred_to": "results/diagnostics/api-pilot-v0.1-g2-ply45/README.md",
+  "artifacts": {
+    "fresh-arms.json": {
+      "sha256": "fbcfbb6fd0c2f9639339ec363bdc4b79588c292eb252785a66f306e1e5ebefad",
+      "bytes": 15362
+    },
+    "chain-arms.json": {
+      "sha256": "ab565eae92a0bf31a7706fb604de20d9b198e763cb18fbee731c2726550097fc",
+      "bytes": 16200
+    }
+  }
+}

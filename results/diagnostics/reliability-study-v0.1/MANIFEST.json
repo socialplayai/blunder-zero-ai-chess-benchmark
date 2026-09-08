@@ -1,0 +1,61 @@
+{
+  "study": "RELIABILITY-STUDY-v0.1",
+  "status": "RELIABILITY STUDY COMPLETE: FUTILITY STOP",
+  "scored": false,
+  "kind": "reliability_study",
+  "published_at": "2026-09-08T10:52:37+00:00",
+  "outcome": {
+    "responses": 160,
+    "legal": 159,
+    "illegal": 1,
+    "malformed": 0,
+    "futility_threshold": 2,
+    "stage2_run": false,
+    "comparative_conclusion": null
+  },
+  "execution_commit": "be8ec7b08a78d1aad6393373d4eabb9b0f8579a3",
+  "amendments": [
+    "C1 execution order",
+    "C2 chain parent"
+  ],
+  "void_excluded": {
+    "file": "VOID_DIAGNOSTIC_DO_NOT_SCORE-responses-stage1.jsonl",
+    "responses": 8,
+    "usd": 0.98,
+    "note": "never entered a scored denominator"
+  },
+  "artifacts": {
+    "RESULTS.md": {
+      "sha256": "f6821c0a52d5a688843c4e31d98344ef62c819ad579ce4cadc3ea434bc6d9b93",
+      "bytes": 8134
+    },
+    "responses-stage1.jsonl": {
+      "sha256": "babf252cfdc642012cc46632996682e0b857b7d05abaf68dcf0fd4131a81a6c4",
+      "bytes": 175068
+    },
+    "corpus.json": {
+      "sha256": "386416d2d94201099d8ecc40eed1e9e2e79b65bbc913ec5f4fed334f950432ab",
+      "bytes": 34364
+    },
+    "stage1-order.json": {
+      "sha256": "f4ec75798dd226f391e86799901ce2b5c946349f88928011a727f420bec46d41",
+      "bytes": 3857
+    },
+    "CORPUS.sha256": {
+      "sha256": "e13a64c2067cb22959c3ed73d97b572da26b93f6235725697dfad7bf899bcc60",
+      "bytes": 78
+    },
+    "README.md": {
+      "sha256": "ecba25bf87458b5954a2061d72e88ed36cb5703a0599accdd2b2dfe2d3819c3b",
+      "bytes": 2333
+    },
+    "VOID_DIAGNOSTIC_DO_NOT_SCORE-responses-stage1.jsonl": {
+      "sha256": "a5717651c4bedc17e5bf48b1cb0f8771d6ea1c058cf424a0bb04d6989daeefe7",
+      "bytes": 8730
+    },
+    "VOID_DIAGNOSTIC_DO_NOT_SCORE.sha256": {
+      "sha256": "d346a767beb395533b9a2d286655634f981ec1287fedf56849ee9764e8555a2a",
+      "bytes": 161
+    }
+  }
+}

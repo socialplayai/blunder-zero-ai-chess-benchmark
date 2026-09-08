@@ -1,0 +1,968 @@
+{
+  "study": "RELIABILITY-STUDY-v0.1",
+  "kind": "position_corpus",
+  "scored": false,
+  "frozen_at": "2026-09-08T07:54:45+00:00",
+  "seed": 20260908,
+  "frame": {
+    "per_game_quotas": {
+      "API-PILOT-v0.1-g1-astra-white": 8,
+      "API-PILOT-v0.1-g2-astra-black": 8,
+      "API-PILOT-FEN-v0.1-g1-astra-white": 6,
+      "API-PILOT-FEN-v0.1-g2-astra-black": 6,
+      "API-PILOT-FEN-v0.2-g1-astra-white": 6,
+      "API-PILOT-FEN-v0.2-g2-astra-black": 6
+    },
+    "depth_targets": {
+      "early": 13,
+      "middle": 13,
+      "late": 14
+    },
+    "min_depth": 5,
+    "separation_preference": [
+      3,
+      2,
+      1
+    ],
+    "separation_used": {
+      "API-PILOT-v0.1-g2-astra-black": 2,
+      "API-PILOT-FEN-v0.1-g2-astra-black": 3,
+      "API-PILOT-v0.1-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.1-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.2-g1-astra-white": 3,
+      "API-PILOT-FEN-v0.2-g2-astra-black": 3
+    },
+    "selection_used_engine_information": false
+  },
+  "sources": [
+    {
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "path": "results/api-pilot-v0.1/game-001/game.json",
+      "protocol": "raw",
+      "quota": 8,
+      "record_sha256": "aa06163acaf7257834976e48cf263c81391be116fdc9aa65f658e953c96014a4",
+      "benchmark_commit": "0779f6b43d351ad85c599ae4f49d5a83b0b28eef",
+      "ai_color": "white",
+      "stockfish_elo": 1320
+    },
+    {
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "path": "results/api-pilot-v0.1/game-002/game.json",
+      "protocol": "raw",
+      "quota": 8,
+      "record_sha256": "8182ae549950ad65854be8ac2f9c112f6e53fa153f823b8bcc3ec53dd000bc47",
+      "benchmark_commit": "b80618ba76be6d588b8c04443416963b65aac27c",
+      "ai_color": "black",
+      "stockfish_elo": 1320
+    },
+    {
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "protocol": "fen",
+      "quota": 6,
+      "record_sha256": "7771b51b89c07293d168f2ccf49c16c3a6bc10399deebd4f3cb23b1597ef4e32",
+      "benchmark_commit": "502ea8b8ec0a9890976ffbacf70ca310fd548f34",
+      "ai_color": "white",
+      "stockfish_elo": 1320
+    },
+    {
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "protocol": "fen",
+      "quota": 6,
+      "record_sha256": "e7f8340ffe20864d6ed99ff5f5586890589f19662809f2c5bf634904efe32a85",
+      "benchmark_commit": "502ea8b8ec0a9890976ffbacf70ca310fd548f34",
+      "ai_color": "black",
+      "stockfish_elo": 1320
+    },
+    {
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "protocol": "fen",
+      "quota": 6,
+      "record_sha256": "6b38dd3caa9629f1484f9f29c02a3ecc53f2745a57eb9568b69aae3a30176fe9",
+      "benchmark_commit": "7658bcb1e4447844adf64d0d98459475875f74ab",
+      "ai_color": "white",
+      "stockfish_elo": 1500
+    },
+    {
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "protocol": "fen",
+      "quota": 6,
+      "record_sha256": "bf2d9c23444cd5efa2d17fef1f7fc414fc89784a80c901c4b35b9222656b27fe",
+      "benchmark_commit": "7658bcb1e4447844adf64d0d98459475875f74ab",
+      "ai_color": "black",
+      "stockfish_elo": 1500
+    }
+  ],
+  "depth_counts": {
+    "early": 13,
+    "middle": 13,
+    "late": 14
+  },
+  "depth_shortfall": 0,
+  "source_protocol_counts": {
+    "raw": 16,
+    "fen": 24
+  },
+  "side_to_move_counts": {
+    "white": 20,
+    "black": 20
+  },
+  "positions": [
+    {
+      "ply": 12,
+      "depth": 6,
+      "depth_bin": "early",
+      "fen": "rn1qkbnr/pp3pp1/2p1p3/3p3p/3PP3/2N2B2/PPP2PPP/R1BQK2R w KQkq - 0 7",
+      "side_to_move": "white",
+      "response_id": "resp_0144d3a641506b31006a9fa9315fac87d1898cc61b41030cb6",
+      "history_length": 12,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 33
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "chain_from_ply": 10,
+      "chain_from_response_id": "resp_0144d3a641506b31006a9fa92f2f5087d1ae73e352ddae2929"
+    },
+    {
+      "ply": 18,
+      "depth": 9,
+      "depth_bin": "early",
+      "fen": "rn1qk1nr/pp2bp2/2p1p3/3p2p1/3PPB1p/2N2B2/PPP2PPP/R2QR1K1 w kq - 0 10",
+      "side_to_move": "white",
+      "response_id": "resp_0144d3a641506b31006a9fa942db2887d18c8b8299ab1b7af9",
+      "history_length": 18,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 38
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "chain_from_ply": 16,
+      "chain_from_response_id": "resp_0144d3a641506b31006a9fa93a2b4c87d18caac1cfe24865c1"
+    },
+    {
+      "ply": 26,
+      "depth": 13,
+      "depth_bin": "middle",
+      "fen": "rn1q1r2/pp2bpkn/2p1p3/3pP1pB/3P2Qp/2N1B3/PPP2PPP/R3R1K1 w - - 5 14",
+      "side_to_move": "white",
+      "response_id": "resp_0144d3a641506b31006a9fa98b051087d1a97d3335d0cfcd03",
+      "history_length": 26,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 42
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "chain_from_ply": 24,
+      "chain_from_response_id": "resp_0144d3a641506b31006a9fa980ec5887d1b374587ff168b8ac"
+    },
+    {
+      "ply": 44,
+      "depth": 22,
+      "depth_bin": "late",
+      "fen": "r6k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3rP/R3R2K w - - 1 23",
+      "side_to_move": "white",
+      "response_id": "resp_0144d3a641506b31006a9faa59f84087d192230d103f69cce4",
+      "history_length": 44,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 54
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "chain_from_ply": 42,
+      "chain_from_response_id": "resp_0144d3a641506b31006a9faa4f503087d18794e867edc2ec1f"
+    },
+    {
+      "ply": 52,
+      "depth": 26,
+      "depth_bin": "late",
+      "fen": "7k/ppq2R1n/4Q3/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 3 27",
+      "side_to_move": "white",
+      "response_id": "resp_0144d3a641506b31006a9faa8425b087d1bd15ec00859316b9",
+      "history_length": 52,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 60
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "chain_from_ply": 50,
+      "chain_from_response_id": "resp_0144d3a641506b31006a9faa79497487d1b05b88895ec51022"
+    },
+    {
+      "ply": 58,
+      "depth": 29,
+      "depth_bin": "late",
+      "fen": "4Q3/pp3qk1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 0 30",
+      "side_to_move": "white",
+      "response_id": "resp_0144d3a641506b31006a9faad84da887d1a2e935cbba1c379c",
+      "history_length": 58,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 46
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-001/game.json",
+      "chain_from_ply": 56,
+      "chain_from_response_id": "resp_0144d3a641506b31006a9faaa126d487d1bde8eee73e498d15"
+    },
+    {
+      "ply": 13,
+      "depth": 6,
+      "depth_bin": "early",
+      "fen": "rnbq1rk1/pp3ppp/4pn2/2pp4/1bPP1B2/1QN1PN2/PP3PPP/R3KB1R b KQ - 0 7",
+      "side_to_move": "black",
+      "response_id": "resp_02877e3252a4ae2e006a9fab314af087d1ac836cddaaf44d1c",
+      "history_length": 13,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 32
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "chain_from_ply": 11,
+      "chain_from_response_id": "resp_02877e3252a4ae2e006a9fab289a4c87d1a475b950cf94c695"
+    },
+    {
+      "ply": 19,
+      "depth": 9,
+      "depth_bin": "early",
+      "fen": "r1bq1rk1/pp3ppp/2n1pn2/4B3/1bpP4/2N2N2/PPQ2PPP/R3KB1R b KQ - 1 10",
+      "side_to_move": "black",
+      "response_id": "resp_02877e3252a4ae2e006a9fab512efc87d1972b35cf5c80f5de",
+      "history_length": 19,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 38
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "chain_from_ply": 17,
+      "chain_from_response_id": "resp_02877e3252a4ae2e006a9fab4a5c4487d1a09a56410437d561"
+    },
+    {
+      "ply": 27,
+      "depth": 13,
+      "depth_bin": "middle",
+      "fen": "r1bq1rk1/pp3ppp/4pn2/6N1/3P4/2bB4/PPQ2PPP/2K4R b - - 1 14",
+      "side_to_move": "black",
+      "response_id": "resp_02877e3252a4ae2e006a9fab824b6487d1aa21192122abab66",
+      "history_length": 27,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 33
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "chain_from_ply": 25,
+      "chain_from_response_id": "resp_02877e3252a4ae2e006a9fab78277887d1af05bb80811046fb"
+    },
+    {
+      "ply": 35,
+      "depth": 17,
+      "depth_bin": "middle",
+      "fen": "r1b2rk1/pp3p1p/4pnp1/6NP/3b2P1/3B4/qPQ2P2/2K3R1 b - - 0 18",
+      "side_to_move": "black",
+      "response_id": "resp_02877e3252a4ae2e006a9fabde1a1887d1888facae151cee8f",
+      "history_length": 35,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 36
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "chain_from_ply": 33,
+      "chain_from_response_id": "resp_02877e3252a4ae2e006a9fabc9b1a087d18b2aa64ebf1c5f4e"
+    },
+    {
+      "ply": 47,
+      "depth": 23,
+      "depth_bin": "late",
+      "fen": "r4rk1/pp1b1p1p/4pnp1/6bP/1Q2B1P1/8/1P3q2/1K6 b - - 3 24",
+      "side_to_move": "black",
+      "response_id": "resp_02877e3252a4ae2e006a9fac315d2087d1a6f1234379746a16",
+      "history_length": 47,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 51
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "chain_from_ply": 45,
+      "chain_from_response_id": "resp_02877e3252a4ae2e006a9fac1551f887d19610c436976359b1"
+    },
+    {
+      "ply": 57,
+      "depth": 28,
+      "depth_bin": "late",
+      "fen": "5rk1/pp1b1p1p/4pnp1/7P/6P1/P7/2q5/K1bB4 b - - 2 29",
+      "side_to_move": "black",
+      "response_id": "resp_02877e3252a4ae2e006a9fac9ec04487d1babdca8395e4931f",
+      "history_length": 57,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 52
+      },
+      "game_id": "API-PILOT-FEN-v0.1-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.1/game-002/game.json",
+      "chain_from_ply": 55,
+      "chain_from_response_id": "resp_02877e3252a4ae2e006a9fac971d6887d1a0148dac5b5d6dc3"
+    },
+    {
+      "ply": 10,
+      "depth": 5,
+      "depth_bin": "early",
+      "fen": "r1bqk1nr/pp1nppbp/2pp2p1/8/2BPP3/2N2N2/PPP2PPP/R1BQK2R w KQkq - 4 6",
+      "side_to_move": "white",
+      "response_id": "resp_03ac3a82f8f95e45006a9fb00129fc87d18545c03ba62da7a6",
+      "history_length": 10,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 44
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "chain_from_ply": 8,
+      "chain_from_response_id": "resp_03ac3a82f8f95e45006a9faffc2f3c87d1b32493ef719905cb"
+    },
+    {
+      "ply": 18,
+      "depth": 9,
+      "depth_bin": "early",
+      "fen": "r1bqk2r/p2n1pbp/2p1p1pn/1p1pP3/3P4/1BN1BN2/PPP2PPP/R2Q1RK1 w kq - 1 10",
+      "side_to_move": "white",
+      "response_id": "resp_03ac3a82f8f95e45006a9fb01b7a9887d1b2696ca0cba507e6",
+      "history_length": 18,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 34
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "chain_from_ply": 16,
+      "chain_from_response_id": "resp_03ac3a82f8f95e45006a9fb00fa45c87d199a4de58a0bb8874"
+    },
+    {
+      "ply": 46,
+      "depth": 23,
+      "depth_bin": "late",
+      "fen": "1r3bk1/p1q2p1p/2b1p1p1/2pp4/P7/2P3NP/2BQ1PP1/R3R1K1 w - - 8 24",
+      "side_to_move": "white",
+      "response_id": "resp_03ac3a82f8f95e45006a9fb0c92c2487d19c6ff2fe84ac734d",
+      "history_length": 46,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 45
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "chain_from_ply": 44,
+      "chain_from_response_id": "resp_03ac3a82f8f95e45006a9fb0b4b52887d1a902059b72f8e4a9"
+    },
+    {
+      "ply": 52,
+      "depth": 26,
+      "depth_bin": "late",
+      "fen": "6k1/p4pbp/2b1p1p1/q1pp4/P7/2P3NP/2BQ1PP1/R5K1 w - - 3 27",
+      "side_to_move": "white",
+      "response_id": "resp_03ac3a82f8f95e45006a9fb0fbd5fc87d1a2101ba90f30f019",
+      "history_length": 52,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 38
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "chain_from_ply": 50,
+      "chain_from_response_id": "resp_03ac3a82f8f95e45006a9fb0d6d86c87d18f1eefe76a0bd284"
+    },
+    {
+      "ply": 60,
+      "depth": 30,
+      "depth_bin": "late",
+      "fen": "6k1/p4pb1/2b1p1p1/2p5/Pq1P3p/R3Q2P/2B1NPP1/6K1 w - - 1 31",
+      "side_to_move": "white",
+      "response_id": "resp_03ac3a82f8f95e45006a9fb1568df087d1914b47c45dd2c46c",
+      "history_length": 60,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 39
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "chain_from_ply": 58,
+      "chain_from_response_id": "resp_03ac3a82f8f95e45006a9fb1425fd087d18eacbb3dc54d3c3a"
+    },
+    {
+      "ply": 72,
+      "depth": 36,
+      "depth_bin": "late",
+      "fen": "6k1/p4p2/2b3pQ/1Nq1p3/P6p/1R3P1P/2B3P1/6K1 w - - 0 37",
+      "side_to_move": "white",
+      "response_id": "resp_03ac3a82f8f95e45006a9fb2158e0887d1872d9c04b48f59df",
+      "history_length": 72,
+      "features": {
+        "in_check": true,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 6
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g1-astra-white",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-001/game.json",
+      "chain_from_ply": 70,
+      "chain_from_response_id": "resp_03ac3a82f8f95e45006a9fb1f251fc87d1946af9e0ab9dcbca"
+    },
+    {
+      "ply": 13,
+      "depth": 6,
+      "depth_bin": "early",
+      "fen": "r1bqk2r/ppp2ppp/3b1n2/3pn3/8/P1P3P1/1P1NPPBP/R1BQK1NR b KQkq - 3 7",
+      "side_to_move": "black",
+      "response_id": "resp_03b63747ceaf009d006a9fb3806fb887d19b2aa3c2c5ee0b29",
+      "history_length": 13,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 42
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "chain_from_ply": 11,
+      "chain_from_response_id": "resp_03b63747ceaf009d006a9fb37c5fb087d1bf98c5364900973a"
+    },
+    {
+      "ply": 19,
+      "depth": 9,
+      "depth_bin": "early",
+      "fen": "r1bqr1k1/ppp2ppp/3b1n2/3p4/P7/1NPQ2P1/1P2PPBP/R1B1K1NR b KQ - 0 10",
+      "side_to_move": "black",
+      "response_id": "resp_03b63747ceaf009d006a9fb3a541ec87d1aa60ed086efd7f53",
+      "history_length": 19,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 40
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "chain_from_ply": 17,
+      "chain_from_response_id": "resp_03b63747ceaf009d006a9fb38fedb087d18fb1a0f3210398ca"
+    },
+    {
+      "ply": 27,
+      "depth": 13,
+      "depth_bin": "middle",
+      "fen": "r1bqr1k1/pp3ppp/3b1n2/8/P1Q5/1NP2NP1/1P2PPBP/R1B1K2R b KQ - 0 14",
+      "side_to_move": "black",
+      "response_id": "resp_03b63747ceaf009d006a9fb429a66887d1b386663469d49bc4",
+      "history_length": 27,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 43
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "chain_from_ply": 25,
+      "chain_from_response_id": "resp_03b63747ceaf009d006a9fb3f5788087d1b6d96b920988bba3"
+    },
+    {
+      "ply": 33,
+      "depth": 16,
+      "depth_bin": "middle",
+      "fen": "r3r1k1/pp2qppp/3b1n2/8/P2Q1B2/1bP2NP1/1P2PPBP/R4RK1 b - - 3 17",
+      "side_to_move": "black",
+      "response_id": "resp_03b63747ceaf009d006a9fb470a16087d18ce667b17b8218b2",
+      "history_length": 33,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 45
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "chain_from_ply": 31,
+      "chain_from_response_id": "resp_03b63747ceaf009d006a9fb4353a2c87d1aca4899e6faad5cb"
+    },
+    {
+      "ply": 39,
+      "depth": 19,
+      "depth_bin": "middle",
+      "fen": "3rr1k1/pp2qppp/5n2/P3b3/7Q/1bP2NP1/1P2PPBP/R3R1K1 b - - 0 20",
+      "side_to_move": "black",
+      "response_id": "resp_03b63747ceaf009d006a9fb4bc01f087d1aa14a9cc56eaab7b",
+      "history_length": 39,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 47
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "chain_from_ply": 37,
+      "chain_from_response_id": "resp_03b63747ceaf009d006a9fb49c8a0487d18044d2cc41c152bd"
+    },
+    {
+      "ply": 95,
+      "depth": 47,
+      "depth_bin": "late",
+      "fen": "8/6pp/3k1b2/p7/1p4K1/1B4P1/7r/2R5 b - - 1 48",
+      "side_to_move": "black",
+      "response_id": "resp_03b63747ceaf009d006a9fb82b6a3887d194cd38ac6814772e",
+      "history_length": 95,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 29
+      },
+      "game_id": "API-PILOT-FEN-v0.2-g2-astra-black",
+      "source_protocol": "fen",
+      "source_path": "results/api-pilot-fen-v0.2/game-002/game.json",
+      "chain_from_ply": 93,
+      "chain_from_response_id": "resp_03b63747ceaf009d006a9fb817306c87d1b6fa2b4c88d13258"
+    },
+    {
+      "ply": 12,
+      "depth": 6,
+      "depth_bin": "early",
+      "fen": "rnbqk2r/p1pp1ppp/1p1b1n2/3Pp3/4P3/3B1N2/PPP2PPP/RNBQ1RK1 w kq - 2 7",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa04dbe1487d1a11c2b8e78a8a157",
+      "history_length": 12,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 33
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 10,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa049b98087d199e878e65f8adf05"
+    },
+    {
+      "ply": 18,
+      "depth": 9,
+      "depth_bin": "early",
+      "fen": "rnbq1rk1/2pp1ppp/p2b1n2/1p1Pp1B1/4P3/2NB1N2/PPPQ1PPP/R4RK1 w - - 2 10",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa066f30487d1b47e0c188a7343e7",
+      "history_length": 18,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 40
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 16,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa05b406487d19abf8c7d409cb0cc"
+    },
+    {
+      "ply": 24,
+      "depth": 12,
+      "depth_bin": "middle",
+      "fen": "rnbq1rk1/2pp1pp1/p2b3p/3np3/1p2P2N/3BB3/PPPQNPPP/R4RK1 w - - 0 13",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa08e91b487d184488ca021b80071",
+      "history_length": 24,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 43
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 22,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa088afa487d1b95b9ac4fc9bc36c"
+    },
+    {
+      "ply": 30,
+      "depth": 15,
+      "depth_bin": "middle",
+      "fen": "rnb1r1k1/2pp1pp1/p2b1q1p/4pN2/1p2P3/3B2Q1/PPP1NPPP/R4RK1 w - - 3 16",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa0bf6ee087d1838d3c45ab7c93b3",
+      "history_length": 30,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 42
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 28,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa0ad233c87d1a2cae782bf099622"
+    },
+    {
+      "ply": 36,
+      "depth": 18,
+      "depth_bin": "middle",
+      "fen": "r1b1r1k1/2pp1pp1/p1n3qp/2b1pN2/1p2PP1Q/3B4/PPP1N1PP/R4R1K w - - 5 19",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa0eac0f487d1bb4bbda6d808d360",
+      "history_length": 36,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 46
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 34,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa0ce579887d1ab617281a875b7e0"
+    },
+    {
+      "ply": 44,
+      "depth": 22,
+      "depth_bin": "late",
+      "fen": "r1b1r1k1/5pp1/p1pp3p/2bNnNq1/1p2P3/3B3Q/PPP3PP/R4R1K w - - 0 23",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa151d02087d1b5d03d76f731226c",
+      "history_length": 44,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 46
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 42,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa143e31487d18780d497eac3844d"
+    },
+    {
+      "ply": 50,
+      "depth": 25,
+      "depth_bin": "late",
+      "fen": "N3r1k1/5p2/p1ppb1pp/2b2Nq1/1p2P1n1/3B2Q1/PPP3PP/R4R1K w - - 0 26",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa1a79de087d1bfa1a609efdf9ec7",
+      "history_length": 50,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 43
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 48,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa18c471c87d1b33d2bb7c2a50b2c"
+    },
+    {
+      "ply": 60,
+      "depth": 30,
+      "depth_bin": "late",
+      "fen": "5rk1/8/p1ppp1pQ/2b2N2/1p2P3/3B4/PPP2RPP/R6K w - - 1 31",
+      "side_to_move": "white",
+      "response_id": "resp_0a3eb61e07eca4de006a9fa261c70487d1917c7a470c66e2c5",
+      "history_length": 60,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 47
+      },
+      "game_id": "API-PILOT-v0.1-g1-astra-white",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-001/game.json",
+      "chain_from_ply": 58,
+      "chain_from_response_id": "resp_0a3eb61e07eca4de006a9fa254506887d1970c9e4f700898d9"
+    },
+    {
+      "ply": 11,
+      "depth": 5,
+      "depth_bin": "early",
+      "fen": "r1bqk2r/ppp2ppp/2nb1n2/3pp3/8/2PPP3/PPQN1PPP/R1B1KBNR b KQkq - 4 6",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa39ef17487d1afa2f2187f453345",
+      "history_length": 11,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 39
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 9,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa39abf1c87d1be9eae979c2d4d1d"
+    },
+    {
+      "ply": 17,
+      "depth": 8,
+      "depth_bin": "early",
+      "fen": "r2qr1k1/ppp2ppp/2nb1n2/3ppb2/PP6/2PPP3/2QNBPPP/R1B1K1NR b KQ - 0 9",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa3af440c87d1aed13e2ad120465f",
+      "history_length": 17,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 42
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 15,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa3a7a89c87d199cd2f54e08d85df"
+    },
+    {
+      "ply": 21,
+      "depth": 10,
+      "depth_bin": "early",
+      "fen": "r2qr1k1/ppp2ppp/2nb1n2/3p1b2/PP6/1NPBP3/2Q2PPP/R1B1K1NR b KQ - 0 11",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa3cc7c8887d1832b9fe1cca8667f",
+      "history_length": 21,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 49
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 19,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa3be777487d19f69a09600eb8c2d"
+    },
+    {
+      "ply": 25,
+      "depth": 12,
+      "depth_bin": "middle",
+      "fen": "r2qr1k1/ppp2ppp/3b1n2/3pn3/PP6/1NP1P3/5PPP/R1BQK1NR b KQ - 2 13",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa3d4348887d1b0810eab6a36b22e",
+      "history_length": 25,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 37
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 23,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa3cfff2887d19b2ff1cbedab87f8"
+    },
+    {
+      "ply": 31,
+      "depth": 15,
+      "depth_bin": "middle",
+      "fen": "r2qr1k1/ppp2ppp/8/3pn3/PQ6/1N2P3/5PPP/R1B1K1NR b KQ - 0 16",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa415e20c87d1b6f0f1227ffaf167",
+      "history_length": 31,
+      "features": {
+        "in_check": false,
+        "castling_rights": true,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 34
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 29,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa40c72f487d19b38f7543f54f249"
+    },
+    {
+      "ply": 35,
+      "depth": 17,
+      "depth_bin": "middle",
+      "fen": "r2qr1k1/ppp2ppp/8/3p4/Pn6/1N2PN2/3K1PPP/R1B4R b - - 1 18",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa4281fe887d197bb5d527929679e",
+      "history_length": 35,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 36
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 33,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa41dee0c87d19c87bdd88c691fb3"
+    },
+    {
+      "ply": 41,
+      "depth": 20,
+      "depth_bin": "middle",
+      "fen": "r3r1k1/pp3ppp/8/3q4/Pn1N4/1N2P3/3K1PPP/R1B4R b - - 2 21",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa4802ac887d1810a41ae494abbdd",
+      "history_length": 41,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 47
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 39,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa4606d2487d1b53dbbfd05753d15"
+    },
+    {
+      "ply": 45,
+      "depth": 22,
+      "depth_bin": "late",
+      "fen": "r3r1k1/pp3ppp/8/5N2/Pn6/1N2P3/4KP1P/R1B4q b - - 1 23",
+      "side_to_move": "black",
+      "response_id": "resp_048ede5d002e3695006a9fa493aeb487d1b75022f6595f13e6",
+      "history_length": 45,
+      "features": {
+        "in_check": false,
+        "castling_rights": false,
+        "promotion_available": false,
+        "en_passant_available": false,
+        "legal_moves": 40
+      },
+      "game_id": "API-PILOT-v0.1-g2-astra-black",
+      "source_protocol": "raw",
+      "source_path": "results/api-pilot-v0.1/game-002/game.json",
+      "chain_from_ply": 43,
+      "chain_from_response_id": "resp_048ede5d002e3695006a9fa48a809887d1b272252c8a60ee89"
+    }
+  ],
+  "amendments": [
+    {
+      "id": "C2",
+      "applied_at": "2026-09-08T08:50:38+00:00",
+      "summary": "added chain_from_response_id and chain_from_ply, the immediately preceding model turn, so chain arms branch from before the sampled turn instead of from the sampled turn itself",
+      "positions_changed": 0,
+      "fields_added": [
+        "chain_from_response_id",
+        "chain_from_ply"
+      ],
+      "corpus_sha256_before": "5f76aded8968c102c2a4b5f615611c8eebb859695948d907b36181c0181232e0"
+    }
+  ]
+}

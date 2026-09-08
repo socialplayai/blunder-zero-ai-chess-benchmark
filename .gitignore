@@ -22,4 +22,8 @@ secrets.json
 *.pem
 .openai
 .credentials
-diagnostics/
+# Working probe output at the repository root only. Anchored with a leading
+# slash on purpose: an unanchored "diagnostics/" also matches
+# results/diagnostics/, which silently excluded every published diagnostic
+# artifact from git while `git status` stayed clean.
+/diagnostics/

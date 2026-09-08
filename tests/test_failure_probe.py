@@ -161,4 +161,8 @@ def test_probe_output_is_not_a_scored_path():
         for line in (REPO / ".gitignore").read_text().splitlines()
         if line.strip() and not line.strip().startswith("#")
     ]
-    assert "diagnostics/" in rules
+    # Anchored to the repository root on purpose: an unanchored "diagnostics/"
+    # also matches results/diagnostics/, which silently excluded every published
+    # diagnostic artifact from git while `git status` stayed clean.
+    assert "/diagnostics/" in rules
+    assert "diagnostics/" not in rules
