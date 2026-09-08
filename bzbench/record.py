@@ -37,6 +37,34 @@ class Termination(str):
     MAX_PLIES = "max_plies"
     ABORTED = "aborted"
     ENGINE_ERROR = "engine_error"
+    # Infrastructure. None of these is a chess result: the record keeps
+    # result "*" and ai_outcome "unfinished".
+    API_AUTHENTICATION = "api_authentication"
+    API_RATE_LIMIT = "api_rate_limit"
+    API_TIMEOUT = "api_timeout"
+    API_NETWORK = "api_network"
+    API_SERVER_ERROR = "api_server_error"
+    API_REQUEST_REJECTED = "api_request_rejected"
+    INFRASTRUCTURE_ERROR = "infrastructure_error"
+    COST_LIMIT_ABORT = "cost_limit_abort"
+    TOKEN_LIMIT_ABORT = "token_limit_abort"
+
+
+NON_CHESS_TERMINATIONS = frozenset({
+    Termination.ABORTED,
+    Termination.ENGINE_ERROR,
+    Termination.API_AUTHENTICATION,
+    Termination.API_RATE_LIMIT,
+    Termination.API_TIMEOUT,
+    Termination.API_NETWORK,
+    Termination.API_SERVER_ERROR,
+    Termination.API_REQUEST_REJECTED,
+    Termination.INFRASTRUCTURE_ERROR,
+    Termination.COST_LIMIT_ABORT,
+    Termination.TOKEN_LIMIT_ABORT,
+    Termination.MAX_PLIES,
+})
+"""Terminations that must never be scored as a win, draw or loss."""
 
 
 def utc_now() -> str:
@@ -64,6 +92,7 @@ class TurnRecord:
     legal: bool | None = None
     rejection_reason: str | None = None
     view: dict[str, Any] | None = None
+    api: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return dataclasses.asdict(self)
@@ -83,6 +112,8 @@ class GameRecord:
     termination_detail: str = ""
     illegal_moves: list[dict[str, Any]] = dataclasses.field(default_factory=list)
     analysis: dict[str, Any] | None = None
+    api: dict[str, Any] | None = None
+    infrastructure_failure: dict[str, Any] | None = None
     schema_version: int = SCHEMA_VERSION
 
     # ---------------------------------------------------------------- helpers
@@ -133,6 +164,8 @@ class GameRecord:
             "termination_detail": self.termination_detail,
             "illegal_moves": self.illegal_moves,
             "turns": [t.to_dict() for t in self.turns],
+            "api": self.api,
+            "infrastructure_failure": self.infrastructure_failure,
             "analysis": self.analysis,
         }
 
@@ -198,6 +231,8 @@ class GameRecord:
             termination_detail=data.get("termination_detail", ""),
             illegal_moves=data.get("illegal_moves", []),
             analysis=data.get("analysis"),
+            api=data.get("api"),
+            infrastructure_failure=data.get("infrastructure_failure"),
             schema_version=data.get("schema_version", SCHEMA_VERSION),
         )
         record.turns = [TurnRecord(**t) for t in data.get("turns", [])]

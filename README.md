@@ -141,6 +141,65 @@ result, not an accident to be tidied up. Do not tell the model what the engine
 is doing, do not answer its questions, and do not carry commentary between
 turns beyond the prompt itself.
 
+## Playing through the OpenAI API
+
+The `openai` adapter runs the same experiment without an operator. It is the
+same prompt, the same referee and the same records; only the transport differs.
+
+```bash
+export OPENAI_API_KEY=...        # the only place the key is ever read from
+
+python3 -m bzbench.cli preflight --adapter openai --elo 1320 --nodes 200000
+
+python3 -m bzbench.cli play \
+  --model "gpt-6-astra" --adapter openai --api-model gpt-6-astra \
+  --reasoning-effort high --protocol raw --color white \
+  --elo 1320 --nodes 200000 --max-cost-usd 15 \
+  --game-id API-PILOT-v0.1-g1 --analyze
+```
+
+What the model is given: the benchmark prompt, and nothing else. Every request
+carries `tools: []`. There is no function calling, no code execution, no web or
+file access, no structured output schema, and no engine, chess library or
+opening database anywhere near the model. The adapter does not parse the
+position, does not generate moves, and does not extract a move from the reply.
+It hands the raw visible text to the referee, which judges it under the frozen
+rules: malformed or illegal is an immediate loss, with no retry.
+
+Within a game the conversation is one response chain (`previous_response_id`
+with `store=true`), so the model keeps its own earlier reasoning. Every game
+starts a fresh chain and no context crosses games.
+
+Reasoning effort is `--reasoning-effort`, default `high`. An unsupported level
+fails before the game starts and is never silently replaced.
+
+Failures are separated from chess. An authentication failure, rate limit,
+timeout, network error, provider 5xx or spend guard ends the game with no
+result (`*`), never as a loss. Retries exist only for transient failures that
+happen before a model response exists; a completed response is never retried.
+
+Spend is bounded. `--max-cost-usd` (default $15 per game) and
+`--max-total-tokens` are checked before every request, and reaching either ends
+the game as `cost_limit_abort` or `token_limit_abort` with no chess result.
+Prices come from `pricing/gpt-6-astra.json`, which records the rates, the moment
+they were verified and the official source; reasoning tokens are billed inside
+output tokens and are never counted twice.
+
+The full specification, including the exact retry policy, the failure taxonomy
+and the cost model, is in [docs/api-adapter.md](docs/api-adapter.md). The two
+behaviour changes made to the frozen benchmark are listed in
+[docs/changes-from-frozen.md](docs/changes-from-frozen.md).
+
+### Preflight
+
+`preflight` verifies a run without starting one: the key is present, the model
+is reachable, the reasoning level is accepted, the request carries no tools,
+Stockfish starts at the configured Elo, the configuration is valid, the output
+directory is writable, and the pricing file is loaded and dated. It prints an
+upper bound cost estimate for one game and compares it with the spend guard. The
+optional live probe is one capped generation of a few tokens; `--no-probe`
+verifies everything else and sends nothing.
+
 ## Post-game analysis
 
 ```bash
@@ -231,6 +290,12 @@ python3 -m pytest -q              # everything
 python3 -m pytest -q -m "not slow"  # skip the tests that start Stockfish
 ```
 
+`tests/test_protocol_leakage.py` is the integrity suite, and
+`tests/test_openai_adapter.py` extends it to the API path (no tools in any
+request, no engine information in any request, no key in any artifact, API
+errors never scored as losses). The API tests use a scripted fake client and
+never spend a token.
+
 `tests/test_protocol_leakage.py` is the integrity suite. It deliberately
 attempts to get forbidden information into a prompt and asserts that it cannot:
 no FEN in RAW mode, no legal move list in RAW or FEN mode, no engine
@@ -242,7 +307,8 @@ the path to the model imports the engine or the analysis code.
 ## Adding a model backend
 
 Adapters are the extension point. Implement `AIPlayer.propose_move`, register
-the class, and every protocol, report and integrity test applies unchanged:
+the class, and every protocol, report and integrity test applies unchanged.
+`bzbench/adapters/openai_api.py` is the worked example:
 
 ```python
 from bzbench import adapters
@@ -257,9 +323,8 @@ class OpenAIResponsesAdapter(AIPlayer):
 adapters.register("openai", OpenAIResponsesAdapter)
 ```
 
-Planned: OpenAI Responses API, Anthropic API, and the reserved `visual`
-protocol with a rendered board. None of them are wired yet, on purpose: the
-manual protocol is being validated by hand first.
+Shipped: the manual adapter and the OpenAI Responses adapter. Planned: the
+Anthropic API, and the reserved `visual` protocol with a rendered board.
 
 ## Layout
 
@@ -267,13 +332,16 @@ manual protocol is being validated by hand first.
 bzbench/
   config.py      experiment configuration, serialised into every record
   protocol.py    the only path to the model; builds protocol filtered prompts
-  adapters/      manual adapter, reserved visual adapter, registry
+  adapters/      manual, openai, reserved visual, registry
+  pricing.py     pricing metadata, per move cost, spend and token guards
   engine.py      StockfishOpponent (plays) and AnalysisEngine (evaluates, later)
   referee.py     rules, strict SAN parsing, game loop, recording
   record.py      game record, PGN and JSON output
   analysis.py    post-game accuracy, ACPL, inaccuracies, mistakes, blunders
   stats.py       per game summaries and aggregates
-  cli.py         play / analyze / summarize / show
+  cli.py         preflight / play / analyze / summarize / show
+pricing/
+  gpt-6-astra.json  official rates with verification date and source
 tools/
   mock_operator.py  rehearsal harness, not a benchmark run
 tests/            unit tests plus the leakage suite

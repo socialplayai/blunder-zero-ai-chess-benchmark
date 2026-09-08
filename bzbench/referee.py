@@ -21,7 +21,12 @@ import chess
 import chess.engine
 
 from . import protocol as protocol_mod
-from .adapters.base import AbortGame, AIPlayer, ResignGame
+from .adapters.base import (
+    AbortGame,
+    AIPlayer,
+    PlayerInfrastructureError,
+    ResignGame,
+)
 from .config import Color, MatchConfig, Protocol
 from .record import (
     Actor,
@@ -168,11 +173,26 @@ class Referee:
         """The result string for an AI loss."""
         return "0-1" if self.config.ai_color.is_white else "1-0"
 
-    def _finish(self, result: str, termination: str, detail: str = "") -> GameRecord:
+    def _finish(
+        self,
+        result: str,
+        termination: str,
+        detail: str = "",
+        infrastructure: PlayerInfrastructureError | None = None,
+    ) -> GameRecord:
         self.record.result = result
         self.record.termination = termination
         self.record.termination_detail = detail
         self.record.finished_at = utc_now()
+        if infrastructure is not None:
+            self.record.infrastructure_failure = {
+                "kind": infrastructure.kind,
+                "message": str(infrastructure),
+                "detail": infrastructure.detail,
+            }
+        summary = self.ai.session_summary()
+        if summary is not None:
+            self.record.api = summary
         return self.record
 
     def _push(self, move: chess.Move, turn: TurnRecord) -> None:
@@ -206,6 +226,9 @@ class Referee:
                     finished = self._opponent_turn()
             except AbortGame as exc:
                 return self._finish("*", Termination.ABORTED, str(exc))
+            except PlayerInfrastructureError as exc:
+                # Plumbing, not chess. No result is recorded for either side.
+                return self._finish("*", exc.kind, str(exc), infrastructure=exc)
             if finished is not None:
                 return finished
 
@@ -231,6 +254,13 @@ class Referee:
         started = time.monotonic()
         try:
             raw = self.ai.propose_move(prompt, view)
+        except PlayerInfrastructureError:
+            turn.finished_at = utc_now()
+            turn.response_seconds = time.monotonic() - started
+            turn.api = self.ai.pop_turn_metadata()
+            turn.rejection_reason = "infrastructure failure, not scored"
+            self.record.turns.append(turn)
+            raise
         except ResignGame as exc:
             turn.finished_at = utc_now()
             turn.response_seconds = time.monotonic() - started
@@ -239,6 +269,7 @@ class Referee:
             self.record.turns.append(turn)
             return self._finish(self._loss_result(), Termination.RESIGNATION, str(exc))
         elapsed = time.monotonic() - started
+        turn.api = self.ai.pop_turn_metadata()
 
         turn.raw_response = raw
         turn.response_seconds = elapsed

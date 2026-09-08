@@ -34,6 +34,7 @@ class TurnView:
     history_san: tuple[str, ...]
     fen: str | None = None
     legal_moves_san: tuple[str, ...] | None = None
+    prompt_version: int = 0
 
     def to_dict(self) -> dict:
         out = dataclasses.asdict(self)
@@ -76,6 +77,7 @@ def build_turn_view(
         history_san=tuple(history_san),
         fen=fen,
         legal_moves_san=legal,
+        prompt_version=PROMPT_VERSION,
     )
 
 
@@ -83,18 +85,30 @@ def build_turn_view(
 # Prompt rendering
 # --------------------------------------------------------------------------
 
+PROMPT_VERSION = 2
+"""Version of the instruction text. Recorded with every turn.
+
+v1: initial wording.
+v2: adds the explicit no external tools and no external information rule, and
+    names markdown and analysis among the things the response must not contain.
+    Required so that an API player is told, in the prompt itself, what the
+    manual protocol assumed of the operator.
+"""
+
 _RESPONSE_RULE = (
     "Respond with exactly one chess move in standard algebraic notation (SAN) "
     "and nothing else. No move number, no punctuation, no explanation, no "
-    "commentary. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / "
-    "Qxh7# / e8=Q"
+    "commentary, no analysis, no markdown, no additional text of any kind. "
+    "Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q"
 )
 
 _INTEGRITY_RULE = (
     "You are playing from your own chess understanding alone. No chess program, "
     "opening reference, endgame reference or analysis tool is available to you, "
-    "and no output from any such tool appears below. If a move you give is "
-    "illegal in the position, the game is immediately recorded as a loss."
+    "and no output from any such tool appears below. Play using only the "
+    "information supplied in this message. Do not use any external tool and do "
+    "not use any outside source of information. If a move you give is illegal "
+    "in the position, the game is immediately recorded as a loss."
 )
 
 

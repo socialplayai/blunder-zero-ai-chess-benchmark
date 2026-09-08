@@ -58,12 +58,11 @@ def test_closed_input_stream_aborts_rather_than_inventing_a_move():
         ManualAdapter(input_fn=eof, out=io.StringIO()).propose_move(prompt, view)
 
 
-def test_registry_lists_manual_and_visual():
-    assert "manual" in adapters.available()
-    assert "visual" in adapters.available()
+def test_registry_lists_the_known_adapters():
+    assert {"manual", "visual", "openai"} <= set(adapters.available())
     assert isinstance(adapters.create("manual"), ManualAdapter)
     with pytest.raises(ValueError):
-        adapters.create("openai")
+        adapters.create("anthropic")
 
 
 def test_visual_adapter_refuses_to_run():

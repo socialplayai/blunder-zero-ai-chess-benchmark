@@ -8,12 +8,27 @@ from __future__ import annotations
 
 from typing import Callable
 
-from .base import AbortGame, AIPlayer, ResignGame
+from .base import (
+    AbortGame,
+    AIPlayer,
+    AuthenticationFailure,
+    BudgetStop,
+    NetworkFailure,
+    PlayerInfrastructureError,
+    ProviderError,
+    RateLimited,
+    RequestRejected,
+    RequestTimeout,
+    ResignGame,
+    TokenBudgetStop,
+)
 from .manual import ManualAdapter
+from .openai_api import OpenAIResponsesAdapter
 from .visual import VisualAdapter
 
 _REGISTRY: dict[str, Callable[..., AIPlayer]] = {
     "manual": ManualAdapter,
+    "openai": OpenAIResponsesAdapter,
     "visual": VisualAdapter,
 }
 
@@ -41,8 +56,18 @@ def create(name: str, **kwargs) -> AIPlayer:
 __all__ = [
     "AIPlayer",
     "AbortGame",
+    "AuthenticationFailure",
+    "BudgetStop",
+    "NetworkFailure",
+    "PlayerInfrastructureError",
+    "ProviderError",
+    "RateLimited",
+    "RequestRejected",
+    "RequestTimeout",
     "ResignGame",
+    "TokenBudgetStop",
     "ManualAdapter",
+    "OpenAIResponsesAdapter",
     "VisualAdapter",
     "available",
     "create",

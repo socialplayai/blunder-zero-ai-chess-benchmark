@@ -8,3 +8,14 @@ venv/
 
 # Game records are experiment output, not source.
 games/
+
+# Secrets. The benchmark reads the API key from the environment only; nothing
+# below should ever exist in the repository, and if it does it stays untracked.
+.env
+.env.*
+*.env
+secrets.json
+*.key
+*.pem
+.openai
+.credentials

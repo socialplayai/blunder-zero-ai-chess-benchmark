@@ -61,6 +61,23 @@ class MatchConfig:
     stockfish_threads: int = 1
     stockfish_hash_mb: int = 16
 
+    # API player (used by the openai adapter; ignored by the manual adapter).
+    api_model: str = "gpt-6-astra"
+    """Exact provider model identifier, recorded verbatim."""
+    reasoning_effort: str = "high"
+    api_store: bool = True
+    """Keep the response chain server side so the model retains its reasoning."""
+    api_service_tier: str | None = None
+    api_max_output_tokens: int | None = None
+    api_request_timeout_seconds: float = 900.0
+    api_max_attempts: int = 3
+    """Total attempts per move, counting the first. Retries only happen for
+    transient failures that occur before a model response exists."""
+    api_backoff_seconds: float = 5.0
+    pricing_file: str | None = None
+    max_cost_usd: float | None = 15.0
+    max_total_tokens: int | None = None
+
     # Experiment bookkeeping.
     game_id: str = dataclasses.field(default_factory=lambda: uuid.uuid4().hex[:12])
     max_move_seconds: float | None = None
@@ -84,6 +101,14 @@ class MatchConfig:
             raise ValueError("max_move_seconds must be positive or None")
         if self.max_plies <= 0:
             raise ValueError("max_plies must be positive")
+        if self.api_max_attempts < 1:
+            raise ValueError("api_max_attempts must be at least 1")
+        if self.api_request_timeout_seconds <= 0:
+            raise ValueError("api_request_timeout_seconds must be positive")
+        if self.max_cost_usd is not None and self.max_cost_usd <= 0:
+            raise ValueError("max_cost_usd must be positive or None")
+        if self.max_total_tokens is not None and self.max_total_tokens <= 0:
+            raise ValueError("max_total_tokens must be positive or None")
 
     def to_dict(self) -> dict[str, Any]:
         out = dataclasses.asdict(self)

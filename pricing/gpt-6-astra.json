@@ -1,0 +1,28 @@
+{
+  "model": "gpt-6-astra",
+  "currency": "USD",
+  "unit": "per_million_tokens",
+  "service_tier": "standard",
+  "long_context_input_threshold_tokens": 272000,
+  "standard": {
+    "input": 10.0,
+    "cached_input": 1.0,
+    "cache_write": 12.5,
+    "output": 50.0
+  },
+  "long_context": {
+    "input": 20.0,
+    "cached_input": 2.0,
+    "cache_write": 25.0,
+    "output": 75.0
+  },
+  "verified_at": "2026-09-08T00:00:00Z",
+  "verified_by": "operator-assisted fetch of the official pricing page",
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "notes": [
+    "Reasoning tokens are billed as output tokens and are already included in usage.output_tokens. They are never added on top.",
+    "Long context rates apply to a request whose input exceeds long_context_input_threshold_tokens.",
+    "The API does not expose a cache-write token count, so cache_write is recorded here for reference but is not used in the computed cost. Computed cost is therefore a lower bound if a request writes new prompt cache entries.",
+    "Batch and fast service tiers have different rates and are not used by this benchmark."
+  ]
+}

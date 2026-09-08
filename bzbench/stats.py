@@ -39,6 +39,18 @@ def game_summary(record: GameRecord) -> dict[str, Any]:
         "started_at": record.started_at,
         "finished_at": record.finished_at,
     }
+    api = record.api or {}
+    summary.update(
+        {
+            "api_calls": api.get("calls"),
+            "total_tokens": api.get("total_tokens"),
+            "reasoning_tokens": api.get("reasoning_tokens"),
+            "total_cost_usd": api.get("total_cost_usd"),
+            "infrastructure_failure": (
+                (record.infrastructure_failure or {}).get("kind")
+            ),
+        }
+    )
     analysis = record.analysis or {}
     ai_analysis = analysis.get("ai") or {}
     summary.update(
@@ -84,6 +96,13 @@ def aggregate(summaries: Iterable[dict[str, Any]]) -> dict[str, Any]:
             if scored
             else None
         ),
+        "total_api_cost_usd": round(
+            sum(r["total_cost_usd"] or 0.0 for r in rows), 6
+        ),
+        "total_api_tokens": sum(r["total_tokens"] or 0 for r in rows),
+        "infrastructure_failures": sum(
+            1 for r in rows if r["infrastructure_failure"]
+        ),
         "terminations": _counts(r["termination"] for r in rows),
         "protocols": _counts(r["protocol"] for r in rows),
         "models": _counts(r["model"] for r in rows),
@@ -112,6 +131,7 @@ def format_table(rows: list[dict[str, Any]]) -> str:
         ("illegal", 7),
         ("acpl", 6),
         ("acc%", 6),
+        ("cost$", 7),
         ("termination", 20),
     ]
     key_map = {
@@ -120,6 +140,7 @@ def format_table(rows: list[dict[str, Any]]) -> str:
         "illegal": "illegal_moves",
         "acpl": "average_centipawn_loss",
         "acc%": "accuracy",
+        "cost$": "total_cost_usd",
     }
     columns = [(name, max(width, len(name))) for name, width in columns]
     header = "  ".join(name.ljust(width) for name, width in columns)
