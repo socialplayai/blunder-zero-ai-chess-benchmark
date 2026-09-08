@@ -108,6 +108,12 @@ def run(args: argparse.Namespace) -> int:
         api = next(t.api for t in record.turns
                    if t.ply == position["ply"] and t.actor == "ai")
         assert api["response_id"] == position["response_id"], position
+        # C2 invariants, re-checked at run time before anything is sent.
+        assert position["chain_from_response_id"] != position["response_id"], position
+        assert position["chain_from_ply"] < position["ply"], position
+        assert api["previous_response_id"] == position["chain_from_response_id"], (
+            position
+        )
 
         key = f"{position['game_id']}#{position['depth']}"
         line = (f"[{index}/{len(positions)}] {key} depth {position['depth']} "
@@ -134,7 +140,11 @@ def run(args: argparse.Namespace) -> int:
                         max_cost_usd=GUARD_USD,
                         store=False,
                         resume_response_id=(
-                            position["response_id"] if context == "chain" else None
+                            # C2: the immediately preceding model turn, never the
+                            # sampled turn itself, whose context already holds the
+                            # answer being asked for.
+                            position["chain_from_response_id"]
+                            if context == "chain" else None
                         ),
                         game_id=f"study-{key}-{label}-{trial}",
                     )

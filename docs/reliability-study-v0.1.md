@@ -246,3 +246,67 @@ shuffle, so execution order is also defined rather than left to whatever a loop
 happens to do.
 
 Frozen in `results/diagnostics/reliability-study-v0.1/stage1-order.json`.
+
+## Amendment C2: the chain arms branched from the wrong response
+
+Applied after 8 of 160 Stage 1 responses, before any scored response exists under
+the corrected frame.
+
+**The defect.** The corpus stored each position's own `response_id`, and the
+runner branched the chain arms from it, then sent that same turn's prompt. The
+conversation being continued therefore already contained the answer to the
+question being asked.
+
+**How it was found.** The first eight responses were inspected for pace, and the
+four chain responses had returned **6 output tokens with 0 reasoning tokens** and
+the move actually played in the source game, against 1,878 to 4,575 reasoning
+tokens in the fresh arms. The run was stopped immediately and the branch id was
+compared with the sampled turn's own id: byte identical.
+
+**Why the chain responses are void.** They measure whether the model repeats an
+answer already in its context. That is not the question this study asks.
+
+**What was done.**
+
+* The run stopped at 8 of 160 responses. Diagnostic spend $0.98.
+* The four chain responses are void. The four fresh responses were technically
+  valid and are **deliberately discarded** so that the study has one clean
+  execution frame rather than a file spanning two.
+* The defective file is retained for audit as
+  `VOID_DIAGNOSTIC_DO_NOT_SCORE-responses-stage1.jsonl` with its sha256, and is
+  excluded from every Track 2 result, denominator, statistic and published
+  artifact.
+* C2 adds `chain_from_response_id` and `chain_from_ply` to all 40 positions: the
+  immediately preceding model turn. **No position was added, removed, resampled
+  or reordered**; keys, source games, protocol assignment, strata, colour
+  balance, the Stage 1 ordering and the seed are unchanged, which is asserted by
+  regenerating the ordering from the amended corpus at the same seed and
+  comparing.
+* No Track 1 game or scored result was affected. Nothing the study did was
+  stored: `store=false` on every request.
+* C2 was committed before any restarted response was observed.
+
+**Corpus digests.** Before `5f76aded8968c102c2a4b5f615611c8eebb859695948d907b36181c0181232e0`,
+after `386416d2d94201099d8ecc40eed1e9e2e79b65bbc913ec5f4fed334f950432ab`.
+
+**Why the tests changed too.** A test asserting only
+`chain_from_response_id != response_id` would forbid this exact bug and permit
+others. The invariants now assert what the parent must **be**: the immediately
+preceding model turn, with nothing between them in the model's turn sequence,
+cross checked against the game's own recorded `previous_response_id`, with the
+parent strictly earlier, its board different, its prompt different, no later FEN
+in its prompt, never a later or foreign response id, and the whole relationship
+matching what `--chain-from-ply 43` did for ply 45 in the original diagnostic.
+
+## Disclosure: the corpus contains the known failure position
+
+Blind sampling under the frozen frame drew **API-PILOT-v0.1 game 2, ply 45**, the
+position that produced the only illegal move in scored play and that the ply 45
+diagnostic already probed twenty times (19 legal, 1 illegal).
+
+It is 1 of 40 positions, it was selected before anyone looked at the sample, and
+removing it now would be post hoc selection, which is a worse problem than
+keeping it. It is disclosed here so that a failure at that position in Stage 1 is
+read as the least surprising failure available rather than as an independent
+discovery, and so that anyone reading the arm counts knows one cell of the corpus
+has prior evidence attached to it.
