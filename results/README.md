@@ -1,0 +1,37 @@
+# Published results
+
+Working experiment output is not published evidence.
+
+* `games/` is untracked. It holds whatever an operator produced: rehearsals,
+  interrupted runs, probes, mistakes. Nothing in it is a claim.
+* `rehearsals/` is untracked. Mock operator output only.
+* `results/<pilot>/<slot>/` is tracked, is written once, and holds a closed
+  game that is being asserted publicly.
+
+A slot is created by `tools/publish_game.py`, which refuses to publish an
+unfinished record and refuses to overwrite an existing slot. Each slot contains:
+
+| File | What it is |
+| --- | --- |
+| `game.pgn` | the game, with the operator's hostname removed |
+| `game.json` | the full record: every prompt sent, every raw response received, per move API usage and cost, the analysis pass |
+| `summary.json` | the one row version used in reports |
+| `MANIFEST.json` | commit identifiers, experiment configuration, outcome, usage totals, pricing provenance, what was redacted, and a sha256 of each of the three files above |
+
+The point of keeping `game.json` complete is that the integrity claims can be
+rechecked against the record instead of trusted. Every prompt is there, so
+anyone can verify that a RAW game contained no FEN and no legal move list, and
+every raw response is there, so the legality judgements can be recomputed.
+
+## Reproducing a published game
+
+The opponent is reproducible: check out the commit named in the manifest and
+replay the same command with the same fixed node count against the same
+Stockfish build. The model is not reproducible in the same sense, which is why
+the raw responses are stored rather than only the moves.
+
+## Index
+
+| Slot | Game | Astra | Opponent | Result | Illegal | Accuracy | Cost |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| `api-pilot-v0.1/game-001` | API-PILOT-v0.1 game 1 | White | Stockfish 18, Elo 1320, 200k nodes | 1-0 win, checkmate | 0 | 90.91% | $1.25 |
