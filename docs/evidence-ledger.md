@@ -12,9 +12,21 @@ Last updated after API-PILOT-FEN-v0.1 and the ply 45 diagnostic.
 move history alone and produced well formed SAN on every response of every game
 so far. 115 responses, 115 correctly formatted bare SAN tokens, 0 malformed.
 
-**Astra beat a strength limited Stockfish 18 at Elo 1320 in three of four
-games**, one as White and one as Black under FEN, one as White under RAW. The
-fourth game was lost on an illegal move, not on chess.
+**Astra beat a strength limited Stockfish 18 at Elo 1320 and 1500, as both
+White and Black.** Four wins from four FEN games, 199 legal responses out of
+199. Under RAW at 1320 it won as White and lost as Black on an illegal move, not
+on chess.
+
+**Its measured move quality was descriptively worse at 1500 than at 1320**, ACPL
+35.0 and 30.4 against 13.4 and 11.0, with the first three blunders of the FEN
+programme, and it won both games anyway. Six games do not make that a trend.
+
+**Cumulative input token volume is structurally approximately quadratic in the
+number of responses** under full history resend, which is a property of the
+transport and not a measurement. The 186 ply game sent 6.03M input tokens across
+93 turns, 252 on the first and 140,768 on the last, and cost $11.50. Whether
+total dollar cost follows the same curve depends on output behaviour, caching and
+transcript growth, so the quadratic claim is made about input volume only.
 
 **One illegal move response has been observed in scored play**, at ply 45 of
 API-PILOT-v0.1 game 2, from a winning position, under RAW.
@@ -23,8 +35,9 @@ API-PILOT-v0.1 game 2, from a winning position, under RAW.
 
 | Set | Legal responses | Illegal | Malformed |
 | --- | --- | --- | --- |
-| RAW pair | 53/54 | 1 | 0 |
-| FEN pair | 61/61 | 0 | 0 |
+| RAW pair, 1320 | 53/54 | 1 | 0 |
+| FEN pair, 1320 | 61/61 | 0 | 0 |
+| FEN pair, 1500 | 138/138 | 0 | 0 |
 | ply 45 diagnostic, 4 arms | 19/20 | 1 | 0 |
 
 **No causal mechanism for the illegal move has been established.** The
