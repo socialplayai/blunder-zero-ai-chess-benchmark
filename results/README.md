@@ -61,6 +61,13 @@ re-run, and the difference is documented in
 | `api-pilot-fen-v0.2/game-001` | API-PILOT-FEN-v0.2 game 1 | White | Stockfish 18, Elo 1500, 200k nodes | 1-0 win, checkmate | 0 | 91.67% | $2.11 |
 | `api-pilot-fen-v0.2/game-002` | API-PILOT-FEN-v0.2 game 2 | Black | Stockfish 18, Elo 1500, 200k nodes | 0-1 win, checkmate | 0 | 93.84% | $11.50 |
 
+| `api-pilot-fen-v0.3/game-001` | API-PILOT-FEN-v0.3 game 1 | White | Stockfish 18, Elo 1700, 200k nodes | 0-1 loss, checkmate | 0 | 87.16% | $1.65 |
+| `api-pilot-fen-v0.3/game-002` | API-PILOT-FEN-v0.3 game 2 | Black | Stockfish 18, Elo 1700, 200k nodes | 1-0 loss, checkmate | 0 | 93.92% | $6.65 |
+
+The 1700 rung scored 0-2, both losses by checkmate with no illegal or malformed
+responses, which is the preregistered stop and review branch. The ladder is
+halted there pending a ruling.
+
 The 1320 FEN pair ran at the preregistered commit with no deviations, see
 [api-pilot-fen-v0.1/DEVIATIONS.md](api-pilot-fen-v0.1/DEVIATIONS.md). Causal
 attribution for the RAW game 2 failure is not settled by this pair, see

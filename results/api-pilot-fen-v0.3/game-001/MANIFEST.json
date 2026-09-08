@@ -1,0 +1,126 @@
+{
+  "pilot": "api-pilot-fen-v0.3",
+  "slot": "game-001",
+  "game_id": "API-PILOT-FEN-v0.3-g1-astra-white",
+  "published_at": "2026-09-08T08:33:12+00:00",
+  "benchmark_commit_recorded_in_game": "64818abdc392e724fe0f64ebfd557767d661e8ed",
+  "benchmark_commit_at_publish": "64818abdc392e724fe0f64ebfd557767d661e8ed",
+  "working_tree_clean_at_publish": true,
+  "experiment": {
+    "model": "gpt-6-astra",
+    "api_model": "gpt-6-astra",
+    "adapter": "openai",
+    "reasoning_effort": "high",
+    "protocol": "fen",
+    "prompt_version": 2,
+    "ai_color": "white",
+    "max_output_tokens": 12000,
+    "max_cost_usd": 50.0,
+    "store": true
+  },
+  "opponent": {
+    "engine_name": "Stockfish 18",
+    "engine_author": "the Stockfish developers (see AUTHORS file)",
+    "requested_elo": 1700,
+    "effective_elo": 1700,
+    "limit": {
+      "nodes": 200000
+    },
+    "options": {
+      "Threads": 1,
+      "Hash": 16,
+      "UCI_LimitStrength": true,
+      "UCI_Elo": 1700
+    }
+  },
+  "outcome": {
+    "result": "0-1",
+    "ai_outcome": "loss",
+    "termination": "checkmate",
+    "plies": 86,
+    "illegal_moves": 0,
+    "infrastructure_failure": null
+  },
+  "analysis": {
+    "engine": {
+      "engine_name": "Stockfish 18",
+      "engine_author": "the Stockfish developers (see AUTHORS file)",
+      "depth": 18,
+      "options": {
+        "Threads": 1,
+        "Hash": 128
+      },
+      "multipv": 1
+    },
+    "ai": {
+      "moves": 43,
+      "accuracy": 87.16,
+      "average_centipawn_loss": 56.7,
+      "inaccuracies": 8,
+      "mistakes": 7,
+      "blunders": 1
+    },
+    "opponent": {
+      "moves": 43,
+      "accuracy": 91.24,
+      "average_centipawn_loss": 32.5,
+      "inaccuracies": 7,
+      "mistakes": 4,
+      "blunders": 0
+    }
+  },
+  "usage": {
+    "calls": 43,
+    "input_tokens": 621517,
+    "cached_input_tokens": 588013,
+    "output_tokens": 14461,
+    "reasoning_tokens": 14101,
+    "total_tokens": 635978,
+    "input_cost_usd": 0.923053,
+    "output_cost_usd": 0.72305,
+    "total_cost_usd": 1.646103,
+    "max_output_tokens": 12000
+  },
+  "pricing": {
+    "model": "gpt-6-astra",
+    "input_per_mtok": 10.0,
+    "cached_input_per_mtok": 1.0,
+    "output_per_mtok": 50.0,
+    "long_input_per_mtok": 20.0,
+    "long_cached_input_per_mtok": 2.0,
+    "long_output_per_mtok": 75.0,
+    "long_context_threshold_tokens": 272000,
+    "currency": "USD",
+    "service_tier": "standard",
+    "verified_at": "2026-09-08T00:00:00Z",
+    "source": "https://developers.openai.com/api/docs/pricing",
+    "notes": [
+      "Reasoning tokens are billed as output tokens and are already included in usage.output_tokens. They are never added on top.",
+      "Long context rates apply to a request whose input exceeds long_context_input_threshold_tokens.",
+      "The API does not expose a cache-write token count, so cache_write is recorded here for reference but is not used in the computed cost. Computed cost is therefore a lower bound if a request writes new prompt cache entries.",
+      "Batch and fast service tiers have different rates and are not used by this benchmark."
+    ],
+    "path": "/Users/felix/Documents/blunder-zero-ai-chess-benchmark/pricing/gpt-6-astra.json"
+  },
+  "sanitisation": [
+    "replaced hostname in the PGN Site header with 'redacted-host'"
+  ],
+  "artifacts": {
+    "game.json": {
+      "sha256": "8d606afa44dcb708ea52a54c9c8e3a6aca1442f6a1221d45e2d6427ac4c084e3",
+      "bytes": 269955
+    },
+    "game.pgn": {
+      "sha256": "b698574b66afbe8bace2c413a1c405d352fed52b600df348931c1f9df03462e5",
+      "bytes": 911
+    },
+    "summary.json": {
+      "sha256": "8f0ce919ae2878fc8359f890364f9cf06b7d1c7461ecc9a51393e2f05985e9d5",
+      "bytes": 945
+    }
+  },
+  "verification": {
+    "how_to_reproduce": "check out 64818abdc392e724fe0f64ebfd557767d661e8ed and run the command in docs/api-pilot-v0.1.md for this slot; the opponent is reproducible at a fixed node count, the model is not",
+    "integrity_note": "game.json contains every prompt sent and every raw response received, so the protocol claims in the README can be rechecked against the record without trusting this manifest"
+  }
+}
