@@ -1,5 +1,38 @@
 # BlunderZero AI Chess Benchmark
 
+## Canonical snapshot
+
+The reproducible reference for everything published from this benchmark is the
+tag **`astra-chess-benchmark-v0.1`**, not the moving `main` branch:
+
+```bash
+git checkout astra-chess-benchmark-v0.1
+```
+
+It contains the six scored games, both closed tracks and every result artifact
+with its hashes.
+
+| | |
+| --- | --- |
+| Track 1, strength | **STRENGTH BRACKET COMPLETE**. Beat strength limited Stockfish 18 at Elo 1320 and 1500 in both colours, lost both games at 1700, on the FEN protocol. A ladder bracket, not an Elo rating. 329 of 329 legal responses. |
+| Track 2, reliability | **RELIABILITY STUDY COMPLETE: FUTILITY STOP**. 159 of 160 preregistered responses legal and well formed; the frozen futility rule fired and Stage 2 was never run. No arm is claimed more or less reliable than another. |
+| Total programme spend | $52.72 |
+
+Results: [`results/README.md`](results/README.md) ·
+Track 1 closure: [`docs/track1-closure.md`](docs/track1-closure.md) ·
+Track 2 results: [`results/diagnostics/reliability-study-v0.1/RESULTS.md`](results/diagnostics/reliability-study-v0.1/RESULTS.md) ·
+What has and has not been shown: [`docs/evidence-ledger.md`](docs/evidence-ledger.md)
+
+**Artifact history note.** The reliability artifacts were frozen and hash
+verified on disk before execution, but an unanchored `.gitignore` rule
+unintentionally prevented them from being tracked by git. They were first
+committed in `5bf0561`. The artifact hashes and corpus digest match the values
+recorded during the study. `tests/test_publication_closure.py` now asserts that
+every published tree is actually tracked, because a clean `git status` is not
+evidence that expected artifacts exist in git.
+
+---
+
 A small, deliberately strict benchmark for one question:
 
 > How well does a general purpose frontier AI model play chess when it has no
