@@ -31,14 +31,23 @@ Whether the interface worked at all.
 * legal responses over total responses
 * malformed responses: not a single SAN token (prose, markdown, UCI, multiple
   moves, empty)
-* state tracking failures: a well formed SAN move that is not legal in the
-  position, which is the signature of the model losing the board
+* illegal move responses: a well formed SAN move that is not legal in the
+  position
 * the ply and position at which any failure occurred
 * retries
 
-Malformed and state tracking failures are different findings. The first is an
-output discipline problem and is fixable with prompting. The second is a model
-of the board problem and is the thing the RAW protocol is designed to measure.
+These two categories are **observations, not diagnoses**. A malformed response
+is not a single well formed SAN token. An illegal move response is a well formed
+SAN token that is not legal in the position. Neither name asserts a cause.
+
+Naming discipline, learned the hard way in this benchmark. The field that now
+reads `illegal_move_responses` was briefly called `state_tracking_failures`,
+which smuggled a causal claim about board reconstruction into a field name after
+a single observed event. The fresh position probe then produced five legal moves
+out of five from that exact RAW prompt, so the claim the name encoded was not
+supported. Cause is recorded as `unknown` until an experiment separates the
+candidates, and hypotheses live in the write up where they can be argued with,
+never in a schema.
 
 ## 3. Operational performance
 

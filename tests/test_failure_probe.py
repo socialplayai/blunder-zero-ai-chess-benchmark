@@ -52,7 +52,7 @@ def test_the_probe_prompt_is_the_frozen_prompt(tmp_path):
 
 def test_the_judge_matches_the_referee_and_splits_the_failure_kinds():
     board = chess.Board(FAILURE_FEN)
-    assert failure_probe.judge(board, "Qh5+")["category"] == "state_tracking_failure"
+    assert failure_probe.judge(board, "Qh5+")["category"] == "illegal_move_response"
     assert failure_probe.judge(board, "Qxh2")["legal"] is True
     assert failure_probe.judge(board, "Qxh2")["uci"] == "h1h2"
     assert failure_probe.judge(board, "I would play Qxh2")["category"] == (
@@ -106,11 +106,53 @@ def test_probe_trials_are_independent_and_cannot_seed_a_game(tmp_path, monkeypat
     payload = json.loads(out.read_text())
     assert payload["scored"] is False
     assert payload["kind"] == "diagnostic_probe"
-    assert payload["summary"]["raw"]["trials"] == 3
+    assert payload["summary"]["fresh-raw"]["trials"] == 3
+    assert payload["context"] == "fresh"
     assert payload["prompts"]["fen"] != payload["prompts"]["raw"]
     assert payload["fen"] in payload["prompts"]["fen"]
     assert payload["fen"] not in payload["prompts"]["raw"]
     assert not list(pathlib.Path(tmp_path).glob("**/games/**/game.pgn"))
+
+
+def test_chain_arms_branch_from_the_named_response_independently(tmp_path,
+                                                                 monkeypatch):
+    source = a_record(tmp_path)
+    created: list[FakeClient] = []
+
+    class Recorder(failure_probe.OpenAIResponsesAdapter):
+        def __init__(self, **kwargs):
+            client = FakeClient([FakeResponse("Qxh2")])
+            created.append(client)
+            super().__init__(client=client, **kwargs)
+
+    monkeypatch.setattr(failure_probe, "OpenAIResponsesAdapter", Recorder)
+    record = GameRecord.load(source)
+    # Give the scripted record an api section so it can be branched from.
+    for turn in record.turns:
+        if turn.actor == "ai" and turn.ply == 2:
+            turn.api = {"response_id": "resp_prior_0002"}
+    path = tmp_path / "with_api.json"
+    path.write_text(record.to_json())
+
+    out = tmp_path / "chain.json"
+    args = failure_probe.build_parser().parse_args(
+        [str(path), "--ply", "4", "--chain-from-ply", "2", "--trials", "2",
+         "--protocols", "raw", "fen", "--out", str(out)]
+    )
+    assert failure_probe.run(args) == 0
+
+    assert len(created) == 4
+    for client in created:
+        request = client.requests[0]
+        assert request["previous_response_id"] == "resp_prior_0002"
+        assert request["store"] is False   # a branch is never itself stored
+        assert request["tools"] == []
+
+    payload = json.loads(out.read_text())
+    assert payload["context"] == "chain"
+    assert payload["chain_from_response_id"] == "resp_prior_0002"
+    assert set(payload["results"]) == {"chain-raw", "chain-fen"}
+    assert payload["scored"] is False
 
 
 def test_probe_output_is_not_a_scored_path():

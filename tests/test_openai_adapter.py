@@ -150,6 +150,31 @@ def test_store_is_enabled_so_the_model_keeps_its_own_reasoning():
     assert all(request["store"] is True for request in client.requests)
 
 
+def test_a_game_never_resumes_someone_elses_conversation():
+    """`bzbench play` builds its player without resume_response_id, ever."""
+    import inspect
+
+    from bzbench import cli
+
+    source = inspect.getsource(cli.build_player)
+    assert "resume_response_id" not in source
+    adapter, _ = make_adapter([])
+    assert adapter.resume_response_id is None
+
+
+def test_a_diagnostic_can_branch_from_a_stored_response():
+    adapter, client = make_adapter(moves("Qxh2"), resume_response_id="resp_prior_0001",
+                                   max_output_tokens=12_000)
+    from bzbench.protocol import build_prompt
+    import chess
+
+    board = chess.Board("r3r1k1/pp3ppp/8/5N2/Pn6/1N2P3/4KP1P/R1B4q b - - 1 23")
+    prompt, view = build_prompt(board, [], Protocol.RAW, Color.BLACK)
+    adapter.propose_move(prompt, view)
+    assert client.requests[0]["previous_response_id"] == "resp_prior_0001"
+    assert adapter.describe()["resume_response_id"] == "resp_prior_0001"
+
+
 # ------------------------------------------------------- output discipline
 
 

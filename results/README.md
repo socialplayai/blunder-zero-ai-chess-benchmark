@@ -32,6 +32,9 @@ the raw responses are stored rather than only the moves.
 
 ## Index
 
+Scored games only. Diagnostics live under `results/diagnostics/` and are never
+mixed into this table.
+
 | Slot | Game | Astra | Opponent | Result | Illegal | Accuracy | Cost |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | `api-pilot-v0.1/game-001` | API-PILOT-v0.1 game 1 | White | Stockfish 18, Elo 1320, 200k nodes | 1-0 win, checkmate | 0 | 90.91% | $1.25 |
@@ -51,3 +54,11 @@ separate findings and are reported separately, see
 Game 2 ran at a commit other than the preregistered one. It is kept, not
 re-run, and the difference is documented in
 [api-pilot-v0.1/DEVIATIONS.md](api-pilot-v0.1/DEVIATIONS.md).
+
+| `api-pilot-fen-v0.1/game-001` | API-PILOT-FEN-v0.1 game 1 | White | Stockfish 18, Elo 1320, 200k nodes | 1-0 win, checkmate | 0 | 96.50% | $1.14 |
+| `api-pilot-fen-v0.1/game-002` | API-PILOT-FEN-v0.1 game 2 | Black | Stockfish 18, Elo 1320, 200k nodes | 0-1 win, checkmate | 0 | 98.12% | $1.07 |
+
+The FEN pair ran at the preregistered commit with no deviations, see
+[api-pilot-fen-v0.1/DEVIATIONS.md](api-pilot-fen-v0.1/DEVIATIONS.md). Causal
+attribution for the RAW game 2 failure is not settled by this pair, see
+[diagnostics/api-pilot-v0.1-g2-ply45/](diagnostics/api-pilot-v0.1-g2-ply45/).

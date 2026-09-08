@@ -16,9 +16,14 @@ Rules that keep this honest:
   is the same object a real game would have shown;
 * the legality verdict comes from the frozen `parse_san_strict`, so a probe
   answer is judged exactly as a game answer would be;
-* every trial is an independent conversation: `store=false`, no
+* a fresh trial is an independent conversation: `store=false`, no
   `previous_response_id`, one adapter per trial, so trials cannot see each other
   and cannot touch any game;
+* a chain trial branches from one stored response of a closed game, named by
+  `--chain-from-ply`, with `store=false` so the branch is not itself stored.
+  Branching reads a stored response, it does not modify it, and each trial
+  branches independently from the same point, so no chain trial can see
+  another;
 * output is written outside `games/` and outside any scored path;
 * nothing here produces a result, a win, a loss or an Elo estimate.
 
@@ -65,6 +70,18 @@ def state_at_ply(record: GameRecord, ply: int) -> tuple[chess.Board, list[str], 
     raise SystemExit(f"ply {ply} not found in the record")
 
 
+def response_id_at_ply(record: GameRecord, ply: int) -> str:
+    """The provider response id of the model turn at `ply`, for branching."""
+    for turn in record.turns:
+        if turn.ply == ply and turn.actor == "ai":
+            api = turn.api or {}
+            response_id = api.get("response_id")
+            if not response_id:
+                raise SystemExit(f"no response id recorded at ply {ply}")
+            return response_id
+    raise SystemExit(f"no model turn at ply {ply}")
+
+
 def judge(board: chess.Board, raw: str) -> dict:
     """Judge a response exactly as the referee would, without playing a game."""
     normalized = raw.strip()
@@ -77,7 +94,7 @@ def judge(board: chess.Board, raw: str) -> dict:
             "legal": False,
             "reason": reason,
             "category": (
-                "state_tracking_failure"
+                "illegal_move_response"
                 if reason
                 in {
                     "move is not legal in this position",
@@ -109,9 +126,17 @@ def run(args: argparse.Namespace) -> int:
     print(f"  trials     {args.trials} per protocol, protocols {args.protocols}")
     print(f"  guard      ${args.max_cost_usd:.2f} for the whole probe\n")
 
+    chain_from: str | None = None
+    if args.chain_from_ply is not None:
+        chain_from = response_id_at_ply(record, args.chain_from_ply)
+        print(f"  context    branching from the ply {args.chain_from_ply} response "
+              f"{chain_from}\n")
+
+    arm_prefix = "chain" if chain_from else "fresh"
     results: dict[str, list[dict]] = {}
     spent = 0.0
     for protocol_name in args.protocols:
+        arm = f"{arm_prefix}-{protocol_name}"
         protocol = Protocol(protocol_name)
         prompt, view = build_prompt(board, history, protocol, colour)
         trials: list[dict] = []
@@ -127,8 +152,9 @@ def run(args: argparse.Namespace) -> int:
                 pricing=pricing,
                 max_output_tokens=args.max_output_tokens,
                 max_cost_usd=args.max_cost_usd,
-                store=False,          # independent, and cannot seed a game
-                game_id=f"probe-{protocol_name}-{trial}",
+                store=False,          # the branch is not stored either
+                resume_response_id=chain_from,
+                game_id=f"probe-{arm}-{trial}",
             )
             raw = adapter.propose_move(prompt, view)
             meta = adapter.pop_turn_metadata() or {}
@@ -150,12 +176,12 @@ def run(args: argparse.Namespace) -> int:
             )
             mark = "legal" if verdict["legal"] else verdict["category"]
             print(
-                f"  [{protocol_name}] trial {trial}: {raw.strip()!r} -> {mark}"
+                f"  [{arm}] trial {trial}: {raw.strip()!r} -> {mark}"
                 f"  (${cost.get('total_cost_usd', 0):.4f})"
             )
-        results[protocol_name] = trials
+        results[arm] = trials
         legal = sum(1 for t in trials if t["legal"])
-        print(f"  [{protocol_name}] {legal}/{len(trials)} legal\n")
+        print(f"  [{arm}] {legal}/{len(trials)} legal\n")
 
     payload = {
         "kind": "diagnostic_probe",
@@ -178,6 +204,9 @@ def run(args: argparse.Namespace) -> int:
         "reasoning_effort": args.reasoning_effort,
         "max_output_tokens": args.max_output_tokens,
         "trials_per_protocol": args.trials,
+        "context": "chain" if chain_from else "fresh",
+        "chain_from_ply": args.chain_from_ply,
+        "chain_from_response_id": chain_from,
         "prompts": {
             name: build_prompt(board, history, Protocol(name), colour)[0]
             for name in args.protocols
@@ -187,8 +216,8 @@ def run(args: argparse.Namespace) -> int:
             name: {
                 "trials": len(trials),
                 "legal": sum(1 for t in trials if t["legal"]),
-                "state_tracking_failures": sum(
-                    1 for t in trials if t["category"] == "state_tracking_failure"
+                "illegal_move_responses": sum(
+                    1 for t in trials if t["category"] == "illegal_move_response"
                 ),
                 "malformed": sum(
                     1 for t in trials if t["category"] == "malformed_response"
@@ -220,7 +249,12 @@ def run(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("source", type=pathlib.Path)
-    parser.add_argument("--ply", type=int, required=True)
+    parser.add_argument("--ply", type=int, required=True,
+                        help="the ply whose position and prompt are replayed")
+    parser.add_argument("--chain-from-ply", type=int, default=None,
+                        help="branch every trial from the stored response of the "
+                             "model turn at this ply, reproducing the "
+                             "conversational state the game was actually in")
     parser.add_argument("--trials", type=int, default=5)
     parser.add_argument("--protocols", nargs="+", default=["raw", "fen"],
                         choices=["raw", "fen", "legal"])

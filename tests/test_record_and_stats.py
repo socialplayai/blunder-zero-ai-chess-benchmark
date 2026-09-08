@@ -107,7 +107,7 @@ def test_aggregate_over_several_games():
 # ------------------------------------------------- protocol reliability split
 
 
-def test_summary_separates_malformed_from_state_tracking_failures():
+def test_summary_separates_malformed_from_illegal_move_responses():
     """Game 2 of the pilot is why these are two different findings."""
     import chess
 
@@ -120,7 +120,7 @@ def test_summary_separates_malformed_from_state_tracking_failures():
     referee.board = chess.Board("r3r1k1/pp3ppp/8/5N2/Pn6/1N2P3/4KP1P/R1B4q w - - 1 23")
     record = referee.run()
     summary = game_summary(record)
-    assert summary["state_tracking_failures"] == 1
+    assert summary["illegal_move_responses"] == 1
     assert summary["malformed_responses"] == 0
     assert summary["legal_responses"] == 0
 
@@ -132,7 +132,7 @@ def test_summary_separates_malformed_from_state_tracking_failures():
     ).run()
     summary = game_summary(record)
     assert summary["malformed_responses"] == 1
-    assert summary["state_tracking_failures"] == 0
+    assert summary["illegal_move_responses"] == 0
 
 
 def test_legal_response_rate_counts_responses_not_games():

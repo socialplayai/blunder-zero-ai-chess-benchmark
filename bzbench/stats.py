@@ -24,7 +24,7 @@ def game_summary(record: GameRecord) -> dict[str, Any]:
             "not valid standard algebraic notation",
         }
     ]
-    state_tracking = [
+    illegal_but_well_formed = [
         item for item in record.illegal_moves
         if item.get("reason") in {
             "move is not legal in this position",
@@ -52,7 +52,10 @@ def game_summary(record: GameRecord) -> dict[str, Any]:
         "ai_responses": len(responses),
         "legal_responses": sum(1 for t in responses if t.legal),
         "malformed_responses": len(malformed),
-        "state_tracking_failures": len(state_tracking),
+        # Observational categories only. "illegal_move_responses" records what
+        # was observed (well formed SAN, not legal here); the cause is not
+        # claimed by the field name. See docs/reporting-dimensions.md.
+        "illegal_move_responses": len(illegal_but_well_formed),
         "first_illegal_ply": (
             record.illegal_moves[0]["ply"] if record.illegal_moves else None
         ),
@@ -109,8 +112,8 @@ def aggregate(summaries: Iterable[dict[str, Any]]) -> dict[str, Any]:
         "total_ai_responses": sum(r["ai_responses"] for r in rows),
         "total_legal_responses": sum(r["legal_responses"] for r in rows),
         "total_malformed_responses": sum(r["malformed_responses"] for r in rows),
-        "total_state_tracking_failures": sum(
-            r["state_tracking_failures"] for r in rows
+        "total_illegal_move_responses": sum(
+            r["illegal_move_responses"] for r in rows
         ),
         "legal_response_rate": (
             round(

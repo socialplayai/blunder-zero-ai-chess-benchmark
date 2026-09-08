@@ -98,6 +98,7 @@ class OpenAIResponsesAdapter(AIPlayer):
         max_attempts: int = 3,
         backoff_seconds: float = 5.0,
         game_id: str = "",
+        resume_response_id: str | None = None,
         api_key_env: str = DEFAULT_API_KEY_ENV,
         client: Any | None = None,
         sleep: Callable[[float], None] = time.sleep,
@@ -122,7 +123,11 @@ class OpenAIResponsesAdapter(AIPlayer):
         self._sleep = sleep
 
         self._client = client if client is not None else build_client(api_key_env)
-        self._previous_response_id: str | None = None
+        # Seeded only by diagnostics that deliberately branch from a stored
+        # response. A game always starts a fresh chain: `bzbench play` never
+        # passes this, so no game can inherit another conversation.
+        self._previous_response_id: str | None = resume_response_id
+        self.resume_response_id = resume_response_id
         self._response_ids: list[str] = []
         self._pending_metadata: dict[str, Any] | None = None
         self._calls: list[dict[str, Any]] = []
@@ -286,6 +291,7 @@ class OpenAIResponsesAdapter(AIPlayer):
             "max_attempts": self.max_attempts,
             "backoff_seconds": self.backoff_seconds,
             "api_key_env": self.api_key_env,
+            "resume_response_id": self.resume_response_id,
             "max_cost_usd": self.ledger.max_cost_usd,
             "max_total_tokens": self.ledger.max_total_tokens,
             "pricing": self.pricing.to_dict(),

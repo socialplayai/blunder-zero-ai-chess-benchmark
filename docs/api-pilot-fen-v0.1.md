@@ -131,3 +131,20 @@ evidence than waiting for a game to wander into a hard tracking state, and it is
 `diagnostics/` path, `store=false` on every trial so it cannot seed or
 contaminate any game conversation. Its output is reported separately and is
 never mixed into a games table.
+
+## Amendment A1, recorded after the pair closed
+
+The preregistration above says "state tracking failures" in the reporting
+section. That wording is left in place rather than edited, because a frozen
+document that quietly changes is worth less than one that carries its
+corrections.
+
+The metric is now called `illegal_move_responses` everywhere in the code and the
+reports: a well formed SAN token that is not legal in the position. The rename
+removes a causal claim that had not been earned. The API-PILOT-v0.1 game 2 event
+is recorded as an `illegal_move_response` with cause `unknown`; board
+reconstruction and accumulated conversation state are hypotheses under test in
+the chain state diagnostic, not conclusions.
+
+Nothing about how the metric is computed changed, and no game was scored
+differently.

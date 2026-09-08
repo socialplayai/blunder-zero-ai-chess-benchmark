@@ -1,0 +1,5598 @@
+{
+  "schema_version": 1,
+  "config": {
+    "model_name": "gpt-6-astra",
+    "protocol": "fen",
+    "ai_color": "white",
+    "adapter": "openai",
+    "stockfish_elo": 1320,
+    "stockfish_path": "stockfish",
+    "stockfish_move_time_ms": 100,
+    "stockfish_nodes": 200000,
+    "stockfish_threads": 1,
+    "stockfish_hash_mb": 16,
+    "api_model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "api_store": true,
+    "api_service_tier": null,
+    "api_max_output_tokens": 12000,
+    "api_request_timeout_seconds": 900.0,
+    "api_max_attempts": 3,
+    "api_backoff_seconds": 5.0,
+    "pricing_file": null,
+    "max_cost_usd": 25.0,
+    "max_total_tokens": null,
+    "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+    "max_move_seconds": null,
+    "max_plies": 400,
+    "random_seed": null,
+    "notes": "API-PILOT-FEN-v0.1 game 1, FEN protocol, Astra White, Stockfish 18 at 1320 Elo / 200k nodes, execution commit 502ea8b"
+  },
+  "opponent": {
+    "engine_name": "Stockfish 18",
+    "engine_author": "the Stockfish developers (see AUTHORS file)",
+    "requested_elo": 1320,
+    "effective_elo": 1320,
+    "limit": {
+      "nodes": 200000
+    },
+    "options": {
+      "Threads": 1,
+      "Hash": 16,
+      "UCI_LimitStrength": true,
+      "UCI_Elo": 1320
+    }
+  },
+  "adapter": {
+    "adapter": "openai",
+    "provider": "openai",
+    "api": "responses",
+    "model": "gpt-6-astra",
+    "reasoning_effort_requested": "high",
+    "reasoning_effort_effective": "high",
+    "tools": [],
+    "tool_use_enabled": false,
+    "structured_output": false,
+    "store": true,
+    "service_tier": null,
+    "max_output_tokens": 12000,
+    "request_timeout_seconds": 900.0,
+    "max_attempts": 3,
+    "backoff_seconds": 5.0,
+    "api_key_env": "OPENAI_API_KEY",
+    "max_cost_usd": 25.0,
+    "max_total_tokens": null,
+    "pricing": {
+      "model": "gpt-6-astra",
+      "input_per_mtok": 10.0,
+      "cached_input_per_mtok": 1.0,
+      "output_per_mtok": 50.0,
+      "long_input_per_mtok": 20.0,
+      "long_cached_input_per_mtok": 2.0,
+      "long_output_per_mtok": 75.0,
+      "long_context_threshold_tokens": 272000,
+      "currency": "USD",
+      "service_tier": "standard",
+      "verified_at": "2026-09-08T00:00:00Z",
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "notes": [
+        "Reasoning tokens are billed as output tokens and are already included in usage.output_tokens. They are never added on top.",
+        "Long context rates apply to a request whose input exceeds long_context_input_threshold_tokens.",
+        "The API does not expose a cache-write token count, so cache_write is recorded here for reference but is not used in the computed cost. Computed cost is therefore a lower bound if a request writes new prompt cache entries.",
+        "Batch and fast service tiers have different rates and are not used by this benchmark."
+      ],
+      "path": "/Users/felix/Documents/blunder-zero-ai-chess-benchmark/pricing/gpt-6-astra.json"
+    }
+  },
+  "environment": {
+    "python": "3.14.4",
+    "python_chess": "1.11.2",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "bzbench_commit": "502ea8b8ec0a9890976ffbacf70ca310fd548f34"
+  },
+  "started_at": "2026-09-08T06:20:11.497+00:00",
+  "finished_at": "2026-09-08T06:27:56.574+00:00",
+  "result": "1-0",
+  "ai_outcome": "win",
+  "termination": "checkmate",
+  "termination_detail": "checkmate",
+  "illegal_moves": [],
+  "turns": [
+    {
+      "ply": 0,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "san": "e4",
+      "uci": "e2e4",
+      "started_at": "2026-09-08T06:20:11.498+00:00",
+      "finished_at": "2026-09-08T06:20:13.830+00:00",
+      "response_seconds": 2.3325069159909617,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n(no moves yet, this is the first move of the game)\n\nCurrent position (FEN):\nrnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1\n\nIt is your move (White, move 1).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "e4",
+      "normalized_response": "e4",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 0,
+        "move_number": 1,
+        "history_san": [],
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 0,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "0",
+            "protocol": "fen"
+          },
+          "max_output_tokens": 12000,
+          "input_length_chars": 987
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa91c3aa487d1ad38c5f46bd7ef08",
+        "previous_response_id": null,
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 258,
+          "cached_input_tokens": 0,
+          "output_tokens": 6,
+          "reasoning_tokens": 0,
+          "total_tokens": 264
+        },
+        "raw_usage": {
+          "input_tokens": 258,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens": 6,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 264
+        },
+        "cost": {
+          "input_tokens": 258,
+          "cached_input_tokens": 0,
+          "uncached_input_tokens": 258,
+          "output_tokens": 6,
+          "reasoning_tokens": 0,
+          "total_tokens": 264,
+          "input_cost_usd": 0.00258,
+          "output_cost_usd": 0.0003,
+          "total_cost_usd": 0.00288,
+          "reasoning_cost_share_usd": 0.0,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.00288,
+        "cumulative_total_tokens": 264,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 2.332,
+            "request_id": "req_f161ff03b740448e93a6ef5a5e866d06"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 1,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+      "san": "c6",
+      "uci": "c7c6",
+      "started_at": "2026-09-08T06:20:13.831+00:00",
+      "finished_at": "2026-09-08T06:20:14.106+00:00",
+      "response_seconds": 0.2750285000074655,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 2,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rnbqkbnr/pp1ppppp/2p5/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+      "san": "d4",
+      "uci": "d2d4",
+      "started_at": "2026-09-08T06:20:14.106+00:00",
+      "finished_at": "2026-09-08T06:20:19.137+00:00",
+      "response_seconds": 5.030756082996959,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6\n\nCurrent position (FEN):\nrnbqkbnr/pp1ppppp/2p5/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2\n\nIt is your move (White, move 2).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "d4",
+      "normalized_response": "d4",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 2,
+        "move_number": 2,
+        "history_san": [
+          "e4",
+          "c6"
+        ],
+        "fen": "rnbqkbnr/pp1ppppp/2p5/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 2,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "2",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa91c3aa487d1ad38c5f46bd7ef08",
+          "max_output_tokens": 12000,
+          "input_length_chars": 949
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa91fab6c87d1b1b130e9d5e42d2d",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa91c3aa487d1ad38c5f46bd7ef08",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 521,
+          "cached_input_tokens": 0,
+          "output_tokens": 6,
+          "reasoning_tokens": 0,
+          "total_tokens": 527
+        },
+        "raw_usage": {
+          "input_tokens": 521,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens": 6,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 527
+        },
+        "cost": {
+          "input_tokens": 521,
+          "cached_input_tokens": 0,
+          "uncached_input_tokens": 521,
+          "output_tokens": 6,
+          "reasoning_tokens": 0,
+          "total_tokens": 527,
+          "input_cost_usd": 0.00521,
+          "output_cost_usd": 0.0003,
+          "total_cost_usd": 0.00551,
+          "reasoning_cost_share_usd": 0.0,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.00839,
+        "cumulative_total_tokens": 791,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 5.031,
+            "request_id": "req_40704a06e0c54a5a8adbb482d6609561"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 3,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rnbqkbnr/pp1ppppp/2p5/8/3PP3/8/PPP2PPP/RNBQKBNR b KQkq - 0 2",
+      "san": "d5",
+      "uci": "d7d5",
+      "started_at": "2026-09-08T06:20:19.137+00:00",
+      "finished_at": "2026-09-08T06:20:19.395+00:00",
+      "response_seconds": 0.25752933300100267,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 4,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rnbqkbnr/pp2pppp/2p5/3p4/3PP3/8/PPP2PPP/RNBQKBNR w KQkq - 0 3",
+      "san": "Nc3",
+      "uci": "b1c3",
+      "started_at": "2026-09-08T06:20:19.395+00:00",
+      "finished_at": "2026-09-08T06:20:21.746+00:00",
+      "response_seconds": 2.3506398330209777,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5\n\nCurrent position (FEN):\nrnbqkbnr/pp2pppp/2p5/3p4/3PP3/8/PPP2PPP/RNBQKBNR w KQkq - 0 3\n\nIt is your move (White, move 3).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Nc3",
+      "normalized_response": "Nc3",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 4,
+        "move_number": 3,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5"
+        ],
+        "fen": "rnbqkbnr/pp2pppp/2p5/3p4/3PP3/8/PPP2PPP/RNBQKBNR w KQkq - 0 3",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 4,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "4",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa91fab6c87d1b1b130e9d5e42d2d",
+          "max_output_tokens": 12000,
+          "input_length_chars": 959
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa923a00087d19f51171bd603c3ec",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa91fab6c87d1b1b130e9d5e42d2d",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 791,
+          "cached_input_tokens": 0,
+          "output_tokens": 31,
+          "reasoning_tokens": 23,
+          "total_tokens": 822
+        },
+        "raw_usage": {
+          "input_tokens": 791,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0
+          },
+          "output_tokens": 31,
+          "output_tokens_details": {
+            "reasoning_tokens": 23
+          },
+          "total_tokens": 822
+        },
+        "cost": {
+          "input_tokens": 791,
+          "cached_input_tokens": 0,
+          "uncached_input_tokens": 791,
+          "output_tokens": 31,
+          "reasoning_tokens": 23,
+          "total_tokens": 822,
+          "input_cost_usd": 0.00791,
+          "output_cost_usd": 0.00155,
+          "total_cost_usd": 0.00946,
+          "reasoning_cost_share_usd": 0.00115,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.01785,
+        "cumulative_total_tokens": 1613,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 2.351,
+            "request_id": "req_b50587620a7e429f943f589e1184fa4f"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 5,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rnbqkbnr/pp2pppp/2p5/3p4/3PP3/2N5/PPP2PPP/R1BQKBNR b KQkq - 1 3",
+      "san": "h5",
+      "uci": "h7h5",
+      "started_at": "2026-09-08T06:20:21.746+00:00",
+      "finished_at": "2026-09-08T06:20:22.012+00:00",
+      "response_seconds": 0.2660374999977648,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 6,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rnbqkbnr/pp2ppp1/2p5/3p3p/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 0 4",
+      "san": "Nf3",
+      "uci": "g1f3",
+      "started_at": "2026-09-08T06:20:22.012+00:00",
+      "finished_at": "2026-09-08T06:20:24.956+00:00",
+      "response_seconds": 2.9435047909792047,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5\n\nCurrent position (FEN):\nrnbqkbnr/pp2ppp1/2p5/3p3p/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 0 4\n\nIt is your move (White, move 4).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Nf3",
+      "normalized_response": "Nf3",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 6,
+        "move_number": 4,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5"
+        ],
+        "fen": "rnbqkbnr/pp2ppp1/2p5/3p3p/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 0 4",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 6,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "6",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa923a00087d19f51171bd603c3ec",
+          "max_output_tokens": 12000,
+          "input_length_chars": 972
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9263cd487d1af3e50c9e2fecb63",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa923a00087d19f51171bd603c3ec",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 1097,
+          "cached_input_tokens": 0,
+          "output_tokens": 38,
+          "reasoning_tokens": 29,
+          "total_tokens": 1135
+        },
+        "raw_usage": {
+          "input_tokens": 1097,
+          "input_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 1094
+          },
+          "output_tokens": 38,
+          "output_tokens_details": {
+            "reasoning_tokens": 29
+          },
+          "total_tokens": 1135
+        },
+        "cost": {
+          "input_tokens": 1097,
+          "cached_input_tokens": 0,
+          "uncached_input_tokens": 1097,
+          "output_tokens": 38,
+          "reasoning_tokens": 29,
+          "total_tokens": 1135,
+          "input_cost_usd": 0.01097,
+          "output_cost_usd": 0.0019,
+          "total_cost_usd": 0.01287,
+          "reasoning_cost_share_usd": 0.00145,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.03072,
+        "cumulative_total_tokens": 2748,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 2.943,
+            "request_id": "req_d9a1d222fbb94cd9866a2cebf1fb4a3e"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 7,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rnbqkbnr/pp2ppp1/2p5/3p3p/3PP3/2N2N2/PPP2PPP/R1BQKB1R b KQkq - 1 4",
+      "san": "Bg4",
+      "uci": "c8g4",
+      "started_at": "2026-09-08T06:20:24.956+00:00",
+      "finished_at": "2026-09-08T06:20:25.227+00:00",
+      "response_seconds": 0.2715474579890724,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 8,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qkbnr/pp2ppp1/2p5/3p3p/3PP1b1/2N2N2/PPP2PPP/R1BQKB1R w KQkq - 2 5",
+      "san": "Be2",
+      "uci": "f1e2",
+      "started_at": "2026-09-08T06:20:25.227+00:00",
+      "finished_at": "2026-09-08T06:20:30.621+00:00",
+      "response_seconds": 5.392787209013477,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4\n\nCurrent position (FEN):\nrn1qkbnr/pp2ppp1/2p5/3p3p/3PP1b1/2N2N2/PPP2PPP/R1BQKB1R w KQkq - 2 5\n\nIt is your move (White, move 5).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Be2",
+      "normalized_response": "Be2",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 8,
+        "move_number": 5,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4"
+        ],
+        "fen": "rn1qkbnr/pp2ppp1/2p5/3p3p/3PP1b1/2N2N2/PPP2PPP/R1BQKB1R w KQkq - 2 5",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 8,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "8",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9263cd487d1af3e50c9e2fecb63",
+          "max_output_tokens": 12000,
+          "input_length_chars": 987
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9296e6087d19f9be91dbaf5b6f4",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9263cd487d1af3e50c9e2fecb63",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 1422,
+          "cached_input_tokens": 1094,
+          "output_tokens": 103,
+          "reasoning_tokens": 95,
+          "total_tokens": 1525
+        },
+        "raw_usage": {
+          "input_tokens": 1422,
+          "input_tokens_details": {
+            "cached_tokens": 1094,
+            "cache_write_tokens": 325
+          },
+          "output_tokens": 103,
+          "output_tokens_details": {
+            "reasoning_tokens": 95
+          },
+          "total_tokens": 1525
+        },
+        "cost": {
+          "input_tokens": 1422,
+          "cached_input_tokens": 1094,
+          "uncached_input_tokens": 328,
+          "output_tokens": 103,
+          "reasoning_tokens": 95,
+          "total_tokens": 1525,
+          "input_cost_usd": 0.004374,
+          "output_cost_usd": 0.00515,
+          "total_cost_usd": 0.009524,
+          "reasoning_cost_share_usd": 0.00475,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.040244,
+        "cumulative_total_tokens": 4273,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 5.393,
+            "request_id": "req_ca3cc927fb60484d852a4f61deb2c27c"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 9,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qkbnr/pp2ppp1/2p5/3p3p/3PP1b1/2N2N2/PPP1BPPP/R1BQK2R b KQkq - 3 5",
+      "san": "Bxf3",
+      "uci": "g4f3",
+      "started_at": "2026-09-08T06:20:30.621+00:00",
+      "finished_at": "2026-09-08T06:20:30.898+00:00",
+      "response_seconds": 0.277163249993464,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 10,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qkbnr/pp2ppp1/2p5/3p3p/3PP3/2N2b2/PPP1BPPP/R1BQK2R w KQkq - 0 6",
+      "san": "Bxf3",
+      "uci": "e2f3",
+      "started_at": "2026-09-08T06:20:30.898+00:00",
+      "finished_at": "2026-09-08T06:20:32.876+00:00",
+      "response_seconds": 1.978091958008008,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3\n\nCurrent position (FEN):\nrn1qkbnr/pp2ppp1/2p5/3p3p/3PP3/2N2b2/PPP1BPPP/R1BQK2R w KQkq - 0 6\n\nIt is your move (White, move 6).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Bxf3",
+      "normalized_response": "Bxf3",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 10,
+        "move_number": 6,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3"
+        ],
+        "fen": "rn1qkbnr/pp2ppp1/2p5/3p3p/3PP3/2N2b2/PPP1BPPP/R1BQK2R w KQkq - 0 6",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 10,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "10",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9296e6087d19f9be91dbaf5b6f4",
+          "max_output_tokens": 12000,
+          "input_length_chars": 997
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa92f2f5087d1ae73e352ddae2929",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9296e6087d19f9be91dbaf5b6f4",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 1819,
+          "cached_input_tokens": 1419,
+          "output_tokens": 7,
+          "reasoning_tokens": 0,
+          "total_tokens": 1826
+        },
+        "raw_usage": {
+          "input_tokens": 1819,
+          "input_tokens_details": {
+            "cached_tokens": 1419,
+            "cache_write_tokens": 397
+          },
+          "output_tokens": 7,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1826
+        },
+        "cost": {
+          "input_tokens": 1819,
+          "cached_input_tokens": 1419,
+          "uncached_input_tokens": 400,
+          "output_tokens": 7,
+          "reasoning_tokens": 0,
+          "total_tokens": 1826,
+          "input_cost_usd": 0.005419,
+          "output_cost_usd": 0.00035,
+          "total_cost_usd": 0.005769,
+          "reasoning_cost_share_usd": 0.0,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.046013,
+        "cumulative_total_tokens": 6099,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 1.978,
+            "request_id": "req_630ceb86efad4b019287ef094bcce2e2"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 11,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qkbnr/pp2ppp1/2p5/3p3p/3PP3/2N2B2/PPP2PPP/R1BQK2R b KQkq - 0 6",
+      "san": "e6",
+      "uci": "e7e6",
+      "started_at": "2026-09-08T06:20:32.876+00:00",
+      "finished_at": "2026-09-08T06:20:33.149+00:00",
+      "response_seconds": 0.27299779100576416,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 12,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qkbnr/pp3pp1/2p1p3/3p3p/3PP3/2N2B2/PPP2PPP/R1BQK2R w KQkq - 0 7",
+      "san": "O-O",
+      "uci": "e1g1",
+      "started_at": "2026-09-08T06:20:33.150+00:00",
+      "finished_at": "2026-09-08T06:20:36.728+00:00",
+      "response_seconds": 3.578217041998869,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6\n\nCurrent position (FEN):\nrn1qkbnr/pp3pp1/2p1p3/3p3p/3PP3/2N2B2/PPP2PPP/R1BQK2R w KQkq - 0 7\n\nIt is your move (White, move 7).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "O-O",
+      "normalized_response": "O-O",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 12,
+        "move_number": 7,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6"
+        ],
+        "fen": "rn1qkbnr/pp3pp1/2p1p3/3p3p/3PP3/2N2B2/PPP2PPP/R1BQK2R w KQkq - 0 7",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 12,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "12",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa92f2f5087d1ae73e352ddae2929",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1008
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9315fac87d1898cc61b41030cb6",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa92f2f5087d1ae73e352ddae2929",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 2128,
+          "cached_input_tokens": 1816,
+          "output_tokens": 38,
+          "reasoning_tokens": 30,
+          "total_tokens": 2166
+        },
+        "raw_usage": {
+          "input_tokens": 2128,
+          "input_tokens_details": {
+            "cached_tokens": 1816,
+            "cache_write_tokens": 309
+          },
+          "output_tokens": 38,
+          "output_tokens_details": {
+            "reasoning_tokens": 30
+          },
+          "total_tokens": 2166
+        },
+        "cost": {
+          "input_tokens": 2128,
+          "cached_input_tokens": 1816,
+          "uncached_input_tokens": 312,
+          "output_tokens": 38,
+          "reasoning_tokens": 30,
+          "total_tokens": 2166,
+          "input_cost_usd": 0.004936,
+          "output_cost_usd": 0.0019,
+          "total_cost_usd": 0.006836,
+          "reasoning_cost_share_usd": 0.0015,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.052849,
+        "cumulative_total_tokens": 8265,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 3.578,
+            "request_id": "req_f0bc061a0c3848999cbb1db0ab9a71f1"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 13,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qkbnr/pp3pp1/2p1p3/3p3p/3PP3/2N2B2/PPP2PPP/R1BQ1RK1 b kq - 1 7",
+      "san": "h4",
+      "uci": "h5h4",
+      "started_at": "2026-09-08T06:20:36.728+00:00",
+      "finished_at": "2026-09-08T06:20:37.013+00:00",
+      "response_seconds": 0.2845534159860108,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 14,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qkbnr/pp3pp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQ1RK1 w kq - 0 8",
+      "san": "Re1",
+      "uci": "f1e1",
+      "started_at": "2026-09-08T06:20:37.013+00:00",
+      "finished_at": "2026-09-08T06:20:41.667+00:00",
+      "response_seconds": 4.654145708016586,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4\n\nCurrent position (FEN):\nrn1qkbnr/pp3pp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQ1RK1 w kq - 0 8\n\nIt is your move (White, move 8).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Re1",
+      "normalized_response": "Re1",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 14,
+        "move_number": 8,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4"
+        ],
+        "fen": "rn1qkbnr/pp3pp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQ1RK1 w kq - 0 8",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 14,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "14",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9315fac87d1898cc61b41030cb6",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1017
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9353ce887d18b045d8924380d18",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9315fac87d1898cc61b41030cb6",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 2473,
+          "cached_input_tokens": 2125,
+          "output_tokens": 100,
+          "reasoning_tokens": 92,
+          "total_tokens": 2573
+        },
+        "raw_usage": {
+          "input_tokens": 2473,
+          "input_tokens_details": {
+            "cached_tokens": 2125,
+            "cache_write_tokens": 345
+          },
+          "output_tokens": 100,
+          "output_tokens_details": {
+            "reasoning_tokens": 92
+          },
+          "total_tokens": 2573
+        },
+        "cost": {
+          "input_tokens": 2473,
+          "cached_input_tokens": 2125,
+          "uncached_input_tokens": 348,
+          "output_tokens": 100,
+          "reasoning_tokens": 92,
+          "total_tokens": 2573,
+          "input_cost_usd": 0.005605,
+          "output_cost_usd": 0.005,
+          "total_cost_usd": 0.010605,
+          "reasoning_cost_share_usd": 0.0046,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.063454,
+        "cumulative_total_tokens": 10838,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 4.654,
+            "request_id": "req_92b170b778cb4ee48fd054e00c63ad0c"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 15,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qkbnr/pp3pp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQR1K1 b kq - 1 8",
+      "san": "Be7",
+      "uci": "f8e7",
+      "started_at": "2026-09-08T06:20:41.667+00:00",
+      "finished_at": "2026-09-08T06:20:41.940+00:00",
+      "response_seconds": 0.2725121669936925,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 16,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qk1nr/pp2bpp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQR1K1 w kq - 2 9",
+      "san": "Bf4",
+      "uci": "c1f4",
+      "started_at": "2026-09-08T06:20:41.940+00:00",
+      "finished_at": "2026-09-08T06:20:50.338+00:00",
+      "response_seconds": 8.397328791004838,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7\n\nCurrent position (FEN):\nrn1qk1nr/pp2bpp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQR1K1 w kq - 2 9\n\nIt is your move (White, move 9).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Bf4",
+      "normalized_response": "Bf4",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 16,
+        "move_number": 9,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7"
+        ],
+        "fen": "rn1qk1nr/pp2bpp1/2p1p3/3p4/3PP2p/2N2B2/PPP2PPP/R1BQR1K1 w kq - 2 9",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 16,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "16",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9353ce887d18b045d8924380d18",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1029
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa93a2b4c87d18caac1cfe24865c1",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9353ce887d18b045d8924380d18",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 2889,
+          "cached_input_tokens": 2470,
+          "output_tokens": 195,
+          "reasoning_tokens": 186,
+          "total_tokens": 3084
+        },
+        "raw_usage": {
+          "input_tokens": 2889,
+          "input_tokens_details": {
+            "cached_tokens": 2470,
+            "cache_write_tokens": 416
+          },
+          "output_tokens": 195,
+          "output_tokens_details": {
+            "reasoning_tokens": 186
+          },
+          "total_tokens": 3084
+        },
+        "cost": {
+          "input_tokens": 2889,
+          "cached_input_tokens": 2470,
+          "uncached_input_tokens": 419,
+          "output_tokens": 195,
+          "reasoning_tokens": 186,
+          "total_tokens": 3084,
+          "input_cost_usd": 0.00666,
+          "output_cost_usd": 0.00975,
+          "total_cost_usd": 0.01641,
+          "reasoning_cost_share_usd": 0.0093,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.079864,
+        "cumulative_total_tokens": 13922,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 8.397,
+            "request_id": "req_ba4571ad63c1428cb48d19968bb8456c"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 17,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qk1nr/pp2bpp1/2p1p3/3p4/3PPB1p/2N2B2/PPP2PPP/R2QR1K1 b kq - 3 9",
+      "san": "g5",
+      "uci": "g7g5",
+      "started_at": "2026-09-08T06:20:50.338+00:00",
+      "finished_at": "2026-09-08T06:20:50.628+00:00",
+      "response_seconds": 0.2907736669876613,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 18,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qk1nr/pp2bp2/2p1p3/3p2p1/3PPB1p/2N2B2/PPP2PPP/R2QR1K1 w kq - 0 10",
+      "san": "Be3",
+      "uci": "f4e3",
+      "started_at": "2026-09-08T06:20:50.629+00:00",
+      "finished_at": "2026-09-08T06:20:57.890+00:00",
+      "response_seconds": 7.260987334011588,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5\n\nCurrent position (FEN):\nrn1qk1nr/pp2bp2/2p1p3/3p2p1/3PPB1p/2N2B2/PPP2PPP/R2QR1K1 w kq - 0 10\n\nIt is your move (White, move 10).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Be3",
+      "normalized_response": "Be3",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 18,
+        "move_number": 10,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5"
+        ],
+        "fen": "rn1qk1nr/pp2bp2/2p1p3/3p2p1/3PPB1p/2N2B2/PPP2PPP/R2QR1K1 w kq - 0 10",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 18,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "18",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa93a2b4c87d18caac1cfe24865c1",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1042
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa942db2887d18c8b8299ab1b7af9",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa93a2b4c87d18caac1cfe24865c1",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 3409,
+          "cached_input_tokens": 2886,
+          "output_tokens": 114,
+          "reasoning_tokens": 106,
+          "total_tokens": 3523
+        },
+        "raw_usage": {
+          "input_tokens": 3409,
+          "input_tokens_details": {
+            "cached_tokens": 2886,
+            "cache_write_tokens": 520
+          },
+          "output_tokens": 114,
+          "output_tokens_details": {
+            "reasoning_tokens": 106
+          },
+          "total_tokens": 3523
+        },
+        "cost": {
+          "input_tokens": 3409,
+          "cached_input_tokens": 2886,
+          "uncached_input_tokens": 523,
+          "output_tokens": 114,
+          "reasoning_tokens": 106,
+          "total_tokens": 3523,
+          "input_cost_usd": 0.008116,
+          "output_cost_usd": 0.0057,
+          "total_cost_usd": 0.013816,
+          "reasoning_cost_share_usd": 0.0053,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.09368,
+        "cumulative_total_tokens": 17445,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 7.261,
+            "request_id": "req_4ba12880c8b048e1aa399c2cab8a7aa6"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 19,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qk1nr/pp2bp2/2p1p3/3p2p1/3PP2p/2N1BB2/PPP2PPP/R2QR1K1 b kq - 1 10",
+      "san": "Nf6",
+      "uci": "g8f6",
+      "started_at": "2026-09-08T06:20:57.890+00:00",
+      "finished_at": "2026-09-08T06:20:58.193+00:00",
+      "response_seconds": 0.30254304202389903,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 20,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qk2r/pp2bp2/2p1pn2/3p2p1/3PP2p/2N1BB2/PPP2PPP/R2QR1K1 w kq - 2 11",
+      "san": "e5",
+      "uci": "e4e5",
+      "started_at": "2026-09-08T06:20:58.193+00:00",
+      "finished_at": "2026-09-08T06:21:37.618+00:00",
+      "response_seconds": 39.424535958998604,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6\n\nCurrent position (FEN):\nrn1qk2r/pp2bp2/2p1pn2/3p2p1/3PP2p/2N1BB2/PPP2PPP/R2QR1K1 w kq - 2 11\n\nIt is your move (White, move 11).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "e5",
+      "normalized_response": "e5",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 20,
+        "move_number": 11,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6"
+        ],
+        "fen": "rn1qk2r/pp2bp2/2p1pn2/3p2p1/3PP2p/2N1BB2/PPP2PPP/R2QR1K1 w kq - 2 11",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 20,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "20",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa942db2887d18c8b8299ab1b7af9",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1054
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa94a782887d1a95b1dfc3e1d7529",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa942db2887d18c8b8299ab1b7af9",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 3855,
+          "cached_input_tokens": 3406,
+          "output_tokens": 1102,
+          "reasoning_tokens": 1094,
+          "total_tokens": 4957
+        },
+        "raw_usage": {
+          "input_tokens": 3855,
+          "input_tokens_details": {
+            "cached_tokens": 3406,
+            "cache_write_tokens": 446
+          },
+          "output_tokens": 1102,
+          "output_tokens_details": {
+            "reasoning_tokens": 1094
+          },
+          "total_tokens": 4957
+        },
+        "cost": {
+          "input_tokens": 3855,
+          "cached_input_tokens": 3406,
+          "uncached_input_tokens": 449,
+          "output_tokens": 1102,
+          "reasoning_tokens": 1094,
+          "total_tokens": 4957,
+          "input_cost_usd": 0.007896,
+          "output_cost_usd": 0.0551,
+          "total_cost_usd": 0.062996,
+          "reasoning_cost_share_usd": 0.0547,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.156676,
+        "cumulative_total_tokens": 22402,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 39.424,
+            "request_id": "req_abd54a2c2b8d47b8ba9bbbf1146b4b01"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 21,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qk2r/pp2bp2/2p1pn2/3pP1p1/3P3p/2N1BB2/PPP2PPP/R2QR1K1 b kq - 0 11",
+      "san": "Nh7",
+      "uci": "f6h7",
+      "started_at": "2026-09-08T06:21:37.618+00:00",
+      "finished_at": "2026-09-08T06:21:37.922+00:00",
+      "response_seconds": 0.30367691701394506,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 22,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1qk2r/pp2bp1n/2p1p3/3pP1p1/3P3p/2N1BB2/PPP2PPP/R2QR1K1 w kq - 1 12",
+      "san": "Bh5",
+      "uci": "f3h5",
+      "started_at": "2026-09-08T06:21:37.922+00:00",
+      "finished_at": "2026-09-08T06:21:52.396+00:00",
+      "response_seconds": 14.473619041003985,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7\n\nCurrent position (FEN):\nrn1qk2r/pp2bp1n/2p1p3/3pP1p1/3P3p/2N1BB2/PPP2PPP/R2QR1K1 w kq - 1 12\n\nIt is your move (White, move 12).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Bh5",
+      "normalized_response": "Bh5",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 22,
+        "move_number": 12,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7"
+        ],
+        "fen": "rn1qk2r/pp2bp1n/2p1p3/3pP1p1/3P3p/2N1BB2/PPP2PPP/R2QR1K1 w kq - 1 12",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 22,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "22",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa94a782887d1a95b1dfc3e1d7529",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1065
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa972521887d19e262551609ec391",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa94a782887d1a95b1dfc3e1d7529",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 5298,
+          "cached_input_tokens": 3852,
+          "output_tokens": 337,
+          "reasoning_tokens": 329,
+          "total_tokens": 5635
+        },
+        "raw_usage": {
+          "input_tokens": 5298,
+          "input_tokens_details": {
+            "cached_tokens": 3852,
+            "cache_write_tokens": 1443
+          },
+          "output_tokens": 337,
+          "output_tokens_details": {
+            "reasoning_tokens": 329
+          },
+          "total_tokens": 5635
+        },
+        "cost": {
+          "input_tokens": 5298,
+          "cached_input_tokens": 3852,
+          "uncached_input_tokens": 1446,
+          "output_tokens": 337,
+          "reasoning_tokens": 329,
+          "total_tokens": 5635,
+          "input_cost_usd": 0.018312,
+          "output_cost_usd": 0.01685,
+          "total_cost_usd": 0.035162,
+          "reasoning_cost_share_usd": 0.01645,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.191838,
+        "cumulative_total_tokens": 28037,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 14.474,
+            "request_id": "req_1746bcfefaf4427684f0b682128d4aa0"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 23,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1qk2r/pp2bp1n/2p1p3/3pP1pB/3P3p/2N1B3/PPP2PPP/R2QR1K1 b kq - 2 12",
+      "san": "O-O",
+      "uci": "e8g8",
+      "started_at": "2026-09-08T06:21:52.396+00:00",
+      "finished_at": "2026-09-08T06:21:52.700+00:00",
+      "response_seconds": 0.30418937499052845,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 24,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1q1rk1/pp2bp1n/2p1p3/3pP1pB/3P3p/2N1B3/PPP2PPP/R2QR1K1 w - - 3 13",
+      "san": "Qg4",
+      "uci": "d1g4",
+      "started_at": "2026-09-08T06:21:52.700+00:00",
+      "finished_at": "2026-09-08T06:22:02.535+00:00",
+      "response_seconds": 9.834614874998806,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O\n\nCurrent position (FEN):\nrn1q1rk1/pp2bp1n/2p1p3/3pP1pB/3P3p/2N1B3/PPP2PPP/R2QR1K1 w - - 3 13\n\nIt is your move (White, move 13).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Qg4",
+      "normalized_response": "Qg4",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 24,
+        "move_number": 13,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O"
+        ],
+        "fen": "rn1q1rk1/pp2bp1n/2p1p3/3pP1pB/3P3p/2N1B3/PPP2PPP/R2QR1K1 w - - 3 13",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 24,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "24",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa972521887d19e262551609ec391",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1076
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa980ec5887d1b374587ff168b8ac",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa972521887d19e262551609ec391",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 5982,
+          "cached_input_tokens": 5295,
+          "output_tokens": 225,
+          "reasoning_tokens": 217,
+          "total_tokens": 6207
+        },
+        "raw_usage": {
+          "input_tokens": 5982,
+          "input_tokens_details": {
+            "cached_tokens": 5295,
+            "cache_write_tokens": 684
+          },
+          "output_tokens": 225,
+          "output_tokens_details": {
+            "reasoning_tokens": 217
+          },
+          "total_tokens": 6207
+        },
+        "cost": {
+          "input_tokens": 5982,
+          "cached_input_tokens": 5295,
+          "uncached_input_tokens": 687,
+          "output_tokens": 225,
+          "reasoning_tokens": 217,
+          "total_tokens": 6207,
+          "input_cost_usd": 0.012165,
+          "output_cost_usd": 0.01125,
+          "total_cost_usd": 0.023415,
+          "reasoning_cost_share_usd": 0.01085,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.215253,
+        "cumulative_total_tokens": 34244,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 9.835,
+            "request_id": "req_5f99d8021b68463083e5762aaf15e297"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 25,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1q1rk1/pp2bp1n/2p1p3/3pP1pB/3P2Qp/2N1B3/PPP2PPP/R3R1K1 b - - 4 13",
+      "san": "Kg7",
+      "uci": "g8g7",
+      "started_at": "2026-09-08T06:22:02.536+00:00",
+      "finished_at": "2026-09-08T06:22:02.810+00:00",
+      "response_seconds": 0.2741004589770455,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 26,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1q1r2/pp2bpkn/2p1p3/3pP1pB/3P2Qp/2N1B3/PPP2PPP/R3R1K1 w - - 5 14",
+      "san": "f4",
+      "uci": "f2f4",
+      "started_at": "2026-09-08T06:22:02.810+00:00",
+      "finished_at": "2026-09-08T06:22:15.612+00:00",
+      "response_seconds": 12.8015614580072,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7\n\nCurrent position (FEN):\nrn1q1r2/pp2bpkn/2p1p3/3pP1pB/3P2Qp/2N1B3/PPP2PPP/R3R1K1 w - - 5 14\n\nIt is your move (White, move 14).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "f4",
+      "normalized_response": "f4",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 26,
+        "move_number": 14,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7"
+        ],
+        "fen": "rn1q1r2/pp2bpkn/2p1p3/3pP1pB/3P2Qp/2N1B3/PPP2PPP/R3R1K1 w - - 5 14",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 26,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "26",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa980ec5887d1b374587ff168b8ac",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1087
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa98b051087d1a97d3335d0cfcd03",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa980ec5887d1b374587ff168b8ac",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 6562,
+          "cached_input_tokens": 5979,
+          "output_tokens": 295,
+          "reasoning_tokens": 287,
+          "total_tokens": 6857
+        },
+        "raw_usage": {
+          "input_tokens": 6562,
+          "input_tokens_details": {
+            "cached_tokens": 5979,
+            "cache_write_tokens": 580
+          },
+          "output_tokens": 295,
+          "output_tokens_details": {
+            "reasoning_tokens": 287
+          },
+          "total_tokens": 6857
+        },
+        "cost": {
+          "input_tokens": 6562,
+          "cached_input_tokens": 5979,
+          "uncached_input_tokens": 583,
+          "output_tokens": 295,
+          "reasoning_tokens": 287,
+          "total_tokens": 6857,
+          "input_cost_usd": 0.011809,
+          "output_cost_usd": 0.01475,
+          "total_cost_usd": 0.026559,
+          "reasoning_cost_share_usd": 0.01435,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.241812,
+        "cumulative_total_tokens": 41101,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 12.801,
+            "request_id": "req_44893dc1e49e422cbca69bd5af49539e"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 27,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1q1r2/pp2bpkn/2p1p3/3pP1pB/3P1PQp/2N1B3/PPP3PP/R3R1K1 b - - 0 14",
+      "san": "c5",
+      "uci": "c6c5",
+      "started_at": "2026-09-08T06:22:15.612+00:00",
+      "finished_at": "2026-09-08T06:22:15.942+00:00",
+      "response_seconds": 0.3291696250089444,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 28,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1q1r2/pp2bpkn/4p3/2ppP1pB/3P1PQp/2N1B3/PPP3PP/R3R1K1 w - - 0 15",
+      "san": "fxg5",
+      "uci": "f4g5",
+      "started_at": "2026-09-08T06:22:15.942+00:00",
+      "finished_at": "2026-09-08T06:22:38.383+00:00",
+      "response_seconds": 22.44084749999456,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5\n\nCurrent position (FEN):\nrn1q1r2/pp2bpkn/4p3/2ppP1pB/3P1PQp/2N1B3/PPP3PP/R3R1K1 w - - 0 15\n\nIt is your move (White, move 15).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "fxg5",
+      "normalized_response": "fxg5",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 28,
+        "move_number": 15,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5"
+        ],
+        "fen": "rn1q1r2/pp2bpkn/4p3/2ppP1pB/3P1PQp/2N1B3/PPP3PP/R3R1K1 w - - 0 15",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 28,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "28",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa98b051087d1a97d3335d0cfcd03",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1096
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa99827cc87d18332097eb2ed9746",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa98b051087d1a97d3335d0cfcd03",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 7217,
+          "cached_input_tokens": 6559,
+          "output_tokens": 645,
+          "reasoning_tokens": 636,
+          "total_tokens": 7862
+        },
+        "raw_usage": {
+          "input_tokens": 7217,
+          "input_tokens_details": {
+            "cached_tokens": 6559,
+            "cache_write_tokens": 655
+          },
+          "output_tokens": 645,
+          "output_tokens_details": {
+            "reasoning_tokens": 636
+          },
+          "total_tokens": 7862
+        },
+        "cost": {
+          "input_tokens": 7217,
+          "cached_input_tokens": 6559,
+          "uncached_input_tokens": 658,
+          "output_tokens": 645,
+          "reasoning_tokens": 636,
+          "total_tokens": 7862,
+          "input_cost_usd": 0.013139,
+          "output_cost_usd": 0.03225,
+          "total_cost_usd": 0.045389,
+          "reasoning_cost_share_usd": 0.0318,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.287201,
+        "cumulative_total_tokens": 48963,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 22.441,
+            "request_id": "req_100ee0e407314321842cc0912e28bd79"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 29,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1q1r2/pp2bpkn/4p3/2ppP1PB/3P2Qp/2N1B3/PPP3PP/R3R1K1 b - - 0 15",
+      "san": "h3",
+      "uci": "h4h3",
+      "started_at": "2026-09-08T06:22:38.383+00:00",
+      "finished_at": "2026-09-08T06:22:38.666+00:00",
+      "response_seconds": 0.2829258749843575,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 30,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1q1r2/pp2bpkn/4p3/2ppP1PB/3P2Q1/2N1B2p/PPP3PP/R3R1K1 w - - 0 16",
+      "san": "gxh3",
+      "uci": "g2h3",
+      "started_at": "2026-09-08T06:22:38.666+00:00",
+      "finished_at": "2026-09-08T06:23:24.333+00:00",
+      "response_seconds": 45.6656949169992,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3\n\nCurrent position (FEN):\nrn1q1r2/pp2bpkn/4p3/2ppP1PB/3P2Q1/2N1B2p/PPP3PP/R3R1K1 w - - 0 16\n\nIt is your move (White, move 16).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "gxh3",
+      "normalized_response": "gxh3",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 30,
+        "move_number": 16,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3"
+        ],
+        "fen": "rn1q1r2/pp2bpkn/4p3/2ppP1PB/3P2Q1/2N1B2p/PPP3PP/R3R1K1 w - - 0 16",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 30,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "30",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa99827cc87d18332097eb2ed9746",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1108
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9aedeec87d1a379a1799544c7b8",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa99827cc87d18332097eb2ed9746",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 8230,
+          "cached_input_tokens": 7214,
+          "output_tokens": 1342,
+          "reasoning_tokens": 1333,
+          "total_tokens": 9572
+        },
+        "raw_usage": {
+          "input_tokens": 8230,
+          "input_tokens_details": {
+            "cached_tokens": 7214,
+            "cache_write_tokens": 1013
+          },
+          "output_tokens": 1342,
+          "output_tokens_details": {
+            "reasoning_tokens": 1333
+          },
+          "total_tokens": 9572
+        },
+        "cost": {
+          "input_tokens": 8230,
+          "cached_input_tokens": 7214,
+          "uncached_input_tokens": 1016,
+          "output_tokens": 1342,
+          "reasoning_tokens": 1333,
+          "total_tokens": 9572,
+          "input_cost_usd": 0.017374,
+          "output_cost_usd": 0.0671,
+          "total_cost_usd": 0.084474,
+          "reasoning_cost_share_usd": 0.06665,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.371675,
+        "cumulative_total_tokens": 58535,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 45.665,
+            "request_id": "req_39165632130a4347aa168bdf66ae0b5f"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 31,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1q1r2/pp2bpkn/4p3/2ppP1PB/3P2Q1/2N1B2P/PPP4P/R3R1K1 b - - 0 16",
+      "san": "Bxg5",
+      "uci": "e7g5",
+      "started_at": "2026-09-08T06:23:24.333+00:00",
+      "finished_at": "2026-09-08T06:23:24.657+00:00",
+      "response_seconds": 0.3237524169962853,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 32,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "rn1q1r2/pp3pkn/4p3/2ppP1bB/3P2Q1/2N1B2P/PPP4P/R3R1K1 w - - 0 17",
+      "san": "h4",
+      "uci": "h3h4",
+      "started_at": "2026-09-08T06:23:24.657+00:00",
+      "finished_at": "2026-09-08T06:23:56.161+00:00",
+      "response_seconds": 31.50331850000657,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5\n\nCurrent position (FEN):\nrn1q1r2/pp3pkn/4p3/2ppP1bB/3P2Q1/2N1B2P/PPP4P/R3R1K1 w - - 0 17\n\nIt is your move (White, move 17).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "h4",
+      "normalized_response": "h4",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 32,
+        "move_number": 17,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5"
+        ],
+        "fen": "rn1q1r2/pp3pkn/4p3/2ppP1bB/3P2Q1/2N1B2P/PPP4P/R3R1K1 w - - 0 17",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 32,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "32",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9aedeec87d1a379a1799544c7b8",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1120
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9dce25087d1b74edd264a2d1a7b",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9aedeec87d1a379a1799544c7b8",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 9951,
+          "cached_input_tokens": 8227,
+          "output_tokens": 908,
+          "reasoning_tokens": 900,
+          "total_tokens": 10859
+        },
+        "raw_usage": {
+          "input_tokens": 9951,
+          "input_tokens_details": {
+            "cached_tokens": 8227,
+            "cache_write_tokens": 1721
+          },
+          "output_tokens": 908,
+          "output_tokens_details": {
+            "reasoning_tokens": 900
+          },
+          "total_tokens": 10859
+        },
+        "cost": {
+          "input_tokens": 9951,
+          "cached_input_tokens": 8227,
+          "uncached_input_tokens": 1724,
+          "output_tokens": 908,
+          "reasoning_tokens": 900,
+          "total_tokens": 10859,
+          "input_cost_usd": 0.025467,
+          "output_cost_usd": 0.0454,
+          "total_cost_usd": 0.070867,
+          "reasoning_cost_share_usd": 0.045,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.442542,
+        "cumulative_total_tokens": 69394,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 31.503,
+            "request_id": "req_a370e7e8a71247658bbf470c3b27a3c8"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 33,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "rn1q1r2/pp3pkn/4p3/2ppP1bB/3P2QP/2N1B3/PPP4P/R3R1K1 b - - 0 17",
+      "san": "Nd7",
+      "uci": "b8d7",
+      "started_at": "2026-09-08T06:23:56.161+00:00",
+      "finished_at": "2026-09-08T06:23:56.389+00:00",
+      "response_seconds": 0.22807262500282377,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 34,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "r2q1r2/pp1n1pkn/4p3/2ppP1bB/3P2QP/2N1B3/PPP4P/R3R1K1 w - - 1 18",
+      "san": "hxg5",
+      "uci": "h4g5",
+      "started_at": "2026-09-08T06:23:56.389+00:00",
+      "finished_at": "2026-09-08T06:24:07.218+00:00",
+      "response_seconds": 10.828284791001352,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7\n\nCurrent position (FEN):\nr2q1r2/pp1n1pkn/4p3/2ppP1bB/3P2QP/2N1B3/PPP4P/R3R1K1 w - - 1 18\n\nIt is your move (White, move 18).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "hxg5",
+      "normalized_response": "hxg5",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 34,
+        "move_number": 18,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7"
+        ],
+        "fen": "r2q1r2/pp1n1pkn/4p3/2ppP1bB/3P2QP/2N1B3/PPP4P/R3R1K1 w - - 1 18",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 34,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "34",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9dce25087d1b74edd264a2d1a7b",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1131
+        },
+        "response_id": "resp_0144d3a641506b31006a9fa9fccb7c87d1bdc9ebd0d78e8de2",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9dce25087d1b74edd264a2d1a7b",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 11245,
+          "cached_input_tokens": 9948,
+          "output_tokens": 222,
+          "reasoning_tokens": 213,
+          "total_tokens": 11467
+        },
+        "raw_usage": {
+          "input_tokens": 11245,
+          "input_tokens_details": {
+            "cached_tokens": 9948,
+            "cache_write_tokens": 1294
+          },
+          "output_tokens": 222,
+          "output_tokens_details": {
+            "reasoning_tokens": 213
+          },
+          "total_tokens": 11467
+        },
+        "cost": {
+          "input_tokens": 11245,
+          "cached_input_tokens": 9948,
+          "uncached_input_tokens": 1297,
+          "output_tokens": 222,
+          "reasoning_tokens": 213,
+          "total_tokens": 11467,
+          "input_cost_usd": 0.022918,
+          "output_cost_usd": 0.0111,
+          "total_cost_usd": 0.034018,
+          "reasoning_cost_share_usd": 0.01065,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.47656,
+        "cumulative_total_tokens": 80861,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 10.828,
+            "request_id": "req_45368bc7c6744917830ff9129738f014"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 35,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "r2q1r2/pp1n1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R1K1 b - - 0 18",
+      "san": "Qc7",
+      "uci": "d8c7",
+      "started_at": "2026-09-08T06:24:07.219+00:00",
+      "finished_at": "2026-09-08T06:24:07.435+00:00",
+      "response_seconds": 0.2162021249823738,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 36,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "r4r2/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R1K1 w - - 1 19",
+      "san": "Kh1",
+      "uci": "g1h1",
+      "started_at": "2026-09-08T06:24:07.435+00:00",
+      "finished_at": "2026-09-08T06:24:53.127+00:00",
+      "response_seconds": 45.69105366599979,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7\n\nCurrent position (FEN):\nr4r2/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R1K1 w - - 1 19\n\nIt is your move (White, move 19).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Kh1",
+      "normalized_response": "Kh1",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 36,
+        "move_number": 19,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7"
+        ],
+        "fen": "r4r2/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R1K1 w - - 1 19",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 36,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "36",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9fa9fccb7c87d1bdc9ebd0d78e8de2",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1142
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa07ae5487d1a90ace5c9f6792cb",
+        "previous_response_id": "resp_0144d3a641506b31006a9fa9fccb7c87d1bdc9ebd0d78e8de2",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 11859,
+          "cached_input_tokens": 11242,
+          "output_tokens": 1306,
+          "reasoning_tokens": 1298,
+          "total_tokens": 13165
+        },
+        "raw_usage": {
+          "input_tokens": 11859,
+          "input_tokens_details": {
+            "cached_tokens": 11242,
+            "cache_write_tokens": 614
+          },
+          "output_tokens": 1306,
+          "output_tokens_details": {
+            "reasoning_tokens": 1298
+          },
+          "total_tokens": 13165
+        },
+        "cost": {
+          "input_tokens": 11859,
+          "cached_input_tokens": 11242,
+          "uncached_input_tokens": 617,
+          "output_tokens": 1306,
+          "reasoning_tokens": 1298,
+          "total_tokens": 13165,
+          "input_cost_usd": 0.017412,
+          "output_cost_usd": 0.0653,
+          "total_cost_usd": 0.082712,
+          "reasoning_cost_share_usd": 0.0649,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.559272,
+        "cumulative_total_tokens": 94026,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 45.691,
+            "request_id": "req_98559836457247a1aae164276265db0c"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 37,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "r4r2/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R2K b - - 2 19",
+      "san": "Rg8",
+      "uci": "f8g8",
+      "started_at": "2026-09-08T06:24:53.127+00:00",
+      "finished_at": "2026-09-08T06:24:53.325+00:00",
+      "response_seconds": 0.19783854199340567,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 38,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "r5r1/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R2K w - - 3 20",
+      "san": "g6",
+      "uci": "g5g6",
+      "started_at": "2026-09-08T06:24:53.325+00:00",
+      "finished_at": "2026-09-08T06:25:16.316+00:00",
+      "response_seconds": 22.9904938749969,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8\n\nCurrent position (FEN):\nr5r1/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R2K w - - 3 20\n\nIt is your move (White, move 20).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "g6",
+      "normalized_response": "g6",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 38,
+        "move_number": 20,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8"
+        ],
+        "fen": "r5r1/ppqn1pkn/4p3/2ppP1PB/3P2Q1/2N1B3/PPP4P/R3R2K w - - 3 20",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 38,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "38",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa07ae5487d1a90ace5c9f6792cb",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1153
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa358bd887d1bab39e40bc42904b",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa07ae5487d1a90ace5c9f6792cb",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 13564,
+          "cached_input_tokens": 11856,
+          "output_tokens": 639,
+          "reasoning_tokens": 631,
+          "total_tokens": 14203
+        },
+        "raw_usage": {
+          "input_tokens": 13564,
+          "input_tokens_details": {
+            "cached_tokens": 11856,
+            "cache_write_tokens": 1705
+          },
+          "output_tokens": 639,
+          "output_tokens_details": {
+            "reasoning_tokens": 631
+          },
+          "total_tokens": 14203
+        },
+        "cost": {
+          "input_tokens": 13564,
+          "cached_input_tokens": 11856,
+          "uncached_input_tokens": 1708,
+          "output_tokens": 639,
+          "reasoning_tokens": 631,
+          "total_tokens": 14203,
+          "input_cost_usd": 0.028936,
+          "output_cost_usd": 0.03195,
+          "total_cost_usd": 0.060886,
+          "reasoning_cost_share_usd": 0.03155,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.620158,
+        "cumulative_total_tokens": 108229,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 22.99,
+            "request_id": "req_d4b1147fb64f475694f65048c145927a"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 39,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "r5r1/ppqn1pkn/4p1P1/2ppP2B/3P2Q1/2N1B3/PPP4P/R3R2K b - - 0 20",
+      "san": "fxg6",
+      "uci": "f7g6",
+      "started_at": "2026-09-08T06:25:16.316+00:00",
+      "finished_at": "2026-09-08T06:25:16.504+00:00",
+      "response_seconds": 0.18776704199262895,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 40,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "r5r1/ppqn2kn/4p1p1/2ppP2B/3P2Q1/2N1B3/PPP4P/R3R2K w - - 0 21",
+      "san": "Qxg6+",
+      "uci": "g4g6",
+      "started_at": "2026-09-08T06:25:16.504+00:00",
+      "finished_at": "2026-09-08T06:25:18.857+00:00",
+      "response_seconds": 2.352920916979201,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6\n\nCurrent position (FEN):\nr5r1/ppqn2kn/4p1p1/2ppP2B/3P2Q1/2N1B3/PPP4P/R3R2K w - - 0 21\n\nIt is your move (White, move 21).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Qxg6+",
+      "normalized_response": "Qxg6+",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 40,
+        "move_number": 21,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6"
+        ],
+        "fen": "r5r1/ppqn2kn/4p1p1/2ppP2B/3P2Q1/2N1B3/PPP4P/R3R2K w - - 0 21",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 40,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "40",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa358bd887d1bab39e40bc42904b",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1165
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa4cb6f887d1bb750ee87e09bf00",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa358bd887d1bab39e40bc42904b",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 14611,
+          "cached_input_tokens": 13561,
+          "output_tokens": 22,
+          "reasoning_tokens": 11,
+          "total_tokens": 14633
+        },
+        "raw_usage": {
+          "input_tokens": 14611,
+          "input_tokens_details": {
+            "cached_tokens": 13561,
+            "cache_write_tokens": 1047
+          },
+          "output_tokens": 22,
+          "output_tokens_details": {
+            "reasoning_tokens": 11
+          },
+          "total_tokens": 14633
+        },
+        "cost": {
+          "input_tokens": 14611,
+          "cached_input_tokens": 13561,
+          "uncached_input_tokens": 1050,
+          "output_tokens": 22,
+          "reasoning_tokens": 11,
+          "total_tokens": 14633,
+          "input_cost_usd": 0.024061,
+          "output_cost_usd": 0.0011,
+          "total_cost_usd": 0.025161,
+          "reasoning_cost_share_usd": 0.00055,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.645319,
+        "cumulative_total_tokens": 122862,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 2.353,
+            "request_id": "req_7cd806460c9b4062a0fdc248f7c61a73"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 41,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "r5r1/ppqn2kn/4p1Q1/2ppP2B/3P4/2N1B3/PPP4P/R3R2K b - - 0 21",
+      "san": "Kh8",
+      "uci": "g7h8",
+      "started_at": "2026-09-08T06:25:18.857+00:00",
+      "finished_at": "2026-09-08T06:25:18.997+00:00",
+      "response_seconds": 0.139361291017849,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 42,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "r5rk/ppqn3n/4p1Q1/2ppP2B/3P4/2N1B3/PPP4P/R3R2K w - - 1 22",
+      "san": "Qxe6",
+      "uci": "g6e6",
+      "started_at": "2026-09-08T06:25:18.997+00:00",
+      "finished_at": "2026-09-08T06:25:29.408+00:00",
+      "response_seconds": 10.410221792000812,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8\n\nCurrent position (FEN):\nr5rk/ppqn3n/4p1Q1/2ppP2B/3P4/2N1B3/PPP4P/R3R2K w - - 1 22\n\nIt is your move (White, move 22).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Qxe6",
+      "normalized_response": "Qxe6",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 42,
+        "move_number": 22,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8"
+        ],
+        "fen": "r5rk/ppqn3n/4p1Q1/2ppP2B/3P4/2N1B3/PPP4P/R3R2K w - - 1 22",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 42,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "42",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa4cb6f887d1bb750ee87e09bf00",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1176
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa4f503087d18794e867edc2ec1f",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa4cb6f887d1bb750ee87e09bf00",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 15048,
+          "cached_input_tokens": 14608,
+          "output_tokens": 249,
+          "reasoning_tokens": 240,
+          "total_tokens": 15297
+        },
+        "raw_usage": {
+          "input_tokens": 15048,
+          "input_tokens_details": {
+            "cached_tokens": 14608,
+            "cache_write_tokens": 437
+          },
+          "output_tokens": 249,
+          "output_tokens_details": {
+            "reasoning_tokens": 240
+          },
+          "total_tokens": 15297
+        },
+        "cost": {
+          "input_tokens": 15048,
+          "cached_input_tokens": 14608,
+          "uncached_input_tokens": 440,
+          "output_tokens": 249,
+          "reasoning_tokens": 240,
+          "total_tokens": 15297,
+          "input_cost_usd": 0.019008,
+          "output_cost_usd": 0.01245,
+          "total_cost_usd": 0.031458,
+          "reasoning_cost_share_usd": 0.012,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.676777,
+        "cumulative_total_tokens": 138159,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 10.41,
+            "request_id": "req_232950cb8dd4433e8b7eafe73f57b57e"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 43,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "r5rk/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP4P/R3R2K b - - 0 22",
+      "san": "Rg2",
+      "uci": "g8g2",
+      "started_at": "2026-09-08T06:25:29.408+00:00",
+      "finished_at": "2026-09-08T06:25:29.522+00:00",
+      "response_seconds": 0.11382120900088921,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 44,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "r6k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3rP/R3R2K w - - 1 23",
+      "san": "Kxg2",
+      "uci": "h1g2",
+      "started_at": "2026-09-08T06:25:29.522+00:00",
+      "finished_at": "2026-09-08T06:25:43.269+00:00",
+      "response_seconds": 13.746579083002871,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2\n\nCurrent position (FEN):\nr6k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3rP/R3R2K w - - 1 23\n\nIt is your move (White, move 23).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Kxg2",
+      "normalized_response": "Kxg2",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 44,
+        "move_number": 23,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2"
+        ],
+        "fen": "r6k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3rP/R3R2K w - - 1 23",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 44,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "44",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa4f503087d18794e867edc2ec1f",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1187
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa59f84087d192230d103f69cce4",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa4f503087d18794e867edc2ec1f",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 15720,
+          "cached_input_tokens": 15045,
+          "output_tokens": 312,
+          "reasoning_tokens": 302,
+          "total_tokens": 16032
+        },
+        "raw_usage": {
+          "input_tokens": 15720,
+          "input_tokens_details": {
+            "cached_tokens": 15045,
+            "cache_write_tokens": 672
+          },
+          "output_tokens": 312,
+          "output_tokens_details": {
+            "reasoning_tokens": 302
+          },
+          "total_tokens": 16032
+        },
+        "cost": {
+          "input_tokens": 15720,
+          "cached_input_tokens": 15045,
+          "uncached_input_tokens": 675,
+          "output_tokens": 312,
+          "reasoning_tokens": 302,
+          "total_tokens": 16032,
+          "input_cost_usd": 0.021795,
+          "output_cost_usd": 0.0156,
+          "total_cost_usd": 0.037395,
+          "reasoning_cost_share_usd": 0.0151,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.714172,
+        "cumulative_total_tokens": 154191,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 13.746,
+            "request_id": "req_730a85cbc31441ac8c68e84dd937368e"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 45,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "r6k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R3R3 b - - 0 23",
+      "san": "Rf8",
+      "uci": "a8f8",
+      "started_at": "2026-09-08T06:25:43.269+00:00",
+      "finished_at": "2026-09-08T06:25:43.371+00:00",
+      "response_seconds": 0.10218570800498128,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 46,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "5r1k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R3R3 w - - 1 24",
+      "san": "Rf1",
+      "uci": "e1f1",
+      "started_at": "2026-09-08T06:25:43.371+00:00",
+      "finished_at": "2026-09-08T06:25:57.707+00:00",
+      "response_seconds": 14.334936625004048,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8\n\nCurrent position (FEN):\n5r1k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R3R3 w - - 1 24\n\nIt is your move (White, move 24).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Rf1",
+      "normalized_response": "Rf1",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 46,
+        "move_number": 24,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8"
+        ],
+        "fen": "5r1k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R3R3 w - - 1 24",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 46,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "46",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa59f84087d192230d103f69cce4",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1200
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa679e0487d1b9b28f73727ea172",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa59f84087d192230d103f69cce4",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 16464,
+          "cached_input_tokens": 15717,
+          "output_tokens": 355,
+          "reasoning_tokens": 347,
+          "total_tokens": 16819
+        },
+        "raw_usage": {
+          "input_tokens": 16464,
+          "input_tokens_details": {
+            "cached_tokens": 15717,
+            "cache_write_tokens": 744
+          },
+          "output_tokens": 355,
+          "output_tokens_details": {
+            "reasoning_tokens": 347
+          },
+          "total_tokens": 16819
+        },
+        "cost": {
+          "input_tokens": 16464,
+          "cached_input_tokens": 15717,
+          "uncached_input_tokens": 747,
+          "output_tokens": 355,
+          "reasoning_tokens": 347,
+          "total_tokens": 16819,
+          "input_cost_usd": 0.023187,
+          "output_cost_usd": 0.01775,
+          "total_cost_usd": 0.040937,
+          "reasoning_cost_share_usd": 0.01735,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.755109,
+        "cumulative_total_tokens": 171010,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 14.335,
+            "request_id": "req_de16e96405d947d989862bcc08404b3d"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 47,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "5r1k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R4R2 b - - 2 24",
+      "san": "Rxf1",
+      "uci": "f8f1",
+      "started_at": "2026-09-08T06:25:57.707+00:00",
+      "finished_at": "2026-09-08T06:25:57.803+00:00",
+      "response_seconds": 0.09564637500443496,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 48,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "7k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R4r2 w - - 0 25",
+      "san": "Rxf1",
+      "uci": "a1f1",
+      "started_at": "2026-09-08T06:25:57.803+00:00",
+      "finished_at": "2026-09-08T06:26:00.966+00:00",
+      "response_seconds": 3.1624757499957923,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1\n\nCurrent position (FEN):\n7k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R4r2 w - - 0 25\n\nIt is your move (White, move 25).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Rxf1",
+      "normalized_response": "Rxf1",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 48,
+        "move_number": 25,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1"
+        ],
+        "fen": "7k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/R4r2 w - - 0 25",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 48,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "48",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa679e0487d1b9b28f73727ea172",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1211
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa76074087d1aeb8c6ab2202911a",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa679e0487d1b9b28f73727ea172",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 17258,
+          "cached_input_tokens": 16461,
+          "output_tokens": 29,
+          "reasoning_tokens": 20,
+          "total_tokens": 17287
+        },
+        "raw_usage": {
+          "input_tokens": 17258,
+          "input_tokens_details": {
+            "cached_tokens": 16461,
+            "cache_write_tokens": 794
+          },
+          "output_tokens": 29,
+          "output_tokens_details": {
+            "reasoning_tokens": 20
+          },
+          "total_tokens": 17287
+        },
+        "cost": {
+          "input_tokens": 17258,
+          "cached_input_tokens": 16461,
+          "uncached_input_tokens": 797,
+          "output_tokens": 29,
+          "reasoning_tokens": 20,
+          "total_tokens": 17287,
+          "input_cost_usd": 0.024431,
+          "output_cost_usd": 0.00145,
+          "total_cost_usd": 0.025881,
+          "reasoning_cost_share_usd": 0.001,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.78099,
+        "cumulative_total_tokens": 188297,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 3.162,
+            "request_id": "req_d391957f6cee4394982ef12d42d5d93a"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 49,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "7k/ppqn3n/4Q3/2ppP2B/3P4/2N1B3/PPP3KP/5R2 b - - 0 25",
+      "san": "Nb6",
+      "uci": "d7b6",
+      "started_at": "2026-09-08T06:26:00.966+00:00",
+      "finished_at": "2026-09-08T06:26:01.055+00:00",
+      "response_seconds": 0.08882649999577552,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 50,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "7k/ppq4n/1n2Q3/2ppP2B/3P4/2N1B3/PPP3KP/5R2 w - - 1 26",
+      "san": "Rf7",
+      "uci": "f1f7",
+      "started_at": "2026-09-08T06:26:01.055+00:00",
+      "finished_at": "2026-09-08T06:26:11.833+00:00",
+      "response_seconds": 10.778194708022056,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6\n\nCurrent position (FEN):\n7k/ppq4n/1n2Q3/2ppP2B/3P4/2N1B3/PPP3KP/5R2 w - - 1 26\n\nIt is your move (White, move 26).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Rf7",
+      "normalized_response": "Rf7",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 50,
+        "move_number": 26,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6"
+        ],
+        "fen": "7k/ppq4n/1n2Q3/2ppP2B/3P4/2N1B3/PPP3KP/5R2 w - - 1 26",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 50,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "50",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa76074087d1aeb8c6ab2202911a",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1224
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa79497487d1b05b88895ec51022",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa76074087d1aeb8c6ab2202911a",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 17736,
+          "cached_input_tokens": 17255,
+          "output_tokens": 263,
+          "reasoning_tokens": 255,
+          "total_tokens": 17999
+        },
+        "raw_usage": {
+          "input_tokens": 17736,
+          "input_tokens_details": {
+            "cached_tokens": 17255,
+            "cache_write_tokens": 478
+          },
+          "output_tokens": 263,
+          "output_tokens_details": {
+            "reasoning_tokens": 255
+          },
+          "total_tokens": 17999
+        },
+        "cost": {
+          "input_tokens": 17736,
+          "cached_input_tokens": 17255,
+          "uncached_input_tokens": 481,
+          "output_tokens": 263,
+          "reasoning_tokens": 255,
+          "total_tokens": 17999,
+          "input_cost_usd": 0.022065,
+          "output_cost_usd": 0.01315,
+          "total_cost_usd": 0.035215,
+          "reasoning_cost_share_usd": 0.01275,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.816205,
+        "cumulative_total_tokens": 206296,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 10.778,
+            "request_id": "req_e6b520c9f95245a397834154519f2da6"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 51,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "7k/ppq2R1n/1n2Q3/2ppP2B/3P4/2N1B3/PPP3KP/8 b - - 2 26",
+      "san": "Nc4",
+      "uci": "b6c4",
+      "started_at": "2026-09-08T06:26:11.833+00:00",
+      "finished_at": "2026-09-08T06:26:11.926+00:00",
+      "response_seconds": 0.09242812500451691,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 52,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "7k/ppq2R1n/4Q3/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 3 27",
+      "san": "Qe8+",
+      "uci": "e6e8",
+      "started_at": "2026-09-08T06:26:11.926+00:00",
+      "finished_at": "2026-09-08T06:26:37.208+00:00",
+      "response_seconds": 25.280961999989813,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6 26. Rf7 Nc4\n\nCurrent position (FEN):\n7k/ppq2R1n/4Q3/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 3 27\n\nIt is your move (White, move 27).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Qe8+",
+      "normalized_response": "Qe8+",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 52,
+        "move_number": 27,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6",
+          "Rf7",
+          "Nc4"
+        ],
+        "fen": "7k/ppq2R1n/4Q3/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 3 27",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 52,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "52",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa79497487d1b05b88895ec51022",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1235
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa8425b087d1bd15ec00859316b9",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa79497487d1b05b88895ec51022",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 18455,
+          "cached_input_tokens": 17733,
+          "output_tokens": 751,
+          "reasoning_tokens": 741,
+          "total_tokens": 19206
+        },
+        "raw_usage": {
+          "input_tokens": 18455,
+          "input_tokens_details": {
+            "cached_tokens": 17733,
+            "cache_write_tokens": 719
+          },
+          "output_tokens": 751,
+          "output_tokens_details": {
+            "reasoning_tokens": 741
+          },
+          "total_tokens": 19206
+        },
+        "cost": {
+          "input_tokens": 18455,
+          "cached_input_tokens": 17733,
+          "uncached_input_tokens": 722,
+          "output_tokens": 751,
+          "reasoning_tokens": 741,
+          "total_tokens": 19206,
+          "input_cost_usd": 0.024953,
+          "output_cost_usd": 0.03755,
+          "total_cost_usd": 0.062503,
+          "reasoning_cost_share_usd": 0.03705,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.878708,
+        "cumulative_total_tokens": 225502,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 25.281,
+            "request_id": "req_0bfbe220a031459f99432e7daf82d2b6"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 53,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "4Q2k/ppq2R1n/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 b - - 4 27",
+      "san": "Nf8",
+      "uci": "h7f8",
+      "started_at": "2026-09-08T06:26:37.208+00:00",
+      "finished_at": "2026-09-08T06:26:37.209+00:00",
+      "response_seconds": 0.00129720798577182,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 54,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "4Qn1k/ppq2R2/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 5 28",
+      "san": "Rxf8+",
+      "uci": "f7f8",
+      "started_at": "2026-09-08T06:26:37.209+00:00",
+      "finished_at": "2026-09-08T06:26:40.908+00:00",
+      "response_seconds": 3.698895542009268,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6 26. Rf7 Nc4 27. Qe8+ Nf8\n\nCurrent position (FEN):\n4Qn1k/ppq2R2/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 5 28\n\nIt is your move (White, move 28).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Rxf8+",
+      "normalized_response": "Rxf8+",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 54,
+        "move_number": 28,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6",
+          "Rf7",
+          "Nc4",
+          "Qe8+",
+          "Nf8"
+        ],
+        "fen": "4Qn1k/ppq2R2/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 5 28",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 54,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "54",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa8425b087d1bd15ec00859316b9",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1248
+        },
+        "response_id": "resp_0144d3a641506b31006a9faa9d6d5887d192bdd4b02738986e",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa8425b087d1bd15ec00859316b9",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 19672,
+          "cached_input_tokens": 18452,
+          "output_tokens": 8,
+          "reasoning_tokens": 0,
+          "total_tokens": 19680
+        },
+        "raw_usage": {
+          "input_tokens": 19672,
+          "input_tokens_details": {
+            "cached_tokens": 18452,
+            "cache_write_tokens": 1217
+          },
+          "output_tokens": 8,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 19680
+        },
+        "cost": {
+          "input_tokens": 19672,
+          "cached_input_tokens": 18452,
+          "uncached_input_tokens": 1220,
+          "output_tokens": 8,
+          "reasoning_tokens": 0,
+          "total_tokens": 19680,
+          "input_cost_usd": 0.030652,
+          "output_cost_usd": 0.0004,
+          "total_cost_usd": 0.031052,
+          "reasoning_cost_share_usd": 0.0,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 0.90976,
+        "cumulative_total_tokens": 245182,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 3.699,
+            "request_id": "req_13a5bd3f42f549e9816417ac0c6f14b4"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 55,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "4QR1k/ppq5/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 b - - 0 28",
+      "san": "Kg7",
+      "uci": "h8g7",
+      "started_at": "2026-09-08T06:26:40.909+00:00",
+      "finished_at": "2026-09-08T06:26:40.912+00:00",
+      "response_seconds": 0.0038478329952340573,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 56,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "4QR2/ppq3k1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 1 29",
+      "san": "Rf7+",
+      "uci": "f8f7",
+      "started_at": "2026-09-08T06:26:40.912+00:00",
+      "finished_at": "2026-09-08T06:27:36.057+00:00",
+      "response_seconds": 55.14328254200518,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6 26. Rf7 Nc4 27. Qe8+ Nf8 28. Rxf8+ Kg7\n\nCurrent position (FEN):\n4QR2/ppq3k1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 1 29\n\nIt is your move (White, move 29).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Rf7+",
+      "normalized_response": "Rf7+",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 56,
+        "move_number": 29,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6",
+          "Rf7",
+          "Nc4",
+          "Qe8+",
+          "Nf8",
+          "Rxf8+",
+          "Kg7"
+        ],
+        "fen": "4QR2/ppq3k1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 1 29",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 56,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "56",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faa9d6d5887d192bdd4b02738986e",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1261
+        },
+        "response_id": "resp_0144d3a641506b31006a9faaa126d487d1bde8eee73e498d15",
+        "previous_response_id": "resp_0144d3a641506b31006a9faa9d6d5887d192bdd4b02738986e",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 20153,
+          "cached_input_tokens": 19669,
+          "output_tokens": 1707,
+          "reasoning_tokens": 1698,
+          "total_tokens": 21860
+        },
+        "raw_usage": {
+          "input_tokens": 20153,
+          "input_tokens_details": {
+            "cached_tokens": 19669,
+            "cache_write_tokens": 481
+          },
+          "output_tokens": 1707,
+          "output_tokens_details": {
+            "reasoning_tokens": 1698
+          },
+          "total_tokens": 21860
+        },
+        "cost": {
+          "input_tokens": 20153,
+          "cached_input_tokens": 19669,
+          "uncached_input_tokens": 484,
+          "output_tokens": 1707,
+          "reasoning_tokens": 1698,
+          "total_tokens": 21860,
+          "input_cost_usd": 0.024509,
+          "output_cost_usd": 0.08535,
+          "total_cost_usd": 0.109859,
+          "reasoning_cost_share_usd": 0.0849,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 1.019619,
+        "cumulative_total_tokens": 267042,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 55.143,
+            "request_id": "req_266b2e99ce00488c89a791cae2e0b340"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 57,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "4Q3/ppq2Rk1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 b - - 2 29",
+      "san": "Qxf7",
+      "uci": "c7f7",
+      "started_at": "2026-09-08T06:27:36.057+00:00",
+      "finished_at": "2026-09-08T06:27:36.090+00:00",
+      "response_seconds": 0.03348908299813047,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 58,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "4Q3/pp3qk1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 0 30",
+      "san": "Qxf7+",
+      "uci": "e8f7",
+      "started_at": "2026-09-08T06:27:36.090+00:00",
+      "finished_at": "2026-09-08T06:27:38.440+00:00",
+      "response_seconds": 2.3486878749972675,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6 26. Rf7 Nc4 27. Qe8+ Nf8 28. Rxf8+ Kg7 29. Rf7+ Qxf7\n\nCurrent position (FEN):\n4Q3/pp3qk1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 0 30\n\nIt is your move (White, move 30).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Qxf7+",
+      "normalized_response": "Qxf7+",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 58,
+        "move_number": 30,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6",
+          "Rf7",
+          "Nc4",
+          "Qe8+",
+          "Nf8",
+          "Rxf8+",
+          "Kg7",
+          "Rf7+",
+          "Qxf7"
+        ],
+        "fen": "4Q3/pp3qk1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 0 30",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 58,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "58",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faaa126d487d1bde8eee73e498d15",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1274
+        },
+        "response_id": "resp_0144d3a641506b31006a9faad84da887d1a2e935cbba1c379c",
+        "previous_response_id": "resp_0144d3a641506b31006a9faaa126d487d1bde8eee73e498d15",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 22343,
+          "cached_input_tokens": 20150,
+          "output_tokens": 8,
+          "reasoning_tokens": 0,
+          "total_tokens": 22351
+        },
+        "raw_usage": {
+          "input_tokens": 22343,
+          "input_tokens_details": {
+            "cached_tokens": 20150,
+            "cache_write_tokens": 2190
+          },
+          "output_tokens": 8,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 22351
+        },
+        "cost": {
+          "input_tokens": 22343,
+          "cached_input_tokens": 20150,
+          "uncached_input_tokens": 2193,
+          "output_tokens": 8,
+          "reasoning_tokens": 0,
+          "total_tokens": 22351,
+          "input_cost_usd": 0.04208,
+          "output_cost_usd": 0.0004,
+          "total_cost_usd": 0.04248,
+          "reasoning_cost_share_usd": 0.0,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 1.062099,
+        "cumulative_total_tokens": 289393,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 2.349,
+            "request_id": "req_42d7158c10054176987bd23e54b4915e"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 59,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "8/pp3Qk1/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 b - - 0 30",
+      "san": "Kh8",
+      "uci": "g7h8",
+      "started_at": "2026-09-08T06:27:38.440+00:00",
+      "finished_at": "2026-09-08T06:27:38.472+00:00",
+      "response_seconds": 0.031648000003769994,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 60,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "7k/pp3Q2/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 1 31",
+      "san": "Bh6",
+      "uci": "e3h6",
+      "started_at": "2026-09-08T06:27:38.472+00:00",
+      "finished_at": "2026-09-08T06:27:53.284+00:00",
+      "response_seconds": 14.81172187498305,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6 26. Rf7 Nc4 27. Qe8+ Nf8 28. Rxf8+ Kg7 29. Rf7+ Qxf7 30. Qxf7+ Kh8\n\nCurrent position (FEN):\n7k/pp3Q2/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 1 31\n\nIt is your move (White, move 31).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Bh6",
+      "normalized_response": "Bh6",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 60,
+        "move_number": 31,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6",
+          "Rf7",
+          "Nc4",
+          "Qe8+",
+          "Nf8",
+          "Rxf8+",
+          "Kg7",
+          "Rf7+",
+          "Qxf7",
+          "Qxf7+",
+          "Kh8"
+        ],
+        "fen": "7k/pp3Q2/8/2ppP2B/2nP4/2N1B3/PPP3KP/8 w - - 1 31",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 60,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "60",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faad84da887d1a2e935cbba1c379c",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1286
+        },
+        "response_id": "resp_0144d3a641506b31006a9faadaad6c87d18bbd38d2cd952c47",
+        "previous_response_id": "resp_0144d3a641506b31006a9faad84da887d1a2e935cbba1c379c",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 22841,
+          "cached_input_tokens": 22340,
+          "output_tokens": 362,
+          "reasoning_tokens": 354,
+          "total_tokens": 23203
+        },
+        "raw_usage": {
+          "input_tokens": 22841,
+          "input_tokens_details": {
+            "cached_tokens": 22340,
+            "cache_write_tokens": 498
+          },
+          "output_tokens": 362,
+          "output_tokens_details": {
+            "reasoning_tokens": 354
+          },
+          "total_tokens": 23203
+        },
+        "cost": {
+          "input_tokens": 22841,
+          "cached_input_tokens": 22340,
+          "uncached_input_tokens": 501,
+          "output_tokens": 362,
+          "reasoning_tokens": 354,
+          "total_tokens": 23203,
+          "input_cost_usd": 0.02735,
+          "output_cost_usd": 0.0181,
+          "total_cost_usd": 0.04545,
+          "reasoning_cost_share_usd": 0.0177,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 1.107549,
+        "cumulative_total_tokens": 312596,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 14.812,
+            "request_id": "req_add4ece0c1d843e5a3cfb893caddc2f9"
+          }
+        ]
+      }
+    },
+    {
+      "ply": 61,
+      "actor": "opponent",
+      "color": "black",
+      "fen_before": "7k/pp3Q2/7B/2ppP2B/2nP4/2N5/PPP3KP/8 b - - 2 31",
+      "san": "a5",
+      "uci": "a7a5",
+      "started_at": "2026-09-08T06:27:53.284+00:00",
+      "finished_at": "2026-09-08T06:27:53.299+00:00",
+      "response_seconds": 0.01407954201567918,
+      "prompt": null,
+      "raw_response": null,
+      "normalized_response": null,
+      "legal": null,
+      "rejection_reason": null,
+      "view": null,
+      "api": null
+    },
+    {
+      "ply": 62,
+      "actor": "ai",
+      "color": "white",
+      "fen_before": "7k/1p3Q2/7B/p1ppP2B/2nP4/2N5/PPP3KP/8 w - - 0 32",
+      "san": "Qg7#",
+      "uci": "f7g7",
+      "started_at": "2026-09-08T06:27:53.299+00:00",
+      "finished_at": "2026-09-08T06:27:56.574+00:00",
+      "response_seconds": 3.274276791984448,
+      "prompt": "You are playing a game of chess as White.\n\nYou are playing from your own chess understanding alone. No chess program, opening reference, endgame reference or analysis tool is available to you, and no output from any such tool appears below. Play using only the information supplied in this message. Do not use any external tool and do not use any outside source of information. If a move you give is illegal in the position, the game is immediately recorded as a loss.\n\nMoves played so far (chronological, standard algebraic notation):\n1. e4 c6 2. d4 d5 3. Nc3 h5 4. Nf3 Bg4 5. Be2 Bxf3 6. Bxf3 e6 7. O-O h4 8. Re1 Be7 9. Bf4 g5 10. Be3 Nf6 11. e5 Nh7 12. Bh5 O-O 13. Qg4 Kg7 14. f4 c5 15. fxg5 h3 16. gxh3 Bxg5 17. h4 Nd7 18. hxg5 Qc7 19. Kh1 Rg8 20. g6 fxg6 21. Qxg6+ Kh8 22. Qxe6 Rg2 23. Kxg2 Rf8 24. Rf1 Rxf1 25. Rxf1 Nb6 26. Rf7 Nc4 27. Qe8+ Nf8 28. Rxf8+ Kg7 29. Rf7+ Qxf7 30. Qxf7+ Kh8 31. Bh6 a5\n\nCurrent position (FEN):\n7k/1p3Q2/7B/p1ppP2B/2nP4/2N5/PPP3KP/8 w - - 0 32\n\nIt is your move (White, move 32).\nRespond with exactly one chess move in standard algebraic notation (SAN) and nothing else. No move number, no punctuation, no explanation, no commentary, no analysis, no markdown, no additional text of any kind. Examples of a well formed response: e4 / Nf3 / exd5 / O-O / Qxh7# / e8=Q",
+      "raw_response": "Qg7#",
+      "normalized_response": "Qg7#",
+      "legal": true,
+      "rejection_reason": null,
+      "view": {
+        "protocol": "fen",
+        "ai_color": "white",
+        "ply": 62,
+        "move_number": 32,
+        "history_san": [
+          "e4",
+          "c6",
+          "d4",
+          "d5",
+          "Nc3",
+          "h5",
+          "Nf3",
+          "Bg4",
+          "Be2",
+          "Bxf3",
+          "Bxf3",
+          "e6",
+          "O-O",
+          "h4",
+          "Re1",
+          "Be7",
+          "Bf4",
+          "g5",
+          "Be3",
+          "Nf6",
+          "e5",
+          "Nh7",
+          "Bh5",
+          "O-O",
+          "Qg4",
+          "Kg7",
+          "f4",
+          "c5",
+          "fxg5",
+          "h3",
+          "gxh3",
+          "Bxg5",
+          "h4",
+          "Nd7",
+          "hxg5",
+          "Qc7",
+          "Kh1",
+          "Rg8",
+          "g6",
+          "fxg6",
+          "Qxg6+",
+          "Kh8",
+          "Qxe6",
+          "Rg2",
+          "Kxg2",
+          "Rf8",
+          "Rf1",
+          "Rxf1",
+          "Rxf1",
+          "Nb6",
+          "Rf7",
+          "Nc4",
+          "Qe8+",
+          "Nf8",
+          "Rxf8+",
+          "Kg7",
+          "Rf7+",
+          "Qxf7",
+          "Qxf7+",
+          "Kh8",
+          "Bh6",
+          "a5"
+        ],
+        "fen": "7k/1p3Q2/7B/p1ppP2B/2nP4/2N5/PPP3KP/8 w - - 0 32",
+        "legal_moves_san": null,
+        "prompt_version": 2
+      },
+      "api": {
+        "ply": 62,
+        "request": {
+          "model": "gpt-6-astra",
+          "reasoning": {
+            "effort": "high"
+          },
+          "tools": [],
+          "store": true,
+          "metadata": {
+            "benchmark": "blunder-zero-ai-chess-benchmark",
+            "game_id": "API-PILOT-FEN-v0.1-g1-astra-white",
+            "ply": "62",
+            "protocol": "fen"
+          },
+          "previous_response_id": "resp_0144d3a641506b31006a9faadaad6c87d18bbd38d2cd952c47",
+          "max_output_tokens": 12000,
+          "input_length_chars": 1297
+        },
+        "response_id": "resp_0144d3a641506b31006a9faae9838087d1a5e7f3a53d5f8463",
+        "previous_response_id": "resp_0144d3a641506b31006a9faadaad6c87d18bbd38d2cd952c47",
+        "status": "completed",
+        "incomplete_details": null,
+        "model_reported": "gpt-6-astra",
+        "service_tier_reported": "default",
+        "reasoning_requested": "high",
+        "reasoning_effective": "high",
+        "usage": {
+          "input_tokens": 23700,
+          "cached_input_tokens": 22838,
+          "output_tokens": 7,
+          "reasoning_tokens": 0,
+          "total_tokens": 23707
+        },
+        "raw_usage": {
+          "input_tokens": 23700,
+          "input_tokens_details": {
+            "cached_tokens": 22838,
+            "cache_write_tokens": 859
+          },
+          "output_tokens": 7,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 23707
+        },
+        "cost": {
+          "input_tokens": 23700,
+          "cached_input_tokens": 22838,
+          "uncached_input_tokens": 862,
+          "output_tokens": 7,
+          "reasoning_tokens": 0,
+          "total_tokens": 23707,
+          "input_cost_usd": 0.031458,
+          "output_cost_usd": 0.00035,
+          "total_cost_usd": 0.031808,
+          "reasoning_cost_share_usd": 0.0,
+          "long_context": false,
+          "reasoning_included_in_output_cost": true
+        },
+        "cumulative_cost_usd": 1.139357,
+        "cumulative_total_tokens": 336303,
+        "attempts": [
+          {
+            "attempt": 1,
+            "outcome": "response",
+            "elapsed_seconds": 3.274,
+            "request_id": "req_8dbfb18ae6f14dd2bb4b9bfa9bdd4d37"
+          }
+        ]
+      }
+    }
+  ],
+  "api": {
+    "calls": 32,
+    "input_tokens": 324571,
+    "cached_input_tokens": 299217,
+    "output_tokens": 11732,
+    "reasoning_tokens": 11467,
+    "total_tokens": 336303,
+    "input_cost_usd": 0.552757,
+    "output_cost_usd": 0.5866,
+    "total_cost_usd": 1.139357,
+    "reasoning_included_in_output_cost": true,
+    "max_cost_usd": 25.0,
+    "max_total_tokens": null,
+    "pricing": {
+      "model": "gpt-6-astra",
+      "input_per_mtok": 10.0,
+      "cached_input_per_mtok": 1.0,
+      "output_per_mtok": 50.0,
+      "long_input_per_mtok": 20.0,
+      "long_cached_input_per_mtok": 2.0,
+      "long_output_per_mtok": 75.0,
+      "long_context_threshold_tokens": 272000,
+      "currency": "USD",
+      "service_tier": "standard",
+      "verified_at": "2026-09-08T00:00:00Z",
+      "source": "https://developers.openai.com/api/docs/pricing",
+      "notes": [
+        "Reasoning tokens are billed as output tokens and are already included in usage.output_tokens. They are never added on top.",
+        "Long context rates apply to a request whose input exceeds long_context_input_threshold_tokens.",
+        "The API does not expose a cache-write token count, so cache_write is recorded here for reference but is not used in the computed cost. Computed cost is therefore a lower bound if a request writes new prompt cache entries.",
+        "Batch and fast service tiers have different rates and are not used by this benchmark."
+      ],
+      "path": "/Users/felix/Documents/blunder-zero-ai-chess-benchmark/pricing/gpt-6-astra.json"
+    },
+    "max_output_tokens": 12000,
+    "max_single_call_exposure": {
+      "max_output_tokens": 12000,
+      "output_cost_bound_usd": 0.6,
+      "assumed_input_tokens": 23700,
+      "input_cost_at_assumed_usd": 0.237,
+      "single_call_bound_at_assumed_usd": 0.837,
+      "input_cost_at_short_context_threshold_usd": 2.72,
+      "observed_max_input_tokens": 23700,
+      "note": "The guard is metered on usage the API reports. One in flight request can still land after the cap is reached, so the cap is not a billing ceiling. Cache write tokens are not exposed by the API and are not included in any figure here."
+    },
+    "response_ids": [
+      "resp_0144d3a641506b31006a9fa91c3aa487d1ad38c5f46bd7ef08",
+      "resp_0144d3a641506b31006a9fa91fab6c87d1b1b130e9d5e42d2d",
+      "resp_0144d3a641506b31006a9fa923a00087d19f51171bd603c3ec",
+      "resp_0144d3a641506b31006a9fa9263cd487d1af3e50c9e2fecb63",
+      "resp_0144d3a641506b31006a9fa9296e6087d19f9be91dbaf5b6f4",
+      "resp_0144d3a641506b31006a9fa92f2f5087d1ae73e352ddae2929",
+      "resp_0144d3a641506b31006a9fa9315fac87d1898cc61b41030cb6",
+      "resp_0144d3a641506b31006a9fa9353ce887d18b045d8924380d18",
+      "resp_0144d3a641506b31006a9fa93a2b4c87d18caac1cfe24865c1",
+      "resp_0144d3a641506b31006a9fa942db2887d18c8b8299ab1b7af9",
+      "resp_0144d3a641506b31006a9fa94a782887d1a95b1dfc3e1d7529",
+      "resp_0144d3a641506b31006a9fa972521887d19e262551609ec391",
+      "resp_0144d3a641506b31006a9fa980ec5887d1b374587ff168b8ac",
+      "resp_0144d3a641506b31006a9fa98b051087d1a97d3335d0cfcd03",
+      "resp_0144d3a641506b31006a9fa99827cc87d18332097eb2ed9746",
+      "resp_0144d3a641506b31006a9fa9aedeec87d1a379a1799544c7b8",
+      "resp_0144d3a641506b31006a9fa9dce25087d1b74edd264a2d1a7b",
+      "resp_0144d3a641506b31006a9fa9fccb7c87d1bdc9ebd0d78e8de2",
+      "resp_0144d3a641506b31006a9faa07ae5487d1a90ace5c9f6792cb",
+      "resp_0144d3a641506b31006a9faa358bd887d1bab39e40bc42904b",
+      "resp_0144d3a641506b31006a9faa4cb6f887d1bb750ee87e09bf00",
+      "resp_0144d3a641506b31006a9faa4f503087d18794e867edc2ec1f",
+      "resp_0144d3a641506b31006a9faa59f84087d192230d103f69cce4",
+      "resp_0144d3a641506b31006a9faa679e0487d1b9b28f73727ea172",
+      "resp_0144d3a641506b31006a9faa76074087d1aeb8c6ab2202911a",
+      "resp_0144d3a641506b31006a9faa79497487d1b05b88895ec51022",
+      "resp_0144d3a641506b31006a9faa8425b087d1bd15ec00859316b9",
+      "resp_0144d3a641506b31006a9faa9d6d5887d192bdd4b02738986e",
+      "resp_0144d3a641506b31006a9faaa126d487d1bde8eee73e498d15",
+      "resp_0144d3a641506b31006a9faad84da887d1a2e935cbba1c379c",
+      "resp_0144d3a641506b31006a9faadaad6c87d18bbd38d2cd952c47",
+      "resp_0144d3a641506b31006a9faae9838087d1a5e7f3a53d5f8463"
+    ]
+  },
+  "infrastructure_failure": null,
+  "analysis": {
+    "engine": {
+      "engine_name": "Stockfish 18",
+      "engine_author": "the Stockfish developers (see AUTHORS file)",
+      "depth": 18,
+      "options": {
+        "Threads": 1,
+        "Hash": 128
+      },
+      "multipv": 1
+    },
+    "thresholds": {
+      "inaccuracy_cp": 50,
+      "mistake_cp": 100,
+      "blunder_cp": 300,
+      "cp_cap": 1000,
+      "mate_score": 10000
+    },
+    "moves": [
+      {
+        "ply": 0,
+        "actor": "ai",
+        "color": "white",
+        "san": "e4",
+        "cp_before": 49,
+        "cp_after": 35,
+        "centipawn_loss": 14,
+        "accuracy": 94.4,
+        "judgement": null
+      },
+      {
+        "ply": 1,
+        "actor": "opponent",
+        "color": "black",
+        "san": "c6",
+        "cp_before": -35,
+        "cp_after": -42,
+        "centipawn_loss": 7,
+        "accuracy": 97.16,
+        "judgement": null
+      },
+      {
+        "ply": 2,
+        "actor": "ai",
+        "color": "white",
+        "san": "d4",
+        "cp_before": 42,
+        "cp_after": 32,
+        "centipawn_loss": 10,
+        "accuracy": 95.97,
+        "judgement": null
+      },
+      {
+        "ply": 3,
+        "actor": "opponent",
+        "color": "black",
+        "san": "d5",
+        "cp_before": -32,
+        "cp_after": -30,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 4,
+        "actor": "ai",
+        "color": "white",
+        "san": "Nc3",
+        "cp_before": 30,
+        "cp_after": 18,
+        "centipawn_loss": 12,
+        "accuracy": 95.16,
+        "judgement": null
+      },
+      {
+        "ply": 5,
+        "actor": "opponent",
+        "color": "black",
+        "san": "h5",
+        "cp_before": -18,
+        "cp_after": -107,
+        "centipawn_loss": 89,
+        "accuracy": 69.44,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 6,
+        "actor": "ai",
+        "color": "white",
+        "san": "Nf3",
+        "cp_before": 107,
+        "cp_after": 99,
+        "centipawn_loss": 8,
+        "accuracy": 96.86,
+        "judgement": null
+      },
+      {
+        "ply": 7,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Bg4",
+        "cp_before": -99,
+        "cp_after": -88,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 8,
+        "actor": "ai",
+        "color": "white",
+        "san": "Be2",
+        "cp_before": 88,
+        "cp_after": 80,
+        "centipawn_loss": 8,
+        "accuracy": 96.82,
+        "judgement": null
+      },
+      {
+        "ply": 9,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Bxf3",
+        "cp_before": -80,
+        "cp_after": -89,
+        "centipawn_loss": 9,
+        "accuracy": 96.43,
+        "judgement": null
+      },
+      {
+        "ply": 10,
+        "actor": "ai",
+        "color": "white",
+        "san": "Bxf3",
+        "cp_before": 89,
+        "cp_after": 83,
+        "centipawn_loss": 6,
+        "accuracy": 97.61,
+        "judgement": null
+      },
+      {
+        "ply": 11,
+        "actor": "opponent",
+        "color": "black",
+        "san": "e6",
+        "cp_before": -83,
+        "cp_after": -91,
+        "centipawn_loss": 8,
+        "accuracy": 96.83,
+        "judgement": null
+      },
+      {
+        "ply": 12,
+        "actor": "ai",
+        "color": "white",
+        "san": "O-O",
+        "cp_before": 91,
+        "cp_after": 101,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 13,
+        "actor": "opponent",
+        "color": "black",
+        "san": "h4",
+        "cp_before": -101,
+        "cp_after": -105,
+        "centipawn_loss": 4,
+        "accuracy": 98.42,
+        "judgement": null
+      },
+      {
+        "ply": 14,
+        "actor": "ai",
+        "color": "white",
+        "san": "Re1",
+        "cp_before": 105,
+        "cp_after": 102,
+        "centipawn_loss": 3,
+        "accuracy": 98.81,
+        "judgement": null
+      },
+      {
+        "ply": 15,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Be7",
+        "cp_before": -102,
+        "cp_after": -96,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 16,
+        "actor": "ai",
+        "color": "white",
+        "san": "Bf4",
+        "cp_before": 96,
+        "cp_after": 102,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 17,
+        "actor": "opponent",
+        "color": "black",
+        "san": "g5",
+        "cp_before": -102,
+        "cp_after": -137,
+        "centipawn_loss": 35,
+        "accuracy": 87.09,
+        "judgement": null
+      },
+      {
+        "ply": 18,
+        "actor": "ai",
+        "color": "white",
+        "san": "Be3",
+        "cp_before": 137,
+        "cp_after": 129,
+        "centipawn_loss": 8,
+        "accuracy": 96.93,
+        "judgement": null
+      },
+      {
+        "ply": 19,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Nf6",
+        "cp_before": -129,
+        "cp_after": -215,
+        "centipawn_loss": 86,
+        "accuracy": 72.36,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 20,
+        "actor": "ai",
+        "color": "white",
+        "san": "e5",
+        "cp_before": 215,
+        "cp_after": 127,
+        "centipawn_loss": 88,
+        "accuracy": 71.79,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 21,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Nh7",
+        "cp_before": -127,
+        "cp_after": -160,
+        "centipawn_loss": 33,
+        "accuracy": 88.02,
+        "judgement": null
+      },
+      {
+        "ply": 22,
+        "actor": "ai",
+        "color": "white",
+        "san": "Bh5",
+        "cp_before": 160,
+        "cp_after": 165,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 23,
+        "actor": "opponent",
+        "color": "black",
+        "san": "O-O",
+        "cp_before": -165,
+        "cp_after": -158,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 24,
+        "actor": "ai",
+        "color": "white",
+        "san": "Qg4",
+        "cp_before": 158,
+        "cp_after": 138,
+        "centipawn_loss": 20,
+        "accuracy": 92.59,
+        "judgement": null
+      },
+      {
+        "ply": 25,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Kg7",
+        "cp_before": -138,
+        "cp_after": -173,
+        "centipawn_loss": 35,
+        "accuracy": 87.48,
+        "judgement": null
+      },
+      {
+        "ply": 26,
+        "actor": "ai",
+        "color": "white",
+        "san": "f4",
+        "cp_before": 173,
+        "cp_after": 171,
+        "centipawn_loss": 2,
+        "accuracy": 99.25,
+        "judgement": null
+      },
+      {
+        "ply": 27,
+        "actor": "opponent",
+        "color": "black",
+        "san": "c5",
+        "cp_before": -171,
+        "cp_after": -200,
+        "centipawn_loss": 29,
+        "accuracy": 89.84,
+        "judgement": null
+      },
+      {
+        "ply": 28,
+        "actor": "ai",
+        "color": "white",
+        "san": "fxg5",
+        "cp_before": 200,
+        "cp_after": 149,
+        "centipawn_loss": 51,
+        "accuracy": 82.61,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 29,
+        "actor": "opponent",
+        "color": "black",
+        "san": "h3",
+        "cp_before": -149,
+        "cp_after": -304,
+        "centipawn_loss": 155,
+        "accuracy": 58.0,
+        "judgement": "mistake"
+      },
+      {
+        "ply": 30,
+        "actor": "ai",
+        "color": "white",
+        "san": "gxh3",
+        "cp_before": 304,
+        "cp_after": 258,
+        "centipawn_loss": 46,
+        "accuracy": 86.29,
+        "judgement": null
+      },
+      {
+        "ply": 31,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Bxg5",
+        "cp_before": -258,
+        "cp_after": -431,
+        "centipawn_loss": 173,
+        "accuracy": 61.0,
+        "judgement": "mistake"
+      },
+      {
+        "ply": 32,
+        "actor": "ai",
+        "color": "white",
+        "san": "h4",
+        "cp_before": 431,
+        "cp_after": 481,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 33,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Nd7",
+        "cp_before": -481,
+        "cp_after": -486,
+        "centipawn_loss": 5,
+        "accuracy": 98.98,
+        "judgement": null
+      },
+      {
+        "ply": 34,
+        "actor": "ai",
+        "color": "white",
+        "san": "hxg5",
+        "cp_before": 486,
+        "cp_after": 489,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 35,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Qc7",
+        "cp_before": -489,
+        "cp_after": -573,
+        "centipawn_loss": 84,
+        "accuracy": 85.94,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 36,
+        "actor": "ai",
+        "color": "white",
+        "san": "Kh1",
+        "cp_before": 573,
+        "cp_after": 603,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 37,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Rg8",
+        "cp_before": -603,
+        "cp_after": -620,
+        "centipawn_loss": 17,
+        "accuracy": 97.61,
+        "judgement": null
+      },
+      {
+        "ply": 38,
+        "actor": "ai",
+        "color": "white",
+        "san": "g6",
+        "cp_before": 620,
+        "cp_after": 589,
+        "centipawn_loss": 31,
+        "accuracy": 95.59,
+        "judgement": null
+      },
+      {
+        "ply": 39,
+        "actor": "opponent",
+        "color": "black",
+        "san": "fxg6",
+        "cp_before": -589,
+        "cp_after": -690,
+        "centipawn_loss": 101,
+        "accuracy": 87.55,
+        "judgement": "mistake"
+      },
+      {
+        "ply": 40,
+        "actor": "ai",
+        "color": "white",
+        "san": "Qxg6+",
+        "cp_before": 690,
+        "cp_after": 607,
+        "centipawn_loss": 83,
+        "accuracy": 89.93,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 41,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Kh8",
+        "cp_before": -607,
+        "cp_after": -612,
+        "centipawn_loss": 5,
+        "accuracy": 99.29,
+        "judgement": null
+      },
+      {
+        "ply": 42,
+        "actor": "ai",
+        "color": "white",
+        "san": "Qxe6",
+        "cp_before": 612,
+        "cp_after": 619,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 43,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Rg2",
+        "cp_before": -619,
+        "cp_after": -815,
+        "centipawn_loss": 196,
+        "accuracy": 81.47,
+        "judgement": "mistake"
+      },
+      {
+        "ply": 44,
+        "actor": "ai",
+        "color": "white",
+        "san": "Kxg2",
+        "cp_before": 815,
+        "cp_after": 812,
+        "centipawn_loss": 3,
+        "accuracy": 99.78,
+        "judgement": null
+      },
+      {
+        "ply": 45,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Rf8",
+        "cp_before": -812,
+        "cp_after": -877,
+        "centipawn_loss": 65,
+        "accuracy": 95.69,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 46,
+        "actor": "ai",
+        "color": "white",
+        "san": "Rf1",
+        "cp_before": 877,
+        "cp_after": 841,
+        "centipawn_loss": 36,
+        "accuracy": 97.71,
+        "judgement": null
+      },
+      {
+        "ply": 47,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Rxf1",
+        "cp_before": -841,
+        "cp_after": -937,
+        "centipawn_loss": 96,
+        "accuracy": 94.54,
+        "judgement": "inaccuracy"
+      },
+      {
+        "ply": 48,
+        "actor": "ai",
+        "color": "white",
+        "san": "Rxf1",
+        "cp_before": 937,
+        "cp_after": 961,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 49,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Nb6",
+        "cp_before": -961,
+        "cp_after": -1000,
+        "centipawn_loss": 39,
+        "accuracy": 98.36,
+        "judgement": null
+      },
+      {
+        "ply": 50,
+        "actor": "ai",
+        "color": "white",
+        "san": "Rf7",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 51,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Nc4",
+        "cp_before": -1000,
+        "cp_after": -1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 52,
+        "actor": "ai",
+        "color": "white",
+        "san": "Qe8+",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 53,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Nf8",
+        "cp_before": -1000,
+        "cp_after": -1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 54,
+        "actor": "ai",
+        "color": "white",
+        "san": "Rxf8+",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 55,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Kg7",
+        "cp_before": -1000,
+        "cp_after": -1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 56,
+        "actor": "ai",
+        "color": "white",
+        "san": "Rf7+",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 57,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Qxf7",
+        "cp_before": -1000,
+        "cp_after": -1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 58,
+        "actor": "ai",
+        "color": "white",
+        "san": "Qxf7+",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 59,
+        "actor": "opponent",
+        "color": "black",
+        "san": "Kh8",
+        "cp_before": -1000,
+        "cp_after": -1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 60,
+        "actor": "ai",
+        "color": "white",
+        "san": "Bh6",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 61,
+        "actor": "opponent",
+        "color": "black",
+        "san": "a5",
+        "cp_before": -1000,
+        "cp_after": -1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      },
+      {
+        "ply": 62,
+        "actor": "ai",
+        "color": "white",
+        "san": "Qg7#",
+        "cp_before": 1000,
+        "cp_after": 1000,
+        "centipawn_loss": 0,
+        "accuracy": 100.0,
+        "judgement": null
+      }
+    ],
+    "ai": {
+      "moves": 32,
+      "accuracy": 96.5,
+      "average_centipawn_loss": 13.4,
+      "inaccuracies": 3,
+      "mistakes": 0,
+      "blunders": 0
+    },
+    "opponent": {
+      "moves": 31,
+      "accuracy": 91.66,
+      "average_centipawn_loss": 41.0,
+      "inaccuracies": 5,
+      "mistakes": 4,
+      "blunders": 0
+    }
+  }
+}
