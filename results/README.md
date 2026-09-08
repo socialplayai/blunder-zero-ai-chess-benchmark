@@ -42,3 +42,12 @@ was winning by more than a rook when it answered `Qh5+` with its queen on h1 and
 the h2 square occupied, which is not a legal move. The record contains the
 position, the legal move list at that moment and the raw response, so the
 judgement can be rechecked rather than believed.
+
+The headline of the pair is not "one win, one loss". It is that **Astra played
+strong chess and failed the RAW interface on board state legality**. Those are
+separate findings and are reported separately, see
+[docs/reporting-dimensions.md](../docs/reporting-dimensions.md).
+
+Game 2 ran at a commit other than the preregistered one. It is kept, not
+re-run, and the difference is documented in
+[api-pilot-v0.1/DEVIATIONS.md](api-pilot-v0.1/DEVIATIONS.md).

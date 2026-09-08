@@ -102,3 +102,48 @@ def test_aggregate_over_several_games():
     assert agg["wins"] + agg["draws"] + agg["losses"] == 2
     assert set(agg["protocols"]) == {"raw"}
     assert format_table(rows).splitlines()[0].startswith("game_id")
+
+
+# ------------------------------------------------- protocol reliability split
+
+
+def test_summary_separates_malformed_from_state_tracking_failures():
+    """Game 2 of the pilot is why these are two different findings."""
+    import chess
+
+    from bzbench.config import MatchConfig
+    from conftest import ScriptedAI
+
+    # A well formed SAN move that is not legal: the model lost the board.
+    config = MatchConfig(model_name="m", adapter="scripted", game_id="statefail")
+    referee = Referee(config, ScriptedAI(["Qh5"]), FirstLegalOpponent())
+    referee.board = chess.Board("r3r1k1/pp3ppp/8/5N2/Pn6/1N2P3/4KP1P/R1B4q w - - 1 23")
+    record = referee.run()
+    summary = game_summary(record)
+    assert summary["state_tracking_failures"] == 1
+    assert summary["malformed_responses"] == 0
+    assert summary["legal_responses"] == 0
+
+    # Prose: an output discipline problem, not a board problem.
+    record = Referee(
+        MatchConfig(model_name="m", adapter="scripted", game_id="malformed"),
+        ScriptedAI(["I would play e4 here"]),
+        FirstLegalOpponent(),
+    ).run()
+    summary = game_summary(record)
+    assert summary["malformed_responses"] == 1
+    assert summary["state_tracking_failures"] == 0
+
+
+def test_legal_response_rate_counts_responses_not_games():
+    clean = game_summary(played_game())
+    record = Referee(
+        MatchConfig(model_name="m", adapter="scripted", game_id="mixed"),
+        ScriptedAI(["e4", "Bc4", "Qa9"]),
+        FirstLegalOpponent(),
+    ).run()
+    rows = [clean, game_summary(record)]
+    agg = aggregate(rows)
+    assert agg["total_ai_responses"] == clean["ai_responses"] + 3
+    assert agg["total_legal_responses"] == clean["legal_responses"] + 2
+    assert 0 < agg["legal_response_rate"] < 1

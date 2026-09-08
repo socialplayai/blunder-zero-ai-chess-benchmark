@@ -22,3 +22,4 @@ secrets.json
 *.pem
 .openai
 .credentials
+diagnostics/

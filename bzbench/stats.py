@@ -15,6 +15,22 @@ def game_summary(record: GameRecord) -> dict[str, Any]:
         t.response_seconds for t in record.turns
         if t.actor == Actor.AI and t.response_seconds is not None
     ]
+    responses = [t for t in record.turns if t.actor == Actor.AI and t.legal is not None]
+    malformed = [
+        item for item in record.illegal_moves
+        if item.get("reason") in {
+            "empty response",
+            "response contains more than one token",
+            "not valid standard algebraic notation",
+        }
+    ]
+    state_tracking = [
+        item for item in record.illegal_moves
+        if item.get("reason") in {
+            "move is not legal in this position",
+            "ambiguous SAN, matches more than one legal move",
+        }
+    ]
     summary: dict[str, Any] = {
         "game_id": record.config.game_id,
         "model": record.config.model_name,
@@ -32,6 +48,11 @@ def game_summary(record: GameRecord) -> dict[str, Any]:
         "plies": len([t for t in record.turns if t.uci]),
         "ai_moves": len(ai_moves),
         "illegal_moves": len(record.illegal_moves),
+        # Protocol reliability, kept separate from chess quality on purpose.
+        "ai_responses": len(responses),
+        "legal_responses": sum(1 for t in responses if t.legal),
+        "malformed_responses": len(malformed),
+        "state_tracking_failures": len(state_tracking),
         "first_illegal_ply": (
             record.illegal_moves[0]["ply"] if record.illegal_moves else None
         ),
@@ -85,6 +106,21 @@ def aggregate(summaries: Iterable[dict[str, Any]]) -> dict[str, Any]:
         "score_rate": round((wins + 0.5 * draws) / len(finished), 3) if finished else None,
         "games_with_illegal_move": sum(1 for r in rows if r["illegal_moves"]),
         "total_illegal_moves": sum(r["illegal_moves"] for r in rows),
+        "total_ai_responses": sum(r["ai_responses"] for r in rows),
+        "total_legal_responses": sum(r["legal_responses"] for r in rows),
+        "total_malformed_responses": sum(r["malformed_responses"] for r in rows),
+        "total_state_tracking_failures": sum(
+            r["state_tracking_failures"] for r in rows
+        ),
+        "legal_response_rate": (
+            round(
+                sum(r["legal_responses"] for r in rows)
+                / sum(r["ai_responses"] for r in rows),
+                4,
+            )
+            if sum(r["ai_responses"] for r in rows)
+            else None
+        ),
         "mean_plies": round(sum(r["plies"] for r in rows) / len(rows), 1),
         "mean_accuracy": (
             round(sum(r["accuracy"] for r in scored) / len(scored), 2) if scored else None
