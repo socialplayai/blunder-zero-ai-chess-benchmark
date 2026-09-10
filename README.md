@@ -1,5 +1,20 @@
 # BlunderZero AI Chess Benchmark
 
+## Read it online
+
+The same material as a set of web pages, for anyone who arrived from the video
+and wants the write-up rather than the repository:
+
+- Write-up and the game: <https://blunderzero.com/ai-chess-benchmark/astra>
+- Protocol and the exact prompt: <https://blunderzero.com/ai-chess-benchmark/astra/methodology>
+- How to reproduce it: <https://blunderzero.com/ai-chess-benchmark/astra/reproduce>
+- The PGN of the 1700 game, sha256 `b698574b66afbe8bace2c413a1c405d352fed52b600df348931c1f9df03462e5`: <https://blunderzero.com/ai-chess-benchmark/astra/game-1700-white.pgn>
+- Full game explainer: <https://youtu.be/Robp5OhXDcs>
+
+Those pages are a presentation of the artifacts in this repository. Where the
+two ever disagree, the repository is authoritative, and the tag below is the
+reproducible reference.
+
 ## Canonical snapshot
 
 The reproducible reference for everything published from this benchmark is the
